@@ -31,7 +31,7 @@ const Nilesh = () => {
         <div className="image drop-shadow-2xl rounded">
         <Image
         className='relative rounded-full'
-      src="/web-1.jpg"
+      src={"/web-1.jpg"}
       width={350}
       height={350}
       alt="Picture of the author"
@@ -40,7 +40,7 @@ const Nilesh = () => {
         <div className=' h-fit flex text-center md:w-[50%] w-[100%] flex-col md:gap-y-6 gap-4'>
             <h3 className='lg:text-3xl  md:text-2xl text-xl font-semibold'>Hey,</h3>
             <h2 className='lg:text-5xl  md:text-4xl text-3xl font-bold'>Nilesh <span className='bg-gradient-to-r from-cyan-500 to-cyan-800 ... bg-clip-text text-transparent'>Mori</span></h2>
-            <h3 className='lg:text-4xl  md:text-3xl text-2xl font-semibold'><span ref={el}></span></h3>
+            <h3 className='lg:text-4xl  w-max mx-auto md:text-3xl text-2xl font-semibold'><span ref={el}></span></h3>
             <div className="btns mx-auto text-lg md:flex-row flex-col flex gap-3">
               <motion.button whileHover={{scale:"1.05", backgroundColor:"white",color:"black",fontWeight:"700"}} className='Cvbtn bg-black border-2  border-black text-white lg:w-[10rem] md:w-32 w-[10rem] py-2 rounded-3xl'><Link href="./Result.pdf" download={"Result"}> Download CV </Link></motion.button>
               <motion.button whileHover={{scale:"1.05",backgroundColor:"black",color:"white",fontWeight:"700"}} className='Aboutbtn border-2 border-black  lg:w-[10rem] md:w-32 py-2 w-[10rem] rounded-3xl'>About Me</motion.button>
