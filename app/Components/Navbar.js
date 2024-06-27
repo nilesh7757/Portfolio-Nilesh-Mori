@@ -3,8 +3,13 @@ import React, { useState } from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { HiX } from "react-icons/hi";
 import { motion,AnimatePresence, spring } from 'framer-motion';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { Link } from 'react-scroll';
+import './Navbar.css'
+// const closemenu = ()=> setcli
 const Navbar = () => {
+  const router = useRouter();
   const [isVisible, setVisible] = useState(false);
   const [icon, setIcon] = useState(<GiHamburgerMenu />);
 
@@ -41,11 +46,46 @@ const Navbar = () => {
           >
             <div className='bg-gray-200 border shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[50%] h-[100vh] px-4 pt-5 '>
       <ul className='text-xl flex pt-10 flex-col text-black gap-8'>
-            <motion.li whileHover={{scale:"1.05"}} ><Link href = "#Home">Home</Link></motion.li>
-            <motion.li whileHover={{scale:"1.05"}} ><Link href = "#About">About Me</Link></motion.li>
-            <motion.li whileHover={{scale:"1.05"}} ><Link href = "#skill">Skills</Link></motion.li>
-            <motion.li whileHover={{scale:"1.05"}} ><Link href = "#">Education</Link></motion.li>
-            <motion.li whileHover={{scale:"1.05"}} ><Link href = "#">Contact Me</Link></motion.li>
+            <motion.li whileHover={{scale:"1.05"}} ><Link  to="home" 
+                spy={true} 
+                smooth={true} 
+                offset={-200} 
+                duration={500} 
+                >
+              Home
+            </Link></motion.li>
+            <motion.li whileHover={{scale:"1.05"}} ><Link  to="about" 
+                spy={true} 
+                smooth={true} 
+                offset={-80} 
+                duration={500} 
+                >
+              About
+            </Link></motion.li>
+            <motion.li whileHover={{scale:"1.05"}} ><Link  to="skills" 
+                spy={true} 
+                smooth={true} 
+                offset={-75} 
+                duration={500} 
+                >
+              Skills
+            </Link></motion.li>
+            <motion.li whileHover={{scale:"1.05"}} ><Link  to="education" 
+                spy={true} 
+                smooth={true} 
+                offset={-75} 
+                duration={500} 
+                >
+              Education
+            </Link></motion.li>
+            <motion.li whileHover={{scale:"1.05"}} ><Link  to="contact" 
+                spy={true} 
+                smooth={true} 
+                offset={-75} 
+                duration={500} 
+                >
+              Contact
+            </Link></motion.li>
           </ul>
     </div>
           </motion.div>
@@ -58,11 +98,52 @@ const Navbar = () => {
         </div>
     <div className='md:flex hidden items-center h-full text-lg'>
         <ul className='flex gap-8'>
-            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} className='cursor-pointer'>Home</motion.li>
-            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} className='cursor-pointer'>About</motion.li>
-            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} className='cursor-pointer'>Skills</motion.li>
-            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} className='cursor-pointer'>Education</motion.li>
-            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} className='cursor-pointer'>Contact</motion.li>
+            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} onClick={() => {router.push('/Nilesh')}} className={`cursor-pointer`}>
+            <Link  to="home"
+                spy={true} 
+                smooth={true} 
+                offset={-250} 
+                duration={500} 
+                >
+              Home
+            </Link> </motion.li>
+            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
+              <Link  to="about" 
+                spy={true} 
+                smooth={true} 
+                offset={-75} 
+                duration={500} 
+                >
+              About
+            </Link> </motion.li>
+            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
+              <Link  to="skills" 
+                spy={true} 
+                smooth={true} 
+                offset={-75} 
+                duration={500} 
+                >
+              Skills
+            </Link> </motion.li>
+            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
+              <Link  to="education" 
+                spy={true} 
+                smooth={true} 
+                offset={-75} 
+                duration={500} 
+                >
+              Education
+            </Link> </motion.li>
+            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
+              <Link  to="contact" 
+                spy={true} 
+                smooth={true} 
+                offset={-75} 
+                duration={500} 
+                >
+              Contact
+            </Link> </motion.li>
+            
         </ul>
     </div>
     </div>

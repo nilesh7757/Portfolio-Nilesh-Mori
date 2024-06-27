@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { FaFacebook, FaGithub, FaLinkedin, FaLinkedinIn } from "react-icons/fa";
+import { BsArrowUpRightCircle } from "react-icons/bs";
 import { FaXTwitter } from "react-icons/fa6";
 import Link from 'next/link';
 import Typed from 'typed.js';
@@ -27,7 +28,7 @@ const Nilesh = () => {
   }, []);
   return (
     <>
-    <div className='h-[90vh] flex md:flex-row flex-col px-10 gap-10 justify-center items-center lg:px-32 md:px-0 mx-auto w-[90vw]'>
+    <div id='home'  className='flex mt-10 md:my-auto md:flex-row flex-col px-10 gap-10 justify-center items-center lg:px-32 md:px-0 mx-auto w-[90vw]'>
         <div className="image drop-shadow-2xl rounded">
         <Image
         className='relative rounded-full'
@@ -43,7 +44,7 @@ const Nilesh = () => {
             <h3 className='lg:text-4xl  w-max mx-auto md:text-3xl text-2xl font-semibold'><span ref={el}></span></h3>
             <div className="btns mx-auto text-lg md:flex-row flex-col flex gap-3">
               <motion.button whileHover={{scale:"1.05", backgroundColor:"white",color:"black",fontWeight:"700"}} className='Cvbtn bg-black border-2  border-black text-white lg:w-[10rem] md:w-32 w-[10rem] py-2 rounded-3xl'><Link href="./Result.pdf" download={"Result"}> Download CV </Link></motion.button>
-              <motion.button whileHover={{scale:"1.05",backgroundColor:"black",color:"white",fontWeight:"700"}} className='Aboutbtn border-2 border-black  lg:w-[10rem] md:w-32 py-2 w-[10rem] rounded-3xl'>About Me</motion.button>
+              <motion.button whileHover={{scale:"1.05",backgroundColor:"black",color:"white",fontWeight:"700"}} className='Aboutbtn border-2 flex gap-2 justify-center items-center border-black  lg:w-[10rem] md:w-32 py-2 w-[10rem] rounded-3xl'>About Me <BsArrowUpRightCircle size={25}/></motion.button>
             </div>
             <div 
         className="contacts mx-auto flex gap-x-4">
