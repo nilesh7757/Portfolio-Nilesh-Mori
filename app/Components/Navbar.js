@@ -46,7 +46,7 @@ const Navbar = () => {
           >
             <div className='bg-gray-200 border shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[50%] h-[100vh] px-4 pt-5 '>
       <ul className='text-xl flex pt-10 flex-col text-black gap-8'>
-            <motion.li whileHover={{scale:"1.05"}} ><Link  to="home" 
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="home" 
                 spy={true} 
                 smooth={true} 
                 offset={-200} 
@@ -54,7 +54,7 @@ const Navbar = () => {
                 >
               Home
             </Link></motion.li>
-            <motion.li whileHover={{scale:"1.05"}} ><Link  to="about" 
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="about" 
                 spy={true} 
                 smooth={true} 
                 offset={-80} 
@@ -62,7 +62,7 @@ const Navbar = () => {
                 >
               About
             </Link></motion.li>
-            <motion.li whileHover={{scale:"1.05"}} ><Link  to="skills" 
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="skills" 
                 spy={true} 
                 smooth={true} 
                 offset={-75} 
@@ -70,7 +70,7 @@ const Navbar = () => {
                 >
               Skills
             </Link></motion.li>
-            <motion.li whileHover={{scale:"1.05"}} ><Link  to="education" 
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="education" 
                 spy={true} 
                 smooth={true} 
                 offset={-75} 
@@ -78,7 +78,7 @@ const Navbar = () => {
                 >
               Education
             </Link></motion.li>
-            <motion.li whileHover={{scale:"1.05"}} ><Link  to="contact" 
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="contact" 
                 spy={true} 
                 smooth={true} 
                 offset={-75} 
@@ -98,7 +98,7 @@ const Navbar = () => {
         </div>
     <div className='md:flex hidden items-center h-full text-lg'>
         <ul className='flex gap-8'>
-            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} onClick={() => {router.push('/Nilesh')}} className={`cursor-pointer`}>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} onClick={() => {router.push('/Nilesh')}} className={`cursor-pointer`}>
             <Link  to="home"
                 spy={true} 
                 smooth={true} 
@@ -107,7 +107,7 @@ const Navbar = () => {
                 >
               Home
             </Link> </motion.li>
-            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
               <Link  to="about" 
                 spy={true} 
                 smooth={true} 
@@ -116,7 +116,7 @@ const Navbar = () => {
                 >
               About
             </Link> </motion.li>
-            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
               <Link  to="skills" 
                 spy={true} 
                 smooth={true} 
@@ -125,7 +125,7 @@ const Navbar = () => {
                 >
               Skills
             </Link> </motion.li>
-            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
               <Link  to="education" 
                 spy={true} 
                 smooth={true} 
@@ -134,7 +134,7 @@ const Navbar = () => {
                 >
               Education
             </Link> </motion.li>
-            <motion.li whileHover={{scale:"1.05",fontWeight:"bold"}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
               <Link  to="contact" 
                 spy={true} 
                 smooth={true} 
