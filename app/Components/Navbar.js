@@ -25,7 +25,6 @@ const Navbar = () => {
               height: "100%",
               clipPath: "ellipse(0% 50% at 0% 50%)",
             }}
-            style={{zIndex:10}}
             animate={{
               opacity:1,
               clipPath: "ellipse(40% 50% at 0% 50%)",
