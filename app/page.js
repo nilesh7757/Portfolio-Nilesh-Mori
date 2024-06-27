@@ -4,9 +4,9 @@ import Nilesh from "./Components/Home";
 export default function Home() {
   return (
     <>
-    <div className="h-20"><Navbar/></div>
+    <div className="h-20 z-10 bg-white sticky top-0"><Navbar/></div>
     <div className="shadow-md "><Nilesh/></div>
-    <div>End Of Section</div>
+    <div className="h-[100vh]">End Of Section</div>
     {/* <Background/> */}
     </>
       );
