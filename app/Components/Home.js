@@ -31,7 +31,7 @@ const Nilesh = () => {
         <div className="image drop-shadow-2xl rounded">
         <Image
         className='relative rounded-full'
-      src={"/web-1.jpg"}
+      src={"./web-1.jpg"}
       width={350}
       height={350}
       alt="Picture of the author"
