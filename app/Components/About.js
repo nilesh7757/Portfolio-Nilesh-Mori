@@ -24,7 +24,7 @@ const About = () => {
           <motion.div whileHover={{scale:1.05,transition: { duration: 0.1, ease: "easeOut" }}}  className="p-3 rounded-md md:w-[50%] w-[90%] shadow-slate-400 shadow-lg hover:shadow-slate-600 hover:shadow-xl">
               <h4 className="md:text-xl text-lg font-semibold">Nilesh Mori</h4>
               <h5 className="md:text-lg text-base font-medium ">Fullstack Webdevloper</h5>
-              <p className="mt-2 md:text-base text-sm">Hey,I am a Software Engineer From Gandhinagar.I am studying B.Tech ICT-CS at Daiict Gandhingar. I have no experience of job. I love to build clones of project. i am working for myself.I excited still learning new things.if you interested to work with me or if you want to hire me please contact me.Let's build Code</p>
+              <p className="mt-2 md:text-base text-sm">Hey,I am a Software Engineer From Gandhinagar.I am studying B.Tech ICT-CS at Daiict Gandhingar. I have no experience of job. I love to build clones of project. i am working for myself.I excited still learning new things.if you interested to work with me or if you want to hire me please contact me.Let&apos;s build Code</p>
               <p className="mt-3 md:text-base text-sm"><span className="bg-gradient-to-r from-blue-400 to-purple-800 ... bg-clip-text text-transparent font-bold" >Email :</span> nileshmori7757@gmail.com</p>
               <p className="mt-2 md:text-base text-sm"><span className="bg-gradient-to-r from-blue-400 to-purple-800 ... bg-clip-text text-transparent font-bold" >Address :</span> Porbandar,Gujarat</p>
           <div className="w-full flex justify-center mt-5">           
