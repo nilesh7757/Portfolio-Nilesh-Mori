@@ -4,7 +4,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { HiX } from "react-icons/hi";
 import { motion,AnimatePresence, spring } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import { Link } from 'react-scroll';
 import './Navbar.css'
 // const closemenu = ()=> setcli
@@ -45,7 +44,7 @@ const Navbar = () => {
             }}
           >
             <div className='bg-gray-200 border shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[50%] h-[100vh] px-4 pt-5 '>
-      <ul className='text-xl mt-10 flex pt-10 flex-col text-black gap-8'>
+      <ul className='text-xl flex pt-10 flex-col text-black gap-8'>
             <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="home" 
                 spy={true} 
                 smooth={true} 
@@ -98,7 +97,7 @@ const Navbar = () => {
         </div>
     <div className='md:flex hidden items-center h-full text-lg'>
         <ul className='flex gap-8'>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} onClick={() => {router.push('/Nilesh')}} className={`cursor-pointer`}>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} className={`cursor-pointer`}>
             <Link  to="home"
                 spy={true} 
                 smooth={true} 
@@ -107,8 +106,9 @@ const Navbar = () => {
                 >
               Home
             </Link> </motion.li>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
-              <Link  to="about" 
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}}className='cursor-pointer'>
+              <Link  
+                to="about" 
                 spy={true} 
                 smooth={true} 
                 offset={-75} 
@@ -116,7 +116,7 @@ const Navbar = () => {
                 >
               About
             </Link> </motion.li>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} className='cursor-pointer'>
               <Link  to="skills" 
                 spy={true} 
                 smooth={true} 
@@ -125,7 +125,7 @@ const Navbar = () => {
                 >
               Skills
             </Link> </motion.li>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} className='cursor-pointer'>
               <Link  to="education" 
                 spy={true} 
                 smooth={true} 
@@ -134,7 +134,7 @@ const Navbar = () => {
                 >
               Education
             </Link> </motion.li>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} onClick={() => {router.push('/About')}}   className='cursor-pointer'>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} className='cursor-pointer'>
               <Link  to="contact" 
                 spy={true} 
                 smooth={true} 
