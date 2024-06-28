@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const About = () => {
   return (
     <>
-      <div id="about" className="h-fit py-6 flex flex-col items-center">
+      <div id="about" className="h-fit md:h-[100vh] py-6 flex flex-col items-center">
         <h2 className="text-3xl text-center">About Me</h2>
         <div className="abt w-[90%] my-10 lg:my-auto flex flex-col md:flex-row items-center justify-center gap-20 h-[80%]">
           <motion.div 
