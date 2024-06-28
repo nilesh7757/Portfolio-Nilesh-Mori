@@ -6,7 +6,8 @@ import { FaFacebook, FaGithub, FaLinkedin, FaLinkedinIn } from "react-icons/fa";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { FaXTwitter } from "react-icons/fa6";
-import Link from 'next/link';
+// import Link from 'next/link';
+import { Link } from 'react-scroll';
 import Typed from 'typed.js';
 import { useRef,useEffect,useState } from 'react';
 
@@ -45,8 +46,13 @@ const Nilesh = () => {
             <h2 className='lg:text-5xl  md:text-4xl text-3xl font-bold'>Nilesh <span className='bg-gradient-to-r from-cyan-500 to-cyan-800 ... bg-clip-text text-transparent'>Mori</span></h2>
             <h3 className='lg:text-4xl  w-max mx-auto md:text-3xl text-2xl font-semibold'><span ref={el}></span></h3>
             <div className="btns mx-auto text-lg md:flex-row flex-col flex gap-3">
-              <motion.button  whileHover={{scale:1.05,transition: { duration: 0.18, ease: "easeOut" }, backgroundColor:"white",color:"black",fontWeight:"700",}} className='Cvbtn bg-black border-2  border-black text-white lg:w-[10rem] md:w-32 w-[10rem] py-2 rounded-3xl'><Link  href="./Result.pdf" download={"Result"}> Download CV </Link></motion.button>
-              <motion.button  whileHover={{scale:1.05,transition: { duration: 0.18, ease: "easeOut" }, backgroundColor:"black",color:"white",fontWeight:"700"}} onHoverStart={() => setrotate(90)} onHoverEnd={() => setrotate(0)}  className='Aboutbtn border-2 flex gap-2 justify-center items-center border-black  lg:w-[10rem] md:w-32 py-2 w-[10rem] rounded-3xl'>About Me <BsArrowUpRightCircle size={25} style = {{transform: `rotate(${rotate}deg)` }}/></motion.button>
+              <motion.button  whileHover={{scale:1.05,transition: { duration: 0.18, ease: "easeOut" }, backgroundColor:"white",color:"black",fontWeight:"700",}} className='Cvbtn bg-black border-2  border-black text-white lg:w-[10rem] md:w-32 w-[10rem] py-2 rounded-3xl'><Link   href="./Result.pdf" download={"Result"}> Download CV </Link></motion.button>
+              <motion.button  whileHover={{scale:1.05,transition: { duration: 0.18, ease: "easeOut" }, backgroundColor:"black",color:"white",fontWeight:"700"}} onHoverStart={() => setrotate(90)} onHoverEnd={() => setrotate(0)}  className='Aboutbtn border-2 flex gap-2 justify-center items-center border-black  lg:w-[10rem] md:w-32 py-2 w-[10rem] rounded-3xl'><Link   
+                to="about" 
+                spy={true} 
+                smooth={true} 
+                offset={-70} 
+                duration={500}  >About Me </Link><BsArrowUpRightCircle size={25} style = {{transform: `rotate(${rotate}deg)` }}/></motion.button>
             </div>
             <div 
         className="contacts mx-auto flex gap-x-4">
