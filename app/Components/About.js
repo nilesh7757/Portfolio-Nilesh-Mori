@@ -1,18 +1,26 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { IoPerson } from "react-icons/io5";
 import { Link } from 'react-scroll';
-
 const About = () => {
+  const [isFlipped,setIsFlipped] = useState();
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
   return (
     <>
       <div id="about" className="h-fit md:h-[100vh] py-6 flex flex-col items-center">
         <h2 className="md:text-4xl text-3xl font-bold text-center flex gap-2"><IoPerson/> About <span className="bg-gradient-to-r from-green-500 to-green-200 ... bg-clip-text text-transparent">Me</span></h2>
         <div className="abt w-[90%] my-10 lg:my-auto flex flex-col md:flex-row items-center justify-center gap-20 h-[80%]">
+          <motion.div
+              onHoverStart={handleFlip}
+          >
           <motion.div 
               whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}}
+              animate={{ rotateY: isFlipped ? 360 : 0, }}
+              transition={{duration:0.8,ease:"easeInOut"}}
               className="pic grayscale  rounded-md hover:grayscale-0  relative">
             <Image
               className="relative shadow-lg shadow-slate-500 hover:shadow-xl hover:shadow-slate-600 rounded-md"
@@ -20,8 +28,10 @@ const About = () => {
               width={350}
               height={350}
               // fill={true}
+              
               alt="Picture of the author"
             />
+          </motion.div>
           </motion.div>
           <motion.div whileHover={{scale:1.05,transition: { duration: 0.1, ease: "easeOut" }}}  className="p-3 rounded-md md:w-[50%] w-[90%] shadow-slate-400 shadow-lg hover:shadow-slate-600 hover:shadow-xl">
               <h4 className="md:text-xl text-lg font-semibold">Nilesh Mori</h4>
