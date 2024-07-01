@@ -6,7 +6,6 @@ import { FaFacebook, FaGithub, FaLinkedin, FaLinkedinIn } from "react-icons/fa";
 import { BsArrowUpRightCircle } from "react-icons/bs";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { FaXTwitter } from "react-icons/fa6";
-// import Link from 'next/link';
 import { Link } from 'react-scroll';
 import Typed from 'typed.js';
 import { useRef,useEffect,useState } from 'react';
@@ -32,7 +31,11 @@ const Nilesh = () => {
   return (
     <>
     <div id='home'  className='flex py-10 md:flex-row flex-col px-10 gap-10 justify-center items-center lg:px-32 md:px-0 mx-auto w-[90vw]'>
-        <div className="image  rounded">
+        <motion.div
+          whileTap={{rotateZ:360}}
+          whileHover={{rotateZ:360}}
+          transition={{duration:0.5,ease:"easeInOut"}}
+         className="image  rounded">
         <Image
         className='relative shadow-lg shadow-slate-500 hover:shadow-xl hover:shadow-slate-600 rounded-full'
       src={"./web-1.jpg"}
@@ -40,14 +43,14 @@ const Nilesh = () => {
       height={350}
       alt="Picture of the author"
     />
-        </div>
+        </motion.div>
         <div className=' h-fit flex text-center md:w-[50%] w-[100%] flex-col md:gap-y-6 gap-4'>
             <h3 className='lg:text-3xl  md:text-2xl text-xl font-semibold'>Hey,</h3>
             <h2 className='lg:text-5xl  md:text-4xl text-3xl font-bold'>Nilesh <span className='bg-gradient-to-r from-cyan-500 to-cyan-800 ... bg-clip-text text-transparent'>Mori</span></h2>
             <h3 className='lg:text-4xl  w-max mx-auto md:text-3xl text-2xl font-semibold'><span ref={el}></span></h3>
             <div className="btns mx-auto text-lg md:flex-row flex-col flex gap-3">
-              <motion.button  whileHover={{scale:1.05,transition: { duration: 0.18, ease: "easeOut" }, backgroundColor:"white",color:"black",fontWeight:"700",}} className='Cvbtn bg-black border-2  border-black text-white lg:w-[10rem] md:w-32 w-[10rem] py-2 rounded-3xl'><a href="./CV.pdf" download={"CV"}> Download CV </a></motion.button>
-              <motion.button  whileHover={{scale:1.05,transition: { duration: 0.18, ease: "easeOut" }, backgroundColor:"black",color:"white",fontWeight:"700"}} onHoverStart={() => setrotate(90)} onHoverEnd={() => setrotate(0)}  className='Aboutbtn border-2 flex gap-2 justify-center items-center border-black  lg:w-[10rem] md:w-32 py-2 w-[10rem] rounded-3xl'><Link   
+              <motion.button whileTap={{scale:1.05,transition: { duration: 0.18, ease: "easeOut" }, backgroundColor:"white",color:"black",fontWeight:"700",}}  whileHover={{scale:1.05,transition: { duration: 0.18, ease: "easeOut" }, backgroundColor:"white",color:"black",fontWeight:"700",}} className='Cvbtn bg-black border-2  border-black text-white lg:w-[10rem] md:w-32 w-[10rem] py-2 rounded-3xl'><a href="./CV.pdf" download={"CV"}> Download CV </a></motion.button>
+              <motion.button whileTap={{scale:1.05,transition: { duration: 0.18, ease: "easeOut" }, backgroundColor:"black",color:"white",fontWeight:"700"}}  whileHover={{scale:1.05,transition: { duration: 0.18, ease: "easeOut" }, backgroundColor:"black",color:"white",fontWeight:"700"}} onHoverStart={() => setrotate(90)} onHoverEnd={() => setrotate(0)}  className='Aboutbtn border-2 flex gap-2 justify-center items-center border-black  lg:w-[10rem] md:w-32 py-2 w-[10rem] rounded-3xl'><Link   
                 to="about" 
                 spy={true} 
                 smooth={true} 
@@ -56,10 +59,10 @@ const Nilesh = () => {
             </div>
             <div 
         className="contacts mx-auto flex gap-x-4">
-          <motion.div whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }}><Link href="https://github.com/nilesh7757"><FaGithub size={50}/></Link></motion.div>
-          <motion.div whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }}><Link href="https://www.facebook.com/akash.mori.792/"><FaFacebook size={50}/></Link></motion.div>
-          <motion.div whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }} className='size-[50px] rounded-full flex items-center justify-center bg-black text-white'><Link href="https://github.com/nilesh7757"><FaLinkedinIn size={40}/></Link></motion.div>
-          <motion.div whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }} className='size-[50px] rounded-full flex items-center justify-center bg-black text-white'><Link href="https://github.com/nilesh7757"><FaXTwitter size={35}/></Link></motion.div>
+          <a href="https://github.com/nilesh7757"><motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }}><FaGithub size={50}/></motion.div></a>
+          <a href="https://www.facebook.com/akash.mori.792/"><motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }}><FaFacebook size={50}/></motion.div></a>
+          <a href="https://github.com/nilesh7757"><motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }} className='size-[50px] rounded-full flex items-center justify-center bg-black text-white'><FaLinkedinIn size={40}/></motion.div></a>
+          <a href="https://github.com/nilesh7757"><motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }} className='size-[50px] rounded-full flex items-center justify-center bg-black text-white'><FaXTwitter size={35}/></motion.div></a>
          
       </div>
         </div>

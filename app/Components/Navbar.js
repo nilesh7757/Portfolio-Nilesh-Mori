@@ -93,7 +93,7 @@ const Navbar = () => {
     <div className='h-20 shadow-md justify-center w-full flex items-center sticky top-0  md:justify-between lg:px-44 md:px-20'>
     <div className="hamburger fixed left-0 z-20 md:hidden mx-4 bg-black text-white p-2 rounded-full" onClick={showNav}>{icon}</div>
         <div className='flex md:mx-0 items-center h-full' >
-            <span className='border-black border-2 rounded-full p-2 font-bold text-lg '>NM</span>
+        <span className='border-black border-2 rounded-full p-2 font-bold text-lg '><a href="https://nilesh7757.github.io/NileshMori/">NM</a></span>
         </div>
     <div className='md:flex hidden items-center h-full text-lg'>
         <ul className='flex gap-8'>

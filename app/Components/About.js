@@ -16,13 +16,14 @@ const About = () => {
         <div className="abt w-[90%] my-10 lg:my-auto flex flex-col md:flex-row items-center justify-center gap-20 h-[80%]">
           <motion.div
               onHoverStart={handleFlip}
+              onHoverEnd={handleFlip}
               onTap={handleFlip}
           >
           <motion.div 
               whileHover={{scale:1.05,transition: { duration: 0.1, ease: "easeOut" }}}
-              animate={{ rotateY: isFlipped ? 360 : 0, }}
+              animate={{ rotateY: isFlipped ? 360 : 0,}}
               transition={{duration:0.8,ease:"easeInOut"}}
-              className="pic grayscale  rounded-md hover:grayscale-0  relative">
+              className={`pic grayscale   rounded-md relative ${isFlipped?'grayscale-0':""}`}>
             <Image
               className="relative shadow-lg shadow-slate-500 hover:shadow-xl hover:shadow-slate-600 rounded-md"
               src={"./Nilesh.jpg"}
@@ -39,7 +40,7 @@ const About = () => {
               <p className="mt-3 md:text-base text-sm"><span className="bg-gradient-to-r from-blue-400 to-purple-800 ... bg-clip-text text-transparent font-bold" >Email :</span> nileshmori7757@gmail.com</p>
               <p className="mt-2 md:text-base text-sm"><span className="bg-gradient-to-r from-blue-400 to-purple-800 ... bg-clip-text text-transparent font-bold" >Address :</span> Porbandar,Gujarat</p>
           <div className="w-full flex justify-center mt-5">           
-          <motion.button whileHover={{scale:1.05,transition:{duration:0.3,ease:"easeIn"},backgroundColor:"black",color:"white",fontWeight:"bold"}} className="px-5 py-1 text-black rounded-lg shadow-2xl ring-2 ring-gray-400 hover:ring-gray-300 shadow-black"><Link   
+          <motion.button whileHover={{scale:1.05,transition:{duration:0.3,ease:"easeIn"},backgroundColor:"black",color:"white",fontWeight:"bold"}} whileTap={{scale:1.05,transition:{duration:0.3,ease:"easeIn"},backgroundColor:"black",color:"white",fontWeight:"bold"}} className="px-5 py-1 text-black rounded-lg shadow-2xl ring-2 ring-gray-400 hover:ring-gray-300 shadow-black"><Link   
                 to="contact" 
                 spy={true} 
                 smooth={true} 
