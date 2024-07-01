@@ -16,9 +16,10 @@ const About = () => {
         <div className="abt w-[90%] my-10 lg:my-auto flex flex-col md:flex-row items-center justify-center gap-20 h-[80%]">
           <motion.div
               onHoverStart={handleFlip}
+              onTap={handleFlip}
           >
           <motion.div 
-              whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}}
+              whileHover={{scale:1.05,transition: { duration: 0.1, ease: "easeOut" }}}
               animate={{ rotateY: isFlipped ? 360 : 0, }}
               transition={{duration:0.8,ease:"easeInOut"}}
               className="pic grayscale  rounded-md hover:grayscale-0  relative">
@@ -27,8 +28,6 @@ const About = () => {
               src={"./Nilesh.jpg"}
               width={350}
               height={350}
-              // fill={true}
-              
               alt="Picture of the author"
             />
           </motion.div>
