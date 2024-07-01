@@ -3,6 +3,8 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { IoPerson } from "react-icons/io5";
+import { Link } from 'react-scroll';
+
 const About = () => {
   return (
     <>
@@ -28,7 +30,12 @@ const About = () => {
               <p className="mt-3 md:text-base text-sm"><span className="bg-gradient-to-r from-blue-400 to-purple-800 ... bg-clip-text text-transparent font-bold" >Email :</span> nileshmori7757@gmail.com</p>
               <p className="mt-2 md:text-base text-sm"><span className="bg-gradient-to-r from-blue-400 to-purple-800 ... bg-clip-text text-transparent font-bold" >Address :</span> Porbandar,Gujarat</p>
           <div className="w-full flex justify-center mt-5">           
-          <motion.button whileHover={{scale:1.05,transition:{duration:0.3,ease:"easeIn"},backgroundColor:"black",color:"white",fontWeight:"bold"}} className="px-5 py-1 text-black rounded-lg shadow-2xl ring-2 ring-gray-400 hover:ring-gray-300 shadow-black">Contact Me</motion.button>
+          <motion.button whileHover={{scale:1.05,transition:{duration:0.3,ease:"easeIn"},backgroundColor:"black",color:"white",fontWeight:"bold"}} className="px-5 py-1 text-black rounded-lg shadow-2xl ring-2 ring-gray-400 hover:ring-gray-300 shadow-black"><Link   
+                to="contact" 
+                spy={true} 
+                smooth={true} 
+                offset={-70} 
+                duration={500}  >Contact Me</Link></motion.button>
           </div>
           </motion.div>
         </div>
