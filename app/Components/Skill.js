@@ -26,7 +26,7 @@ import { SiKotlin } from "react-icons/si";
 export default function Skill() {
   return (
     <>
-      <div className='mt-12 pb-12'>
+      <div id='skill' className='mt-12 pb-12'>
       <h2 className="md:text-4xl text-3xl font-bold text-center"><span className="bg-gradient-to-r from-orange-500 to-orange-200 ... bg-clip-text text-transparent">Skills</span> And <span className="bg-gradient-to-r from-cyan-500 to-cyan-200 ... bg-clip-text text-transparent">Languages</span></h2>
       <div className='mt-5'>
       <h3 className="md:text-4xl text-3xl font-bold text-center"><span className="bg-gradient-to-r from-blue-500 to-blue-200 ... bg-clip-text text-transparent">Skills</span></h3>
@@ -63,7 +63,7 @@ export default function Skill() {
       >
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-              <FaAndroid fill='#3DDC84' size={200} />
+              <FaAndroid className='md:size-[200px] size-[150px] ' fill='#3DDC84'/>
               <span className='mt-1'>Android</span>
             </div>
         </SwiperSlide>
