@@ -64,7 +64,7 @@ const Navbar = () => {
             <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="skills" 
                 spy={true} 
                 smooth={true} 
-                offset={-75} 
+                offset={-100} 
                 duration={500} 
                 >
               Skills
@@ -120,7 +120,7 @@ const Navbar = () => {
               <Link  to="skills" 
                 spy={true} 
                 smooth={true} 
-                offset={-75} 
+                offset={-100} 
                 duration={500} 
                 >
               Skills
