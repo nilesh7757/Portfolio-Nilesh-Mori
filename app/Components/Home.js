@@ -59,10 +59,10 @@ const Nilesh = () => {
             </div>
             <div 
         className="contacts mx-auto flex gap-x-4">
-          <a href="https://github.com/nilesh7757"><motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }}><FaGithub size={50}/></motion.div></a>
-          <a href="https://www.facebook.com/akash.mori.792/"><motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }}><FaFacebook size={50}/></motion.div></a>
-          <a href="https://github.com/nilesh7757"><motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }} className='size-[50px] rounded-full flex items-center justify-center bg-black text-white'><FaLinkedinIn size={40}/></motion.div></a>
-          <a href="https://github.com/nilesh7757"><motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }} className='size-[50px] rounded-full flex items-center justify-center bg-black text-white'><FaXTwitter size={35}/></motion.div></a>
+          <motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }}><a href="https://github.com/nilesh7757"><FaGithub size={50}/></a></motion.div>
+          <motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }}><a href="https://www.facebook.com/akash.mori.792/"><FaFacebook size={50}/></a></motion.div>
+          <motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }} className='size-[50px] rounded-full flex items-center justify-center bg-black text-white'><a href="https://www.linkedin.com/in/nilesh-mori-7757n"><FaLinkedinIn size={40}/></a></motion.div>
+          <motion.div whileTap={{ scale: 1.1, transition: { duration: 0.18, ease: "easeOut" } }} whileHover={{ scale: 1.05, transition: { duration: 0.18, ease: "easeOut" } }} className='size-[50px] rounded-full flex items-center justify-center bg-black text-white'><a href="https://x.com/Programmer7757?t=tRdexLvNV7qv22ZC5Q6jxg&s=08"><FaXTwitter size={35}/></a></motion.div>
          
       </div>
         </div>

@@ -15,8 +15,8 @@ export default function Home() {
     <div  className="shadow-md lg:h-[90vh] lg:flex lg:items-center h-fit "><Nilesh/></div>
     <div  className="shadow-md "><About/></div>
     <div  className="shadow-md "><Skill/></div>
-    <div  className="shadow-md h-[100vh]"><Education/></div>
-    <div  className="shadow-md h-[100vh]"><Education/></div>
+    <div  className="shadow-md "><Education/></div>
+    {/* <div  className="shadow-md h-[100vh]"><Education/></div> */}
     <div  className="shadow-md h-[100vh]"><Contact/></div>
     {/* <Background/> */}
     </main>
