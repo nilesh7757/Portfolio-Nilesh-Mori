@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "classnames": "^2.5.1",
     "devicon": "^2.16.0",
+    "emailjs": "^4.0.3",
     "es6-object-assign": "^1.1.0",
     "framer-motion": "^11.2.12",
     "jquery": "^3.7.1",
