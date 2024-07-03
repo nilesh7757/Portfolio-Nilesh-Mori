@@ -9,7 +9,8 @@ const ProjectCard = ({ src,name,demo,code }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <Tilt
-    className="relative shadow-lg  ease-in-out transition-transform hover:shadow-2xl   mx-auto rounded-md  w-[90%] h-[300px] md:tilt-enabled overflow-hidden"
+    disableScrollOnTouch={false}
+    className="relative shadow-lg ease-in-out transition-transform hover:shadow-2xl   mx-auto rounded-md  w-[90%] h-[300px]  "
     
     >
     <motion.div 

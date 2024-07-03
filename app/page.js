@@ -18,7 +18,7 @@ export default function Home() {
     <div  className="shadow-md "><About/></div>
     <div  className="shadow-md "><Skill/></div>
     <div  className="shadow-md "><Education/></div>
-    <div  className="shadow-md h-[100vh]"><Project/></div>
+    <div  className="shadow-md"><Project/></div>
     {/* <div  className="shadow-md h-[100vh]"><Check/></div> */}
     {/* <Background/> */}
     </main>
