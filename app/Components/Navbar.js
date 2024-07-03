@@ -72,19 +72,28 @@ const Navbar = () => {
             <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="education" 
                 spy={true} 
                 smooth={true} 
-                offset={-75} 
+                offset={-70} 
                 duration={500} 
                 >
               Education
             </Link></motion.li>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="project" 
+                spy={true} 
+                smooth={true} 
+                offset={0} 
+                duration={500} 
+                >
+              Project
+            </Link></motion.li>
             <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="contact" 
                 spy={true} 
                 smooth={true} 
-                offset={-75} 
+                offset={-70} 
                 duration={500} 
                 >
               Contact
             </Link></motion.li>
+            
           </ul>
     </div>
           </motion.div>
@@ -135,6 +144,15 @@ const Navbar = () => {
               Education
             </Link> </motion.li>
             <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} className='cursor-pointer'>
+              <Link  to="project" 
+                spy={true} 
+                smooth={true} 
+                offset={-75} 
+                duration={500} 
+                >
+              Projects
+            </Link> </motion.li>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} className='cursor-pointer'>
               <Link  to="contact" 
                 spy={true} 
                 smooth={true} 
@@ -143,6 +161,7 @@ const Navbar = () => {
                 >
               Contact
             </Link> </motion.li>
+            
             
         </ul>
     </div>
