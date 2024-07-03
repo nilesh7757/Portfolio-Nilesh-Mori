@@ -36,12 +36,15 @@ const Contact = () => {
       <h2 className="md:text-4xl text-3xl font-bold text-center flex gap-2"><IoPerson/> Contact <span className="bg-gradient-to-r from-sky-500 to-sky-200 ... bg-clip-text text-transparent">Me</span></h2>
 
         <div className="flex h-[90%] mt-6 w-full md:w-[80%]">
+          <div className="md:w-[40%]  md:block hidden  ">
         <Image 
-            className="w-full md:block  hidden rounded-md md:w-[40%]"
+            className="object cover  rounded-md"
             src={"./Contact.png"}
-            width={20}
+            width={450}
             height={250}
+            layout="responsive"
           />
+          </div>
         {/* <div className="w-[30%] h-[100%]">
         <Image
         className="absolute z-0 w-full h-full object-cover rounded-md"
@@ -79,7 +82,8 @@ const Contact = () => {
     <div className="relative  mx-auto flex w-[80%] items-center">
     <MdPhone className="text-gray-500 absolute left-3" />
     <input
-      type="number"
+      type="tel"
+      pattern="[0-9]{10}"
       name="mobile_number"
       placeholder="Mobile Number"
       className="pl-10 p-2 border border-blue-500 rounded-lg w-full"
