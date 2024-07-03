@@ -45,13 +45,13 @@ const Project = () => {
       </h2>
       <div className='w-full mt-3 grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 '>
       <div className="w-full  mt-5 flex md:flex-row flex-col">
-        <ProjectCard src="/PassOP.png" name="PassOP" demo="https://nilesh7757.github.io/PassOP/" code={"https://github.com/nilesh7757/passop"} />
+        <ProjectCard src="./PassOP.png" name="PassOP" demo="https://nilesh7757.github.io/PassOP/" code={"https://github.com/nilesh7757/passop"} />
       </div>
       <div className="w-full mt-5 flex md:flex-row flex-col">
-        <ProjectCard src="/Todo.png" name="TodoList" demo="https://nilesh7757.github.io/TodoList/" code={"https://github.com/nilesh7757/TodoList"} />
+        <ProjectCard src="./Todo.png" name="TodoList" demo="https://nilesh7757.github.io/TodoList/" code={"https://github.com/nilesh7757/TodoList"} />
       </div>
       <div className="w-full mt-5 flex md:flex-row flex-col">
-        <ProjectCard src="/Spotify.png" name="Spotify Clone" demo={"https://nilesh7757.github.io/Spotify-Clone-HTML/"} code={"https://github.com/nilesh7757/Spotify-Clone-HTML"} />
+        <ProjectCard src="./Spotify.png" name="Spotify Clone" demo={"https://nilesh7757.github.io/Spotify-Clone-HTML/"} code={"https://github.com/nilesh7757/Spotify-Clone-HTML"} />
       </div>
       </div>
     </div>
