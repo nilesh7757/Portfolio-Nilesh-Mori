@@ -84,6 +84,10 @@ const Contact = () => {
     <input
       type="tel"
       pattern="[0-9]{10}"
+      minLength={10}
+      maxLength={10}
+      title="please enter 10 digit number properly"
+      // onError={"hi"}
       name="mobile_number"
       placeholder="Mobile Number"
       className="pl-10 p-2 border border-blue-500 rounded-lg w-full"
