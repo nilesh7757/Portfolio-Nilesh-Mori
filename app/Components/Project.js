@@ -9,8 +9,9 @@ const ProjectCard = ({ src,name,demo,code }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <Tilt
+    shadow='0px 3px 8px rgba(0, 0, 0, 0.24)'
     disableScrollOnTouch={false}
-    className="relative shadow-lg ease-in-out transition-transform hover:shadow-2xl   mx-auto rounded-md  w-[90%] h-[300px]  "
+    className="relative shadow-lg ease-in-out transition-transform hover:shadow-2xl w-[90%] h-full  mx-auto rounded-"
     
     >
     <motion.div 
@@ -20,13 +21,15 @@ const ProjectCard = ({ src,name,demo,code }) => {
       // whileHover={{scale:"1.05"}}
       onTap={() => setIsHovered(!isHovered)}
     >
+      <div className='w-[80%] h-[300px]'>
       <Image
         className="absolute z-0 w-full h-full object-cover rounded-md"
         src={src}
         layout="fill"
         objectFit="cover"
       />
-      <div className='absolute w-[100%] bg-white flex justify-center items-center text-2xl font-bold bottom-0 h-[10%]'>{name}</div>
+      </div>
+      <div className='absolute w-[100%] bg-white flex justify-center py-4 items-center text-2xl font-bold bottom-0 h-[10%]'>{name}</div>
       <div className={`absolute w-[90%] z-30 duration-700 ease-in-out flex justify-between ${isHovered ? "bottom-10 opacity-100" : "-bottom-10 opacity-0"}`}>
         <button className="bg-black text-white px-4 py-2 rounded-md">
           <Link href={demo} className='flex items-center gap-2'> <FaEye /> Demo</Link>
