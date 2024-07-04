@@ -87,7 +87,6 @@ const Contact = () => {
       minLength={10}
       maxLength={10}
       title="please enter 10 digit number properly"
-      // onError={"hi"}
       name="mobile_number"
       placeholder="Mobile Number"
       className="pl-10 p-2 border border-blue-500 rounded-lg w-full"
@@ -130,7 +129,7 @@ const Contact = () => {
                 whileHover={{
                   scale: 1.05,
                 }}
-                className="bg-black hover:bg-white hover:text-black px-2 py-2 border border-gray-400 w-[20%] text-white font-semibold rounded-lg flex items-center justify-center gap-2 mx-auto"
+                className="bg-black hover:bg-white hover:text-black px-2 py-2 border border-gray-400 w-[30%]  text-white font-semibold rounded-lg flex items-center justify-center gap-2 mx-auto"
               >
                 Submit
                 <IoIosSend />
