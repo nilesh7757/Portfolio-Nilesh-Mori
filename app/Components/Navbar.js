@@ -11,6 +11,7 @@ const Navbar = () => {
   const router = useRouter();
   const [isVisible, setVisible] = useState(false);
   const [icon, setIcon] = useState(<GiHamburgerMenu />);
+  const [active,setActive] = useState();
 
   const showNav = () => {
     setIcon(isVisible ? <GiHamburgerMenu /> : <HiX />);
@@ -43,9 +44,9 @@ const Navbar = () => {
               type:spring
             }}
           >
-            <div className='bg-gray-200 border shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[50%] h-[100vh] px-4 pt-5 '>
+            <div className='bg-gray-200 border shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[50vh] h-[100vh] px-4 pt-5 '>
       <ul className='text-xl flex mt-10 pt-10 flex-col text-black gap-8'>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="home" 
+            <motion.li><Link className="cursor-pointer"  to="home" 
                 spy={true} 
                 smooth={true} 
                 offset={-200} 
@@ -53,42 +54,42 @@ const Navbar = () => {
                 >
               Home
             </Link></motion.li>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="about" 
+            <motion.li><Link className="cursor-pointer"  to="about" 
                 spy={true} 
                 smooth={true} 
-                offset={-80} 
+                offset={-70} 
                 duration={500} 
                 >
               About
             </Link></motion.li>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="skills" 
+            <motion.li><Link className="cursor-pointer"  to="skills" 
                 spy={true} 
                 smooth={true} 
-                offset={-70} 
+                offset={-55.5} 
                 duration={500} 
                 >
               Skills
             </Link></motion.li>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="education" 
+            <motion.li><Link className="cursor-pointer"  to="education" 
                 spy={true} 
                 smooth={true} 
-                offset={-70} 
+                offset={-55} 
                 duration={500} 
                 >
               Education
             </Link></motion.li>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="project" 
+            <motion.li><Link className="cursor-pointer"  to="project" 
                 spy={true} 
                 smooth={true} 
-                offset={-70} 
+                offset={-55} 
                 duration={500} 
                 >
               Project
             </Link></motion.li>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="contact" 
+            <motion.li><Link className="cursor-pointer" to="contact" 
                 spy={true} 
                 smooth={true} 
-                offset={-70} 
+                offset={-55} 
                 duration={500} 
                 >
               Contact
@@ -115,12 +116,12 @@ const Navbar = () => {
                 >
               Home
             </Link> </motion.li>
-            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}}className='cursor-pointer'>
+            <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} className='cursor-pointer'>
               <Link  
                 to="about" 
                 spy={true} 
                 smooth={true} 
-                offset={-75} 
+                offset={-70} 
                 duration={500} 
                 >
               About
@@ -129,7 +130,7 @@ const Navbar = () => {
               <Link  to="skills" 
                 spy={true} 
                 smooth={true} 
-                offset={-75} 
+                offset={-70} 
                 duration={500} 
                 >
               Skills
@@ -138,7 +139,7 @@ const Navbar = () => {
               <Link  to="education" 
                 spy={true} 
                 smooth={true} 
-                offset={-72} 
+                offset={-68} 
                 duration={500} 
                 >
               Education
@@ -147,7 +148,7 @@ const Navbar = () => {
               <Link  to="project" 
                 spy={true} 
                 smooth={true} 
-                offset={-72} 
+                offset={-67} 
                 duration={500} 
                 >
               Projects
@@ -156,7 +157,7 @@ const Navbar = () => {
               <Link  to="contact" 
                 spy={true} 
                 smooth={true} 
-                offset={-72} 
+                offset={-55} 
                 duration={500} 
                 >
               Contact

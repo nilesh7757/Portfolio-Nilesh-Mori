@@ -20,7 +20,7 @@ const Education = () => {
   };
   return (
     <>
-    <div id='education' className='py-12'>
+    <div className='py-12'>
         <h2 className='text-3xl flex justify-center gap-2 font-bold text-center'><IoSchool /> Education</h2>
         <div>
         <motion.div

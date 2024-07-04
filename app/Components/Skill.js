@@ -26,7 +26,7 @@ import { SiKotlin } from "react-icons/si";
 export default function Skill() {
   return (
     <>
-      <div id='skills' className='py-6'>
+      <div  className='py-6'>
       {/* <h2 className="md:text-4xl text-3xl font-bold flex justify-center gap-2 text-center"><FaCode/>Skills &amp; <span className="bg-gradient-to-r from-sky-500 to-sky-200 ... bg-clip-text text-transparent">Languages</span></h2> */}
       <div className='mt-5'>
       <h3 className="md:text-4xl text-3xl font-bold text-center flex justify-center gap-2 items-center"><FaLaptopCode/>Skills</h3>

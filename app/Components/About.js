@@ -11,7 +11,7 @@ const About = () => {
   };
   return (
     <>
-      <div id="about" className="h-fit md:h-[100vh] py-6 flex flex-col items-center">
+      <div className="h-fit md:h-[100vh] py-6 flex flex-col items-center">
         <h2 className="md:text-4xl text-3xl font-bold text-center flex gap-2"><IoPerson/> About <span className="bg-gradient-to-r from-green-500 to-green-200 ... bg-clip-text text-transparent">Me</span></h2>
         <div className="abt w-[90%] my-10 lg:my-auto flex flex-col md:flex-row items-center justify-center gap-20 h-[80%]">
           <motion.div

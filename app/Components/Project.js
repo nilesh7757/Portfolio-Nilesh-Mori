@@ -43,7 +43,7 @@ const ProjectCard = ({ src,name,demo,code }) => {
 
 const Project = () => {
   return (
-    <div id="project" className="py-6">
+    <div className="py-9">
       <h2 className="text-3xl flex justify-center gap-3 items-center font-bold text-center">
         <FaCode /> Projects
       </h2>

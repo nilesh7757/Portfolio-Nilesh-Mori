@@ -33,10 +33,10 @@ const Contact = () => {
 
   return (
     <>
-      <div id="contact" className="w-full h-[100vh] py-6 flex flex-col items-center">
+      <div className="w-full h-[100vh] py-9 flex flex-col justify-center items-center">
       <h2 className="md:text-4xl text-3xl font-bold text-center flex gap-2"><IoPerson/> Contact <span className="bg-gradient-to-r from-sky-500 to-sky-200 ... bg-clip-text text-transparent">Me</span></h2>
 
-        <div className="flex h-[90%] mt-6 w-full md:w-[80%]">
+        <div className="flex h-[90%] md:mt-6 w-full md:w-[80%]">
           <div className="md:w-[40%]  md:block hidden  ">
         <Image 
             className="object cover  rounded-md"
@@ -66,7 +66,7 @@ const Contact = () => {
       opacity: 0,
     }}
     transition={{ duration: 0.8, ease: "easeInOut" }}
-    className="flex flex-col gap-5 justify-center w-full h-full ">
+    className="flex items-center flex-col gap-5 mt-6  w-full h-full ">
     <div className="relative  mx-auto flex w-[80%] items-center">
     <IoIosContact className="text-gray-500 absolute left-3" />
     <input

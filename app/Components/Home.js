@@ -34,7 +34,6 @@ const Nilesh = () => {
   return (
     <>
       <div
-        id="home"
         className="flex py-10 md:flex-row flex-col px-10 gap-10 justify-center items-center lg:px-32 md:px-0 mx-auto w-[90vw]"
       >
         <motion.div
