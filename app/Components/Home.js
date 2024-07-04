@@ -40,12 +40,11 @@ const Nilesh = () => {
         <motion.div
           whileTap={{ rotateZ: 360 }}
           whileHover={{ rotateZ: 360 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1}}
           initial={{
-            y: -100,
             opacity: 0,
           }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
           className="image  rounded"
         >
           <Image
@@ -71,9 +70,8 @@ const Nilesh = () => {
           </h3>
           <div className="btns mx-auto text-lg md:flex-row flex-col flex gap-3">
             <motion.button
-              whileInView={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1}}
               initial={{
-                y: -100,
                 opacity: 0,
               }}
               whileTap={{
@@ -100,9 +98,8 @@ const Nilesh = () => {
               </a>
             </motion.button>
             <motion.button
-              whileInView={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1}}
               initial={{
-                y: -100,
                 opacity: 0,
               }}
           // transition={{ duration: 0.5, ease: "easeInOut" }}
