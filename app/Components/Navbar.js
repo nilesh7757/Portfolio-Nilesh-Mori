@@ -43,7 +43,7 @@ const Navbar = () => {
               type:spring
             }}
           >
-            <div className='bg-gray-200 border shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[50%] h-[100vh] px-4 pt-5 '>
+            <div className='bg-gray-200 border shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[50vh] h-[100vh] px-4 pt-5 '>
       <ul className='text-xl flex mt-10 pt-10 flex-col text-black gap-8'>
             <motion.li whileHover={{scale:1.05,fontWeight:"bold",transition: { duration: 0.1, ease: "easeOut" }}} ><Link  to="home" 
                 spy={true} 
