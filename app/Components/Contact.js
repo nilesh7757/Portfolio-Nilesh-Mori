@@ -1,11 +1,12 @@
 "use client";
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { IoIosContact, IoIosSend } from "react-icons/io";
 import { IoPerson } from "react-icons/io5";
 import { MdMail, MdPhone } from "react-icons/md";
 import { FaMessage } from "react-icons/fa6";
+import { motion } from "framer-motion";
 // import { IoIosSend } from "react-icons/io";
 import Image from "next/image";
 const Contact = () => {
@@ -32,7 +33,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="w-full py-6 flex h-[70%]  flex-col items-center">
+      <div id="contact" className="w-full h-[100vh] py-6 flex flex-col items-center">
       <h2 className="md:text-4xl text-3xl font-bold text-center flex gap-2"><IoPerson/> Contact <span className="bg-gradient-to-r from-sky-500 to-sky-200 ... bg-clip-text text-transparent">Me</span></h2>
 
         <div className="flex h-[90%] mt-6 w-full md:w-[80%]">
@@ -58,7 +59,14 @@ const Contact = () => {
           ref={form}
           onSubmit={sendEmail}
         >
-    <div className="flex flex-col gap-5 justify-center w-full h-full ">
+    <motion.div 
+    whileInView={{ opacity: 1, y: 0 }}
+    initial={{
+      y: -100,
+      opacity: 0,
+    }}
+    transition={{ duration: 0.8, ease: "easeInOut" }}
+    className="flex flex-col gap-5 justify-center w-full h-full ">
     <div className="relative  mx-auto flex w-[80%] items-center">
     <IoIosContact className="text-gray-500 absolute left-3" />
     <input
@@ -117,12 +125,7 @@ const Contact = () => {
   </div>
   <div className="w-full flex justify-center mt-6 lg:mt-2">
               <motion.button
-                whileInView={{ opacity: 1, y: 0 }}
                 whileTap={{scale:1.05,transition: { duration: 0.18, ease: "easeOut" }}}
-                initial={{
-                  y: -50,
-                  opacity: 0,
-                }}
                 transition={{
                   duration: 0.5,
                 }}
@@ -135,7 +138,7 @@ const Contact = () => {
                 <IoIosSend />
               </motion.button>
             </div>
-    </div>
+    </motion.div>
         </form>
         </div>
       </div>

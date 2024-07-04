@@ -24,6 +24,11 @@ const Education = () => {
         <h2 className='text-3xl flex justify-center gap-2 font-bold text-center'><IoSchool /> Education</h2>
         <div>
         <motion.div
+        whileInView={{ opacity: 1}}
+        initial={{
+          opacity: 0,
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
          whileHover={{scaleX:1.10}}
          onTap={handlescale1}
         //  transition={{duration:700}}
@@ -40,7 +45,12 @@ const Education = () => {
           <div className='md:text-2xl text-xl text-lime-500 font-semibold'>2021-2023 | Completed</div>
           </div>
         </motion.div>
-        <motion.div 
+        <motion.div   
+        whileInView={{ opacity: 1}}
+        initial={{
+          opacity: 0,
+        }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
         whileHover={{scaleX:1.10}}
         onTap={handlescale2}
         className={`relative overflow-hidden duration-500 ease-in-out  md:flex-row mt-10 flex mx-auto bg-gray-100 pt-0 flex-col shadow-lg w-[80%]  hover:shadow-xl hover:shadow-gray-300 rounded-md h-[] ${scale2?"scale-110":""}`}>

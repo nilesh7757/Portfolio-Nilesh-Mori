@@ -120,7 +120,7 @@ const Navbar = () => {
                 to="about" 
                 spy={true} 
                 smooth={true} 
-                offset={-70} 
+                offset={-75} 
                 duration={500} 
                 >
               About
@@ -138,7 +138,7 @@ const Navbar = () => {
               <Link  to="education" 
                 spy={true} 
                 smooth={true} 
-                offset={-75} 
+                offset={-72} 
                 duration={500} 
                 >
               Education
@@ -147,7 +147,7 @@ const Navbar = () => {
               <Link  to="project" 
                 spy={true} 
                 smooth={true} 
-                offset={-70} 
+                offset={-72} 
                 duration={500} 
                 >
               Projects
@@ -156,7 +156,7 @@ const Navbar = () => {
               <Link  to="contact" 
                 spy={true} 
                 smooth={true} 
-                offset={-75} 
+                offset={-72} 
                 duration={500} 
                 >
               Contact
