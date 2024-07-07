@@ -1,5 +1,6 @@
 'use client'
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaAngleRight } from 'react-icons/fa';
 import { Link } from 'react-scroll';
