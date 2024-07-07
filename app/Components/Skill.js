@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 // import './styles.css';
 import 'devicon/devicon.min.css';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import Image from 'next/image alt=""';
 
 // import required modules
 //  import IconC from 'react-devicon/c/original' 
@@ -69,56 +69,56 @@ export default function Skill() {
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" width={200} height={200}/>
+            <Image alt=""  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" width={200} height={200}/>
 
               <span className='mt-1'>MongoDB</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" width={200} height={200}/>
+            <Image alt=""  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" width={200} height={200}/>
 
               <span className='mt-1'>My SQL</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" width={200} height={200}/>
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" width={200} height={200}/>
 
               <span className='mt-1'>React</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" width={200} height={200}/>
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" width={200} height={200}/>
 
               <span className='mt-1'>Next</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" width={200} height={200}/>
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" width={200} height={200}/>
 
               <span className='mt-1'>Node</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" width={200} height={200}/>
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" width={200} height={200}/>
 
               <span className='mt-1'>Tailwind Css</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" width={200} height={200}/>
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" width={200} height={200}/>
 
               <span className='mt-1'>Express</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" width={200} height={200}/>
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" width={200} height={200}/>
 
               <span className='mt-1'>Github</span>
             </div>
@@ -162,58 +162,58 @@ export default function Skill() {
       >
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" width={200} height={200}/>
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" width={200} height={200}/>
 
               <span className='mt-1'>C#</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" width={200} height={200}/>
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" width={200} height={200}/>
               <span className='mt-1'>C++</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" width={200} height={200}/>
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" width={200} height={200}/>
               <span className='mt-1'>C</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width={200} height={200}/>
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width={200} height={200}/>
 
               <span className='mt-1'>Html</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width={200} height={200}/>
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width={200} height={200}/>
 
               <span className='mt-1'>Css</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width={200} height={200} />
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width={200} height={200} />
               <span className='mt-1'>Javascript</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width={200} height={200} />
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width={200} height={200} />
               <span className='mt-1'>Python</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" width={200} height={200} />
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" width={200} height={200} />
               <span className='mt-1'>Kotlin</span>
             </div>
         </SwiperSlide>
         <SwiperSlide>
             <div className='text-center flex flex-col items-center'>
-            <Image src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" width={200} height={200} />
+            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" width={200} height={200} />
               <span className='mt-1'>Java</span>
             </div>
         </SwiperSlide>

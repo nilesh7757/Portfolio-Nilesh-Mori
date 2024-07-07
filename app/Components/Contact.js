@@ -39,6 +39,7 @@ const Contact = () => {
         <div className="flex h-[90%] md:mt-6 w-full md:w-[80%]">
           <div className="md:w-[40%]  md:block hidden  ">
         <Image 
+            alt=""
             className="object cover  rounded-md"
             src={"./Contact.png"}
             width={450}

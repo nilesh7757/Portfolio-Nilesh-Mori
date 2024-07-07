@@ -3,6 +3,7 @@ import React, { useState,useRef } from 'react';
 import { FaGithub,FaCode, FaEye } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
+;
 import { motion } from 'framer-motion';
 import {Tilt} from 'react-next-tilt';
 const ProjectCard = ({ src,name,demo,code }) => {
@@ -23,6 +24,7 @@ const ProjectCard = ({ src,name,demo,code }) => {
     >
       <div className='w-[80%] h-[300px]'>
       <Image
+        alt=""
         className="absolute z-0 w-full h-full object-cover rounded-md"
         src={src}
         layout="fill"
