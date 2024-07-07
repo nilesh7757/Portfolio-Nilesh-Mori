@@ -33,7 +33,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="w-full h-[100vh] py-9 flex flex-col justify-center items-center">
+      <div className="w-full py-9 flex flex-col justify-center items-center">
       <h2 className="md:text-4xl text-3xl font-bold text-center flex gap-2"><IoPerson/> Contact <span className="bg-gradient-to-r from-sky-500 to-sky-200 ... bg-clip-text text-transparent">Me</span></h2>
 
         <div className="flex h-[90%] md:mt-6 w-full md:w-[80%]">

@@ -46,15 +46,16 @@ const Navbar = () => {
           >
             <div className='bg-gray-200 border shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[50vh] h-[100vh] px-4 pt-5 '>
       <ul className='text-xl flex mt-10 pt-10 flex-col text-black gap-8'>
-            <motion.li><Link className="cursor-pointer"  to="home" 
+            <motion.li ><Link className="cursor-pointer active:border-b-2 active:border-black active:rounded-sm"  to="home" 
                 spy={true} 
                 smooth={true} 
                 offset={-200} 
                 duration={500} 
                 >
               Home
-            </Link></motion.li>
-            <motion.li><Link className="cursor-pointer"  to="about" 
+            </Link>
+            </motion.li>
+            <motion.li><Link className="cursor-pointer active:border-b-2 active:border-black active:rounded-sm"  to="about" 
                 spy={true} 
                 smooth={true} 
                 offset={-70} 
@@ -62,15 +63,15 @@ const Navbar = () => {
                 >
               About
             </Link></motion.li>
-            <motion.li><Link className="cursor-pointer"  to="skills" 
+            <motion.li><Link className="cursor-pointer active:border-b-2 active:border-black active:rounded-sm"  to="skills" 
                 spy={true} 
                 smooth={true} 
-                offset={-55.5} 
+                offset={-55.3} 
                 duration={500} 
                 >
               Skills
             </Link></motion.li>
-            <motion.li><Link className="cursor-pointer"  to="education" 
+            <motion.li><Link className="cursor-pointer active:border-b-2 active:border-black active:rounded-sm"  to="education" 
                 spy={true} 
                 smooth={true} 
                 offset={-55} 
@@ -78,7 +79,7 @@ const Navbar = () => {
                 >
               Education
             </Link></motion.li>
-            <motion.li><Link className="cursor-pointer"  to="project" 
+            <motion.li><Link className="cursor-pointer active:border-b-2 active:border-black active:rounded-sm"  to="project" 
                 spy={true} 
                 smooth={true} 
                 offset={-55} 
@@ -86,7 +87,7 @@ const Navbar = () => {
                 >
               Project
             </Link></motion.li>
-            <motion.li><Link className="cursor-pointer" to="contact" 
+            <motion.li><Link className="cursor-pointer active:border-b-2 active:border-black active:rounded-sm" to="contact" 
                 spy={true} 
                 smooth={true} 
                 offset={-55} 
