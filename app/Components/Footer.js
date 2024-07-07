@@ -12,8 +12,8 @@ const Footer = () => {
     <div className=' p-10'>
       <div className='md:w-3/4 mx-auto grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full bg-white'>
         <div className=' px-3 py-1'>
-          <h5 className='text-2xl font-bold'>Nilesh's Portfolio</h5>
-          <p>Thank You For Visiting Nilesh Mori's Portfolio</p>
+          <h5 className='text-2xl font-bold'>Nilesh&apos; s Portfolio</h5>
+          <p>Thank You For Visiting Nilesh Mori&apos; s Portfolio</p>
           <p>Keep Rising, Keep Progressing</p>
         </div>
         <div className=' px-3 py-1'>
