@@ -170,7 +170,7 @@ const Footer = () => {
         </div>
       </div>
       <div className='text-center border-t-4 mt-5 flex justify-center items-center'>
-        Made By Nilesh Mori with <Image src="https://media.tenor.com/PAa9G_Wc5tcAAAAi/big-heart-red.gif" alt="heart" size={5}/>
+        Made By Nilesh Mori with <Image width={17} height={17} src="https://media.tenor.com/PAa9G_Wc5tcAAAAi/big-heart-red.gif" alt="heart"/>
       </div>
     </div>
   );
