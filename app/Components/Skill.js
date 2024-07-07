@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 // import './styles.css';
 import 'devicon/devicon.min.css';
 import { motion } from 'framer-motion';
-import Image from 'next/image alt=""';
+import Image from 'next/image';
 
 // import required modules
 //  import IconC from 'react-devicon/c/original' 

@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { IoSchool } from "react-icons/io5";
 import { motion } from 'framer-motion';
-import Image  from 'next/image alt=""';
+import Image  from 'next/image';
 const Education = () => {
   const [scale1,setscale1]= useState();
   const [scale2,setscale2]= useState();
