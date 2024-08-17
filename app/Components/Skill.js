@@ -6,24 +6,18 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-// import './styles.css';
 import 'devicon/devicon.min.css';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation'
-
-// import required modules
-//  import IconC from 'react-devicon/c/original' 
 import { Autoplay,EffectCoverflow,Navigation,Pagination } from 'swiper/modules';
 import { FaAndroid,FaLaptopCode } from 'react-icons/fa';
 import { Link } from 'react-scroll';
-// import IconC from 'react-devicon/c/original'
 export default function Skill() {
   const router = useRouter()
   return (
     <>
       <div  className='py-6'>
-      {/* <h2 className="md:text-4xl text-3xl font-bold flex justify-center gap-2 text-center"><FaCode/>Skills &amp; <span className="bg-gradient-to-r from-sky-500 to-sky-200 ... bg-clip-text text-transparent">Languages</span></h2> */}
       <div className='mt-5'>
       <h3 className="md:text-4xl text-3xl font-bold text-center flex justify-center gap-2 items-center"><FaLaptopCode/>Skills</h3>
       <div className='md:w-[80%]  w-[90%] mx-auto mt-3'>
@@ -36,7 +30,6 @@ export default function Skill() {
           disableOnInteraction: false,
         }}
         centeredSlides={true}
-        // slidesPerView={'5'}
         breakpoints={{
           100: {
             slidesPerView: 2,
