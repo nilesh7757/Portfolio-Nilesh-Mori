@@ -50,12 +50,12 @@ export default function Skill() {
         modules={[Navigation,EffectCoverflow,Pagination,Autoplay]}
         className="mySwiper"
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
             <div onClick={() => router.push("https://developer.android.com/")} className='text-center flex flex-col items-center'>
               <FaAndroid className='md:size-[200px] size-[150px] ' fill='#3DDC84'/>
               <span className='mt-1'>Android</span>
             </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
         <SwiperSlide>
             <div onClick={() => router.push("https://cloud.mongodb.com/v2/666c7c309d186e472043683b#/overview")} className='text-center flex flex-col items-center'>
             <Image alt=""  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" width={200} height={200}/>
@@ -63,13 +63,13 @@ export default function Skill() {
               <span className='mt-1'>MongoDB</span>
             </div>
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
             <div onClick={() => router.push("https://www.mysql.com/")} className='text-center flex flex-col items-center'>
             <Image alt=""  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" width={200} height={200}/>
 
               <span className='mt-1'>My SQL</span>
             </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
         <SwiperSlide>
             <div onClick={() => router.push("https://react.dev/")} className='text-center flex flex-col items-center'>
             <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" width={200} height={200}/>
