@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <div  className="h-20 z-10 backdrop-blur bg-transparent sticky top-0"><Navbar/></div>
+      <div  className="h-20 z-10 sticky top-0"><Navbar/></div>
         {children}
        <Footer/>
         </body>

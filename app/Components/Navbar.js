@@ -32,7 +32,7 @@ const Navbar = () => {
             }}
             animate={{
               opacity: 1,
-              clipPath: "ellipse(40% 50% at 0% 50%)",
+              clipPath: "ellipse(36% 50% at 0% 50%)",
             }}
             exit={{
               clipPath: "ellipse(0% 50% at 0% 50%)",
@@ -41,10 +41,10 @@ const Navbar = () => {
             }}
             transition={{
               ease: "linear",
-              type: spring
+              type: "spring"
             }}
           >
-            <div className='border shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[50vh] h-[100vh] px-4 pt-5'>
+            <div className='border bg-background backdrop-blur shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[40vh] h-[100vh] px-4 pt-5'>
               <ul className='text-xl flex mt-10 pt-10 flex-col text-black gap-8'>
                 <motion.li><Link className="cursor-pointer active:border-b-2 active:border-black active:rounded-sm" to="home"
                   spy={true}
@@ -100,7 +100,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className='h-20 border-b  justify-center w-full flex items-center sticky top-0 md:justify-between lg:px-44 md:px-20 z-10'>
+      <div className='h-20 border-b backdrop-blur bg-background  justify-center w-full flex items-center sticky top-0 md:justify-between lg:px-44 md:px-20 z-10'>
         <div className="hamburger fixed left-0 z-20 md:hidden mx-4 bg-black text-white p-2 rounded-full" onClick={showNav}>{icon}</div>
         <div className='flex md:mx-0 items-center h-full' >
           <span className='border-black border-2 rounded-full p-2 font-bold text-lg '><a href="https://nilesh7757.github.io/NileshMori/">NM</a></span>
