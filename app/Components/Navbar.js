@@ -44,7 +44,7 @@ const Navbar = () => {
               type: "spring"
             }}
           >
-            <div className='border bg-background backdrop-blur shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[40vh] h-[100vh] px-4 pt-5'>
+            <div className='border bg-white shadow-[100px_35px_60px_-15px_rgba(0,0,0,0.3)] border-black md:hidden w-[40vh] h-[100vh] px-4 pt-5'>
               <ul className='text-xl flex mt-10 pt-10 flex-col text-black gap-8'>
                 <motion.li><Link className="cursor-pointer active:border-b-2 active:border-black active:rounded-sm" to="home"
                   spy={true}
