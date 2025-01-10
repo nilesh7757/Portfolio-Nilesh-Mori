@@ -59,6 +59,9 @@ const Project = () => {
       <div className="w-full mt-5 flex md:flex-row flex-col">
         <ProjectCard src="./Spotify.png" name="Spotify Clone" demo={"https://nilesh7757.github.io/Spotify-Clone-HTML/"} code={"https://github.com/nilesh7757/Spotify-Clone-HTML"} />
       </div>
+      <div className="w-full mt-5 flex md:flex-row flex-col">
+        <ProjectCard src="./Notify.png" name="Notify" demo={"https://nilesh7757.github.io/Notify/"} code={"https://github.com/nilesh7757/Notify"} />
+      </div>
       </div>
     </div>
   );
