@@ -29,9 +29,9 @@ const Education = () => {
           opacity: 0,
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-         whileHover={{scaleX:1.10}}
-         onTap={handlescale1}
-        //  transition={{duration:700}}
+        //  whileHover={{scaleX:1.10}}
+        //  onTap={handlescale1}
+        // transition={{duration:700}}
         className={`relative overflow-hidden duration-500 ease-in-out  md:flex-row mt-10 flex mx-auto bg-gray-100 pt-0 flex-col shadow-lg w-[80%]  hover:shadow-xl hover:shadow-gray-300 rounded-md h-[] ${scale1?"scale-110":""}`}>
           <Image alt="" 
             className="w-full rounded-md md:w-[20%]"
@@ -51,8 +51,8 @@ const Education = () => {
           opacity: 0,
         }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
-        whileHover={{scaleX:1.10}}
-        onTap={handlescale2}
+        // whileHover={{scaleX:1.10}}
+        // onTap={handlescale2}
         className={`relative overflow-hidden duration-500 ease-in-out  md:flex-row mt-10 flex mx-auto bg-gray-100 pt-0 flex-col shadow-lg w-[80%]  hover:shadow-xl hover:shadow-gray-300 rounded-md h-[] ${scale2?"scale-110":""}`}>
         <Image alt="" 
             className="w-full rounded-md md:w-[20%]"
