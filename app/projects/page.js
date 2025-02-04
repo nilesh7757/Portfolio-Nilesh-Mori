@@ -32,7 +32,7 @@ import {
 const ProjectDetailDialog = ({ project }) => (
   <Dialog>
     <DialogTrigger asChild>
-      <Button variant="outline" size="sm">
+      <Button variant="outline" size="sm" className="hover:bg-blue-50 hover:text-blue-700 transition-colors">
         View Details
       </Button>
     </DialogTrigger>
@@ -66,10 +66,12 @@ const ProjectDetailDialog = ({ project }) => (
 
 const ProjectCard = ({ project, onFilterByTech }) => (
   <motion.div
-    whileHover={{ y: -5 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    initial={{ opacity: 0, y: 50 }}
-    transition={{ duration: 0.5 }}
+    layout
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    exit={{ opacity: 0, scale: 0.9 }}
+    transition={{ duration: 0.3 }}
+    className="overflow-hidden"
   >
     <Card className="overflow-hidden h-full flex flex-col">
       <div className="relative h-48 w-full group">
@@ -93,7 +95,7 @@ const ProjectCard = ({ project, onFilterByTech }) => (
             <Badge 
               key={index} 
               variant="outline" 
-              className="cursor-pointer hover:bg-blue-50"
+              className="cursor-pointer transition-colors hover:bg-blue-50 hover:text-blue-700"
               onClick={() => onFilterByTech(tech)}
             >
               {tech}
@@ -103,13 +105,20 @@ const ProjectCard = ({ project, onFilterByTech }) => (
       </CardContent>
 
       <CardFooter className="p-6 pt-0 flex gap-4">
-        <Button asChild>
+        <Button 
+          asChild 
+          className="hover:bg-blue-50 hover:text-blue-700 transition-colors"
+        >
           <Link href={project.demoUrl} target="_blank">
             <ExternalLink className="mr-2 h-4 w-4" />
             Live Demo
           </Link>
         </Button>
-        <Button variant="outline" asChild>
+        <Button 
+          variant="outline" 
+          asChild 
+          className="hover:bg-blue-50 hover:text-blue-700 transition-colors"
+        >
           <Link href={project.codeUrl} target="_blank">
             <Github className="mr-2 h-4 w-4" />
             Code
@@ -122,7 +131,7 @@ const ProjectCard = ({ project, onFilterByTech }) => (
 );
 
 const ProjectsPage = () => {
-  const [filter, setFilter] = useState(null);
+  const [filters, setFilters] = useState(new Set());
 
   const projects = [
     {
@@ -163,9 +172,25 @@ const ProjectsPage = () => {
     }
   ];
 
-  const filteredProjects = filter 
-    ? projects.filter(project => project.technologies.includes(filter)) 
-    : projects;
+  // Get unique technologies from all projects
+  const allTechnologies = [...new Set(projects.flatMap(project => project.technologies))];
+
+  // Filter projects based on selected technologies
+  const filteredProjects = projects.filter(project => 
+    filters.size === 0 || 
+    Array.from(filters).every(filter => project.technologies.includes(filter))
+  );
+
+  // Toggle filter
+  const toggleFilter = (tech) => {
+    const newFilters = new Set(filters);
+    if (newFilters.has(tech)) {
+      newFilters.delete(tech);
+    } else {
+      newFilters.add(tech);
+    }
+    setFilters(newFilters);
+  };
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -185,31 +210,42 @@ const ProjectsPage = () => {
         </p>
       </motion.div>
 
-      <div className="flex justify-center mb-8 space-x-4">
-        {filter && (
-          <Button 
-            variant="outline" 
-            onClick={() => setFilter(null)}
-            className="flex items-center gap-2"
-          >
-            <X className="h-4 w-4" /> Clear Filter
-          </Button>
-        )}
+      {/* Filter Section */}
+      <div className="flex flex-wrap justify-center gap-4 mb-8">
         <Button 
-          variant={!filter ? "default" : "outline"}
-          onClick={() => setFilter(null)}
-          className="flex items-center gap-2"
+          variant={filters.size === 0 ? "default" : "outline"}
+          onClick={() => setFilters(new Set())}
+          className="flex items-center gap-2 hover:bg-blue-50 hover:text-blue-700 transition-colors"
         >
           <Filter className="h-4 w-4" /> All Projects
         </Button>
+        {allTechnologies.map((tech) => (
+          <Badge 
+            key={tech} 
+            variant={filters.has(tech) ? "default" : "outline"}
+            className="cursor-pointer transition-colors hover:bg-blue-50 hover:text-blue-700 flex items-center gap-2"
+            onClick={() => toggleFilter(tech)}
+          >
+            {tech}
+            {filters.has(tech) && (
+              <X 
+                className="h-4 w-4 ml-1 cursor-pointer" 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleFilter(tech);
+                }} 
+              />
+            )}
+          </Badge>
+        ))}
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProjects.map((project, index) => (
           <ProjectCard 
             key={index} 
             project={project} 
-            onFilterByTech={setFilter}
+            onFilterByTech={toggleFilter}
           />
         ))}
       </div>

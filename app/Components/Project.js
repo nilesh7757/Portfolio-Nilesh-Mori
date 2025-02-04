@@ -108,12 +108,14 @@ const Project = () => {
             <ProjectCard key={index} {...project} />
           ))}
         </div>
-        <Button className="mt-6 mx-auto block" asChild>
-          <Link href="/projects">
-            View All Projects
-            <ExternalLink className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
+        <div className="flex justify-center mt-8">
+          <Button variant="default" className="flex items-center gap-2" asChild>
+            <Link href="/projects">
+              View All Projects
+              <ExternalLink className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </motion.div>
     </div>
   );
