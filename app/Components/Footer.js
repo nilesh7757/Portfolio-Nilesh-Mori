@@ -1,179 +1,112 @@
 'use client'
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FaAngleRight } from 'react-icons/fa';
 import { Link } from 'react-scroll';
-import { IoCall,IoMail } from 'react-icons/io5';
-import { FaLocationDot } from 'react-icons/fa6';
-import { FaGithub,FaFacebook,FaLinkedinIn } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, ExternalLink, ChevronRight, Heart } from 'lucide-react';
+
+const FooterLink = ({ to, children }) => (
+  <motion.div
+    whileHover={{ x: 4 }}
+    className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
+  >
+    <ChevronRight className="h-4 w-4" />
+    <Link
+      to={to}
+      spy={true}
+      smooth={true}
+      offset={-70}
+      duration={500}
+      className="cursor-pointer"
+    >
+      {children}
+    </Link>
+  </motion.div>
+);
+
+const SocialButton = ({ href, icon: Icon }) => (
+  <Button
+    variant="outline"
+    size="icon"
+    className="rounded-full hover:scale-110 transition-transform"
+    asChild
+  >
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <Icon className="h-5 w-5" />
+    </a>
+  </Button>
+);
+
 const Footer = () => {
+  const navigation = [
+    { name: 'Home', to: 'home' },
+    { name: 'About', to: 'about' },
+    { name: 'Skills', to: 'skills' },
+    { name: 'Education', to: 'education' },
+    { name: 'Projects', to: 'projects' },
+    { name: 'Contact', to: 'contact' }
+  ];
+
+  const socials = [
+    { icon: Github, href: 'https://github.com/nilesh7757' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/nilesh-mori-7757n' },
+    { icon: Twitter, href: 'https://x.com/Programmer7757' },
+    { icon: ExternalLink, href: 'https://nilesh7757.github.io/NileshMori/' }
+  ];
+
   return (
-    <div className=' p-10'>
-      <div className='md:w-3/4 mx-auto grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full bg-white'>
-        <div className=' px-3 py-1'>
-          <h5 className='text-2xl font-bold'>Nilesh&apos; s Portfolio</h5>
-          <p>Thank You For Visiting Nilesh Mori&apos; s Portfolio</p>
-          <p>Keep Rising, Keep Progressing</p>
-        </div>
-        <div className=' px-3 py-1'>
-          <h5 className='text-2xl font-bold'>Some Links</h5>
-          <div>
-            <ul className=''>
-              <li className='flex gap-2 items-center'>
-                <FaAngleRight />
-                <Link
-                  className="cursor-pointer"
-                  to="home"
-                  spy={true}
-                  smooth={true}
-                  offset={-200}
-                  duration={500}
-                >
-                  Home
-                </Link>
-              </li>
-              <li className='flex gap-2 items-center'>
-                <FaAngleRight />
-                <Link
-                  className="cursor-pointer"
-                  to="about"
-                  spy={true}
-                  smooth={true}
-                  offset={-75}
-                  duration={500}
-                >
-                  About
-                </Link>
-              </li>
-              <li className='flex gap-2 items-center'>
-                <FaAngleRight />
-                <Link
-                  className="cursor-pointer"
-                  to="skills"
-                  spy={true}
-                  smooth={true}
-                  offset={-75}
-                  duration={500}
-                >
-                  Skills
-                </Link>
-              </li>
-              <li className='flex gap-2 items-center'>
-                <FaAngleRight />
-                <Link
-                  className="cursor-pointer"
-                  to="education"
-                  spy={true}
-                  smooth={true}
-                  offset={-75}
-                  duration={500}
-                >
-                  Education
-                </Link>
-              </li>
-              <li className='flex gap-2 items-center'>
-                <FaAngleRight />
-                <Link
-                  className="cursor-pointer"
-                  to="projects"
-                  spy={true}
-                  smooth={true}
-                  offset={-75}
-                  duration={500}
-                >
-                  Projects
-                </Link>
-              </li>
-              <li className='flex gap-2 items-center'>
-                <FaAngleRight />
-                <Link
-                  className="cursor-pointer"
-                  to="contact"
-                  spy={true}
-                  smooth={true}
-                  offset={-75}
-                  duration={500}
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
+    <Card className="mt-16 bg-gray-50">
+      <CardContent className="p-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold">Nilesh's Portfolio</h3>
+            <p className="text-gray-600">
+              Thank you for visiting. Keep rising, keep progressing.
+            </p>
+            <div className="flex gap-4">
+              {socials.map((social, index) => (
+                <SocialButton key={index} {...social} />
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold">Quick Links</h3>
+            <nav className="space-y-2">
+              {navigation.map((item) => (
+                <FooterLink key={item.name} to={item.to}>
+                  {item.name}
+                </FooterLink>
+              ))}
+            </nav>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold">Contact Info</h3>
+            <div className="space-y-3 text-gray-600">
+              <div className="flex items-center gap-2">
+                <Phone className="h-5 w-5 text-blue-500" />
+                <span>7778827757</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="h-5 w-5 text-blue-500" />
+                <span>nileshmori7757@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="h-5 w-5 text-blue-500" />
+                <span>Porbandar, Gujarat, India - 360575</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div className=' px-3 py-1'>
-          <h5 className='text-2xl font-bold'>Contact</h5>
-          <div className='flex gap-1'><span className='font-semibold items-center gap-1 flex'><IoCall/>Mobile Number:</span><span> 7778827757</span></div>
-          <div className='flex'><span className='font-semibold items-center flex gap-1'><IoMail/>Email:</span><span> nileshmori7757@gmail.com</span></div>
-          <div className='flex gap-1 items-center'><FaLocationDot />Porbandar,Gujrat,India-360575</div>
-          <div className="contacts mx-auto mt-3 flex gap-x-3">
-            <motion.div
-              whileTap={{
-                scale: 1.1,
-                transition: { duration: 0.18, ease: "easeOut" },
-              }}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.18, ease: "easeOut" },
-              }}
-            >
-              <a href="https://github.com/nilesh7757">
-                <FaGithub size={40} />
-              </a>
-            </motion.div>
-            <motion.div
-              whileTap={{
-                scale: 1.1,
-                transition: { duration: 0.18, ease: "easeOut" },
-              }}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.18, ease: "easeOut" },
-              }}
-            >
-              <a href="https://www.facebook.com/akash.mori.792/">
-                <FaFacebook size={40} />
-              </a>
-            </motion.div>
-            <motion.div
-              whileTap={{
-                scale: 1.1,
-                transition: { duration: 0.18, ease: "easeOut" },
-              }}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.18, ease: "easeOut" },
-              }}
-              className="size-[40px] rounded-full flex items-center justify-center bg-black text-white"
-            >
-              <a href="https://www.linkedin.com/in/nilesh-mori-7757n">
-                <FaLinkedinIn size={30} />
-              </a>
-            </motion.div>
-            <motion.div
-              whileTap={{
-                scale: 1.1,
-                transition: { duration: 0.18, ease: "easeOut" },
-              }}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.18, ease: "easeOut" },
-              }}
-              className="size-[40px] rounded-full flex items-center justify-center bg-black text-white"
-            >
-              <a href="https://x.com/Programmer7757?t=tRdexLvNV7qv22ZC5Q6jxg&s=08">
-                <FaXTwitter size={25} />
-              </a>
-            </motion.div>
-          </div>
+
+        <div className="mt-12 pt-8 border-t text-center flex items-center justify-center gap-2 text-gray-600">
+          Made with <Heart className="h-4 w-4 text-red-500 animate-pulse" /> by Nilesh Mori
         </div>
-      </div>
-      <div className='text-center border-t-4 mt-5 flex justify-center items-center'>
-        Made By Nilesh Mori with <Image width={17} height={17} src="https://media.tenor.com/PAa9G_Wc5tcAAAAi/big-heart-red.gif" alt="heart"/>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
-}
+};
 
 export default Footer;

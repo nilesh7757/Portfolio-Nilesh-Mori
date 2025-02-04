@@ -1,216 +1,97 @@
 'use client'
-import React, { useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-// import IconC from 'react-devicon/c/original' 
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import 'devicon/devicon.min.css';
+import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation'
-import { Autoplay,EffectCoverflow,Navigation,Pagination } from 'swiper/modules';
-import { FaAndroid,FaLaptopCode } from 'react-icons/fa';
-import { Link } from 'react-scroll';
-export default function Skill() {
-  const router = useRouter()
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Code, Monitor, Database, Layout } from 'lucide-react';
+
+const SkillCard = ({ icon, title, level, color }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="relative p-6 rounded-lg bg-white shadow-lg hover:shadow-xl transition-shadow"
+  >
+    <div className="flex items-center gap-4 mb-4">
+      {icon}
+      <h3 className="text-xl font-semibold">{title}</h3>
+    </div>
+    <div className="space-y-2">
+      <div className="flex justify-between text-sm">
+        <span>Proficiency</span>
+        <span>{level}%</span>
+      </div>
+      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+        <motion.div
+          className="h-full rounded-full"
+          style={{ backgroundColor: color }}
+          initial={{ width: 0 }}
+          whileInView={{ width: `${level}%` }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        />
+      </div>
+    </div>
+  </motion.div>
+);
+
+const Skills = () => {
+  const skillCategories = {
+    frontend: [
+      { icon: <Layout className="h-6 w-6 text-blue-500" />, title: "React.js", level: 90, color: "#61DAFB" },
+      { icon: <Layout className="h-6 w-6 text-black" />, title: "Next.js", level: 85, color: "#000000" },
+      { icon: <Layout className="h-6 w-6 text-blue-400" />, title: "Tailwind CSS", level: 88, color: "#38B2AC" },
+    ],
+    backend: [
+      { icon: <Code className="h-6 w-6 text-green-500" />, title: "Node.js", level: 82, color: "#68A063" },
+      { icon: <Database className="h-6 w-6 text-green-600" />, title: "MongoDB", level: 78, color: "#4DB33D" },
+      { icon: <Code className="h-6 w-6 text-gray-600" />, title: "Express.js", level: 80, color: "#000000" },
+    ],
+    languages: [
+      { icon: <Code className="h-6 w-6 text-yellow-400" />, title: "JavaScript", level: 92, color: "#F7DF1E" },
+      { icon: <Code className="h-6 w-6 text-blue-600" />, title: "Python", level: 75, color: "#3776AB" },
+      { icon: <Code className="h-6 w-6 text-purple-600" />, title: "C++", level: 85, color: "#00599C" },
+    ],
+  };
+
   return (
-    <>
-      <div  className='py-6'>
-      <div className='mt-5'>
-      <h3 className="md:text-4xl text-3xl font-bold text-center flex justify-center gap-2 items-center"><FaLaptopCode/>Skills</h3>
-      <div className='md:w-[80%]  w-[90%] mx-auto mt-3'>
-      <Swiper
-        effect={'coverflow'}
-        grabCursor={true}
-        loop={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        centeredSlides={true}
-        breakpoints={{
-          100: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView:4
-          }
-      }}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
-        }}
-        pagination={false}
-        navigation={false}
-        modules={[Navigation,EffectCoverflow,Pagination,Autoplay]}
-        className="mySwiper"
-      >
-        {/* <SwiperSlide>
-            <div onClick={() => router.push("https://developer.android.com/")} className='text-center flex flex-col items-center'>
-              <FaAndroid className='md:size-[200px] size-[150px] ' fill='#3DDC84'/>
-              <span className='mt-1'>Android</span>
-            </div>
-        </SwiperSlide> */}
-        <SwiperSlide>
-            <div onClick={() => router.push("https://cloud.mongodb.com/v2/666c7c309d186e472043683b#/overview")} className='text-center flex flex-col items-center'>
-            <Image alt=""  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" width={200} height={200}/>
+    <Card className="w-full max-w-7xl mx-auto">
+      <CardContent className="p-8">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold flex items-center justify-center gap-3">
+            <Monitor className="h-8 w-8" />
+            Technical Skills
+          </h2>
+          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            A comprehensive overview of my technical expertise and proficiency levels
+            across different technologies and programming languages.
+          </p>
+        </motion.div>
 
-              <span className='mt-1'>MongoDB</span>
-            </div>
-        </SwiperSlide>
-        {/* <SwiperSlide>
-            <div onClick={() => router.push("https://www.mysql.com/")} className='text-center flex flex-col items-center'>
-            <Image alt=""  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" width={200} height={200}/>
+        <Tabs defaultValue="frontend" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsTrigger value="frontend">Frontend</TabsTrigger>
+            <TabsTrigger value="backend">Backend</TabsTrigger>
+            <TabsTrigger value="languages">Languages</TabsTrigger>
+          </TabsList>
 
-              <span className='mt-1'>My SQL</span>
-            </div>
-        </SwiperSlide> */}
-        <SwiperSlide>
-            <div onClick={() => router.push("https://react.dev/")} className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" width={200} height={200}/>
-
-              <span className='mt-1'>React</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://nextjs.org/")} className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" width={200} height={200}/>
-
-              <span className='mt-1'>Next</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://nodejs.org/en")} className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" width={200} height={200}/>
-
-              <span className='mt-1'>Node</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://tailwindcss.com/")} className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" width={200} height={200}/>
-
-              <span className='mt-1'>Tailwind Css</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://expressjs.com/")} className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" width={200} height={200}/>
-
-              <span className='mt-1'>Express</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://github.com/")} className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" width={200} height={200}/>
-
-              <span className='mt-1'>Github</span>
-            </div>
-        </SwiperSlide>
-      </Swiper>
-      </div>
-      </div>
-
-      <div className='mt-10'>
-      <h2 className="md:text-4xl text-3xl font-bold text-center">Languages</h2>
-      <div className='md:w-[80%]  w-[90%] mx-auto mt-3'>
-      <Swiper
-        effect={'coverflow'}
-        grabCursor={true}
-        loop={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        centeredSlides={true}
-        // slidesPerView={'5'}
-        breakpoints={{
-            100: {
-              slidesPerView: 2,
-            },
-            1024: {
-              slidesPerView:4
-            }
-        }}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
-        }}
-        pagination={false}
-        navigation={false}
-        modules={[Navigation,EffectCoverflow,Pagination,Autoplay]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-            <div onClick={() => router.push("https://dotnet.microsoft.com/en-us/languages/csharp")} className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" width={200} height={200}/>
-
-              <span className='mt-1'>C#</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://cplusplus.com/")}  className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" width={200} height={200}/>
-              <span className='mt-1'>C++</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://www.w3schools.com/c/index.php")}  className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" width={200} height={200}/>
-              <span className='mt-1'>C</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://developer.mozilla.org/en-US/docs/Web/HTML")} className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width={200} height={200}/>
-
-              <span className='mt-1'>Html</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://developer.mozilla.org/en-US/docs/Web/CSS")} className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width={200} height={200}/>
-
-              <span className='mt-1'>Css</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://developer.mozilla.org/en-US/docs/Web/JavaScript")}  className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width={200} height={200} />
-              <span className='mt-1'>Javascript</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://www.python.org/")} className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width={200} height={200} />
-              <span className='mt-1'>Python</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://kotlinlang.org/")}  className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" width={200} height={200} />
-              <span className='mt-1'>Kotlin</span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div onClick={() => router.push("https://www.java.com/en/")}  className='text-center flex flex-col items-center'>
-            <Image alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" width={200} height={200} />
-              <span className='mt-1'>Java</span>
-            </div>
-        </SwiperSlide>
-        
-      </Swiper>
-      </div>
-      </div>
-      </div>
-    </>
+          {Object.entries(skillCategories).map(([category, skills]) => (
+            <TabsContent key={category} value={category}>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {skills.map((skill, index) => (
+                  <SkillCard key={index} {...skill} />
+                ))}
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
+      </CardContent>
+    </Card>
   );
-}
+};
+
+export default Skills;

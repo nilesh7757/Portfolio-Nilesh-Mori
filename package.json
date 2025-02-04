@@ -10,12 +10,18 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
+    "@radix-ui/react-dialog": "^1.1.5",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-tabs": "^1.1.2",
+    "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",
+    "clsx": "^2.1.1",
     "devicon": "^2.16.0",
     "emailjs": "^4.0.3",
     "es6-object-assign": "^1.1.0",
     "framer-motion": "^11.2.12",
     "jquery": "^3.7.1",
+    "lucide-react": "^0.474.0",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
@@ -23,6 +29,8 @@
     "react-next-tilt": "^0.4.3",
     "react-scroll": "^1.9.0",
     "swiper": "^11.1.4",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
     "typed.js": "^2.1.0"
   },
   "devDependencies": {

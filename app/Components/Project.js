@@ -1,68 +1,109 @@
 'use client'
-import React, { useState,useRef } from 'react';
-import { FaGithub,FaCode, FaEye } from 'react-icons/fa';
-import Link from 'next/link';
-import Image from 'next/image';
-;
+
+import React from 'react';
 import { motion } from 'framer-motion';
-import {Tilt} from 'react-next-tilt';
-const ProjectCard = ({ src,name,demo,code }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  return (
-    <Tilt
-    shadow='0px 3px 8px rgba(0, 0, 0, 0.24)'
-    disableScrollOnTouch={false}
-    className="relative shadow-lg ease-in-out transition-transform hover:shadow-2xl w-[90%] h-full  mx-auto rounded-"
-    
-    >
-    <motion.div 
-    className='flex justify-center'
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      // whileHover={{scale:"1.05"}}
-      onTap={() => setIsHovered(!isHovered)}
-    >
-      <div className='w-[80%] h-[300px]'>
-      <Image
-        alt=""
-        className="absolute z-0 w-full h-full object-cover rounded-md"
-        src={src}
-        layout="fill"
-        objectFit="cover"
-      />
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Code, ExternalLink, Github } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+const ProjectCard = ({ title, image, description, demoUrl, codeUrl }) => (
+  <motion.div
+    whileHover={{ y: -5 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0, y: 50 }}
+    transition={{ duration: 0.5 }}
+  >
+    <Card className="overflow-hidden h-full flex flex-col">
+      <div className="relative h-48 w-full group">
+        <Image
+          src={image || "/placeholder.svg"}
+          alt={title}
+          className="object-cover transition-transform duration-300 group-hover:scale-110"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
-      <div className='absolute w-[100%] bg-white flex justify-center py-4 items-center text-2xl font-bold bottom-0 h-[10%]'>{name}</div>
-      <div className={`absolute w-[90%] z-30 duration-700 ease-in-out flex justify-between ${isHovered ? "bottom-10 opacity-100" : "-bottom-10 opacity-0"}`}>
-        <button className="bg-black text-white px-4 py-2 rounded-md">
-          <Link href={demo} className='flex items-center gap-2'> <FaEye /> Demo</Link>
-        </button>
-        <button className="bg-black text-white px-4 py-2 rounded-md"><Link href={code} className='flex items-center gap-2'><FaGithub/> Code</Link></button>
-      </div>
-    </motion.div>
-      </Tilt>
-  );
-};
+      
+      <CardContent className="p-6 flex-grow">
+        <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <p className="text-gray-600 mb-4">{description}</p>
+      </CardContent>
+
+      <CardFooter className="p-6 pt-0 flex gap-4">
+        <Button asChild>
+          <Link href={demoUrl} target="_blank" rel="noopener noreferrer">
+            <ExternalLink className="mr-2 h-4 w-4" />
+            Live Demo
+          </Link>
+        </Button>
+        <Button variant="outline" asChild>
+          <Link href={codeUrl} target="_blank" rel="noopener noreferrer">
+            <Github className="mr-2 h-4 w-4" />
+            Code
+          </Link>
+        </Button>
+      </CardFooter>
+    </Card>
+  </motion.div>
+);
 
 const Project = () => {
+  const projects = [
+    {
+      title: "PassOP",
+      description: "A secure password generator and manager with advanced encryption.",
+      image: "/PassOP.png",
+      demoUrl: "https://nilesh7757.github.io/PassOP/",
+      codeUrl: "https://github.com/nilesh7757/passop",
+    },
+    {
+      title: "TodoList",
+      description: "A feature-rich task management application with local storage.",
+      image: "/Todo.png",
+      demoUrl: "https://nilesh7757.github.io/TodoList/",
+      codeUrl: "https://github.com/nilesh7757/TodoList",
+    },
+    {
+      title: "Spotify Clone",
+      description: "A responsive music player interface inspired by Spotify.",
+      image: "/Spotify.png",
+      demoUrl: "https://nilesh7757.github.io/Spotify-Clone-HTML/",
+      codeUrl: "https://github.com/nilesh7757/Spotify-Clone-HTML",
+    },
+    {
+      title: "Notify",
+      description: "A modern note-taking application with rich text editing.",
+      image: "/Notify.png",
+      demoUrl: "https://nilesh7757.github.io/Notify/",
+      codeUrl: "https://github.com/nilesh7757/Notify",
+    }
+  ];
+
   return (
-    <div className="py-9">
-      <h2 className="text-3xl flex justify-center gap-3 items-center font-bold text-center">
-        <FaCode /> Projects
-      </h2>
-      <div className='w-full mt-3 grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 '>
-      <div className="w-full  mt-5 flex md:flex-row flex-col">
-        <ProjectCard src="./PassOP.png" name="PassOP" demo="https://nilesh7757.github.io/PassOP/" code={"https://github.com/nilesh7757/passop"} />
-      </div>
-      <div className="w-full mt-5 flex md:flex-row flex-col">
-        <ProjectCard src="./Todo.png" name="TodoList" demo="https://nilesh7757.github.io/TodoList/" code={"https://github.com/nilesh7757/TodoList"} />
-      </div>
-      <div className="w-full mt-5 flex md:flex-row flex-col">
-        <ProjectCard src="./Spotify.png" name="Spotify Clone" demo={"https://nilesh7757.github.io/Spotify-Clone-HTML/"} code={"https://github.com/nilesh7757/Spotify-Clone-HTML"} />
-      </div>
-      <div className="w-full mt-5 flex md:flex-row flex-col">
-        <ProjectCard src="./Notify.png" name="Notify" demo={"https://nilesh7757.github.io/Notify/"} code={"https://github.com/nilesh7757/Notify"} />
-      </div>
-      </div>
+    <div className="min-h-screen w-full px-4 py-8 md:py-12 lg:py-16">
+      <motion.div 
+        className="max-w-7xl mx-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.h2 
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12"
+          whileHover={{ scale: 1.05 }}
+        >
+          <Code className="w-6 h-6 md:w-8 md:h-8" />
+          Featured <span className="bg-gradient-to-r from-blue-500 to-blue-200 bg-clip-text text-transparent">Projects</span>
+        </motion.h2>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <ProjectCard key={index} {...project} />
+          ))}
+        </div>
+      </motion.div>
     </div>
   );
 };
