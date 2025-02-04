@@ -150,7 +150,7 @@ const Home = () => {
                 transition={{ duration: 0.3 }}
               />
               <Image
-                src="/web-1.jpg"
+                src="./web-1.jpg"
                 alt="Nilesh Mori"
                 fill
                 className="rounded-full object-cover p-2"
