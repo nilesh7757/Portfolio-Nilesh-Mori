@@ -55,28 +55,28 @@ const Project = () => {
     {
       title: "PassOP",
       description: "A secure password generator and manager with advanced encryption.",
-      image: "/PassOP.png",
+      image: "./PassOP.png",
       demoUrl: "https://nilesh7757.github.io/PassOP/",
       codeUrl: "https://github.com/nilesh7757/passop",
     },
     {
       title: "TodoList",
       description: "A feature-rich task management application with local storage.",
-      image: "/Todo.png",
+      image: "./Todo.png",
       demoUrl: "https://nilesh7757.github.io/TodoList/",
       codeUrl: "https://github.com/nilesh7757/TodoList",
     },
     {
       title: "Spotify Clone",
       description: "A responsive music player interface inspired by Spotify.",
-      image: "/Spotify.png",
+      image: "./Spotify.png",
       demoUrl: "https://nilesh7757.github.io/Spotify-Clone-HTML/",
       codeUrl: "https://github.com/nilesh7757/Spotify-Clone-HTML",
     },
     {
       title: "Notify",
       description: "A modern note-taking application with rich text editing.",
-      image: "/Notify.png",
+      image: "./Notify.png",
       demoUrl: "https://nilesh7757.github.io/Notify/",
       codeUrl: "https://github.com/nilesh7757/Notify",
     }
