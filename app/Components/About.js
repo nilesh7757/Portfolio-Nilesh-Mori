@@ -111,11 +111,8 @@ const About = () => {
                       </h5>
                     </div>
                     
-                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                      As a passionate software engineering student at Dhirubhai Ambani Institute
-                      of Information and Communication Technology, I'm driven by a relentless
-                      curiosity to transform innovative ideas into robust digital solutions.
-                    </p>
+                    <p>I&apos;m driven by a relentless curiosity to transform innovative ideas...</p>
+
 
                     <div className="space-y-2 text-sm md:text-base">
                       <p className="flex items-center gap-2">

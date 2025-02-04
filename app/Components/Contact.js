@@ -1,10 +1,11 @@
 "use client";
 import React, { useRef } from "react";
-import { motion } from 'framer-motion';
+import { motion, px } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import Image from "next/image";
 import { Mail, Phone, User, MessageSquare, Send } from 'lucide-react';
 const Contact = () => {
   const form = useRef();
@@ -65,11 +66,12 @@ const Contact = () => {
                   <Phone className="w-5 h-5 text-blue-500" />
                   <span>7778827757</span>
                 </div>
-                <img 
+                {/* <Image 
                   src="./Contact.png"
                   alt="Contact illustration"
                   className="w-full rounded-lg mt-4"
-                />
+                  width={200px}
+                /> */}
               </CardContent>
             </Card>
           </motion.div>
