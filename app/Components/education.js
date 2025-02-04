@@ -61,8 +61,8 @@ const Education = () => {
       degree: "B.Tech (Honours) in ICT with minor in Computational Science",
       duration: "2023-2027 | Pursuing",
       location: "Gandhinagar, Gujarat",
-      logo: "/DAIICTLogo.png",
-      image: "/DAIICT.png",
+      logo: "./DAIICTLogo.png",
+      image: "./DAIICT.png",
       description: "Currently pursuing advanced studies in Information and Communication Technology with a focus on computational science and modern software development."
     },
     {
@@ -70,8 +70,8 @@ const Education = () => {
       degree: "HSC Science",
       duration: "2021-2023 | Completed",
       location: "Porbandar, Gujarat",
-      logo: "/SigmaLogo.png",
-      image: "/Sigma.png",
+      logo: "./SigmaLogo.png",
+      image: "./Sigma.png",
       description: "Completed higher secondary education with focus on science and mathematics, laying the foundation for engineering studies."
     }
   ];
