@@ -44,6 +44,7 @@ const Skills = () => {
     backend: [
       { icon: <Code className="h-6 w-6 text-green-500" />, title: "Node.js", level: 82, color: "#68A063" },
       { icon: <Database className="h-6 w-6 text-green-600" />, title: "MongoDB", level: 78, color: "#4DB33D" },
+      { icon: <Database className="h-6 w-6 text-blue-900" />, title: "SQL", level: 86, color: "#00758f" },
       { icon: <Code className="h-6 w-6 text-gray-600" />, title: "Express.js", level: 80, color: "#000000" },
     ],
     languages: [

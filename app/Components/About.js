@@ -111,23 +111,7 @@ const About = () => {
                       </h5>
                     </div>
                     
-                    <p>I&apos;m driven by a relentless curiosity to transform innovative ideas...</p>
-
-
-                    <div className="space-y-2 text-sm md:text-base">
-                      <p className="flex items-center gap-2">
-                        <span className="bg-gradient-to-r from-blue-400 to-purple-800 bg-clip-text text-transparent font-bold">
-                          Email:
-                        </span>
-                        nileshmori7757@gmail.com
-                      </p>
-                      <p className="flex items-center gap-2">
-                        <span className="bg-gradient-to-r from-blue-400 to-purple-800 bg-clip-text text-transparent font-bold">
-                          Location:
-                        </span>
-                        Porbandar, Gujarat, India
-                      </p>
-                    </div>
+                    <p>I'm driven by a relentless curiosity to transform innovative ideas into impactful digital experiences. With a strong foundation in web development and a passion for problem-solving, I thrive on building scalable, efficient, and user-friendly applications.</p>
                   </motion.div>
                 </TabsContent>
 
