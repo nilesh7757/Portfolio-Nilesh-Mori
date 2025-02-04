@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Code, ExternalLink, Github } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Code, ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const ProjectCard = ({ title, image, description, demoUrl, codeUrl }) => (
   <motion.div
@@ -26,7 +26,7 @@ const ProjectCard = ({ title, image, description, demoUrl, codeUrl }) => (
         />
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
-      
+
       <CardContent className="p-6 flex-grow">
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <p className="text-gray-600 mb-4">{description}</p>
@@ -54,14 +54,16 @@ const Project = () => {
   const projects = [
     {
       title: "PassOP",
-      description: "A secure password generator and manager with advanced encryption.",
+      description:
+        "A secure password generator and manager with advanced encryption.",
       image: "./PassOP.png",
       demoUrl: "https://nilesh7757.github.io/PassOP/",
       codeUrl: "https://github.com/nilesh7757/passop",
     },
     {
       title: "TodoList",
-      description: "A feature-rich task management application with local storage.",
+      description:
+        "A feature-rich task management application with local storage.",
       image: "./Todo.png",
       demoUrl: "https://nilesh7757.github.io/TodoList/",
       codeUrl: "https://github.com/nilesh7757/TodoList",
@@ -79,23 +81,26 @@ const Project = () => {
       image: "./Notify.png",
       demoUrl: "https://nilesh7757.github.io/Notify/",
       codeUrl: "https://github.com/nilesh7757/Notify",
-    }
+    },
   ];
 
   return (
     <div className="min-h-screen w-full px-4 py-8 md:py-12 lg:py-16">
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <motion.h2 
+        <motion.h2
           className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12"
           whileHover={{ scale: 1.05 }}
         >
           <Code className="w-6 h-6 md:w-8 md:h-8" />
-          Featured <span className="bg-gradient-to-r from-blue-500 to-blue-200 bg-clip-text text-transparent">Projects</span>
+          Featured{" "}
+          <span className="bg-gradient-to-r from-blue-500 to-blue-200 bg-clip-text text-transparent">
+            Projects
+          </span>
         </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -103,6 +108,12 @@ const Project = () => {
             <ProjectCard key={index} {...project} />
           ))}
         </div>
+        <Button className="mt-6 mx-auto block" asChild>
+          <Link href="/projects">
+            View All Projects
+            <ExternalLink className="ml-2 h-4 w-4" />
+          </Link>
+        </Button>
       </motion.div>
     </div>
   );
