@@ -37,7 +37,7 @@ const About = () => {
       >
         {/* Header */}
         <motion.h2 
-          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center  gap-2 mb-8 md:mb-12"
           whileHover={{ scale: 1.05 }}
         >
           <IoPerson className="w-6 h-6 md:w-8 md:h-8" />
@@ -53,10 +53,10 @@ const About = () => {
             initial={{ x: -50, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="relative group aspect-square rounded-xl overflow-hidden">
+            <div className="relative  group aspect-square rounded-xl overflow-hidden">
               <Image
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
-                src="./Nilesh.jpg"
+                src="./Nilesh.png"
                 alt="Nilesh Mori"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 50vw"
@@ -90,7 +90,7 @@ const About = () => {
             initial={{ x: 50, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="bg-white/50 backdrop-blur-sm rounded-xl p-4 md:p-6 lg:p-8 shadow-lg">
+            <div className="bg-white/50 border border-gray-100 backdrop-blur-sm rounded-xl p-4 md:p-6 lg:p-8 shadow-lg">
               <Tabs defaultValue="about" className="w-full" onValueChange={setActiveTab}>
                 <TabsList className="grid w-full grid-cols-2 mb-6">
                   <TabsTrigger value="about">About</TabsTrigger>

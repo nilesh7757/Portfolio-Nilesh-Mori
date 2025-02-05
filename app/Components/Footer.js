@@ -44,7 +44,7 @@ const Footer = () => {
     { name: 'About', to: 'about' },
     { name: 'Skills', to: 'skills' },
     { name: 'Education', to: 'education' },
-    { name: 'Projects', to: 'projects' },
+    { name: 'Projects', to: 'project' },
     { name: 'Contact', to: 'contact' }
   ];
 

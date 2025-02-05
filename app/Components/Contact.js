@@ -66,12 +66,6 @@ const Contact = () => {
                   <Phone className="w-5 h-5 text-blue-500" />
                   <span>7778827757</span>
                 </div>
-                {/* <Image 
-                  src="./Contact.png"
-                  alt="Contact illustration"
-                  className="w-full rounded-lg mt-4"
-                  width={200px}
-                /> */}
               </CardContent>
             </Card>
           </motion.div>
