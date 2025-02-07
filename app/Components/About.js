@@ -10,7 +10,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import { Download, Send, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { Download, Send, Github, Linkedin,Twitter,ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 
 const About = () => {
@@ -161,15 +161,32 @@ const About = () => {
 
                 {/* Desktop Social Links */}
                 <div className="hidden lg:flex justify-center gap-4">
-                  <Button variant="ghost" size="icon" className="rounded-full hover:scale-110 transition-transform">
-                    <Github className="h-5 w-5" />
+                  {/* <Button variant="ghost" size="icon" className="rounded-full hover:scale-110 transition-transform">
+                    <Github link className="h-5 w-5" />
                   </Button>
                   <Button variant="ghost" size="icon" className="rounded-full hover:scale-110 transition-transform">
                     <Linkedin className="h-5 w-5" />
                   </Button>
                   <Button variant="ghost" size="icon" className="rounded-full hover:scale-110 transition-transform">
                     <ExternalLink className="h-5 w-5" />
+                  </Button> */}
+                  {[
+                  { icon: <Github className="h-5 w-5" />, href: "https://github.com/nilesh7757" },
+                  { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/in/nilesh-mori-7757n" },
+                  { icon: <Twitter className="h-5 w-5" />, href: "https://x.com/Programmer7757" }
+                ].map((social, index) => (
+                  <Button
+                    key={index}
+                    variant="ghost" 
+                    size="icon" 
+                    className="rounded-full hover:scale-110 transition-transform"
+                    asChild
+                  >
+                    <a href={social.href} target="_blank" rel="noopener noreferrer">
+                      {social.icon}
+                    </a>
                   </Button>
+                ))}
                 </div>
               </div>
             </div>
