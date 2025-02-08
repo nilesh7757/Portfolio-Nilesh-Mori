@@ -58,6 +58,7 @@ const Education = () => {
   const educationData = [
     {
       school: "Dhirubhai Ambani Institute of ICT",
+      link:"https://www.daiict.ac.in/",
       degree: "B.Tech (Honours) in ICT with minor in Computational Science",
       duration: "2023-2027 | Pursuing",
       location: "Gandhinagar, Gujarat",
@@ -67,6 +68,7 @@ const Education = () => {
     },
     {
       school: "Sigma Public School",
+      link:"https://www.sigmaschoolpbr.org/",
       degree: "HSC Science",
       duration: "2021-2023 | Completed",
       location: "Porbandar, Gujarat",

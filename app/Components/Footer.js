@@ -85,18 +85,31 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-2xl font-bold">Contact Info</h3>
             <div className="space-y-3 text-gray-600">
-              <div className="flex items-center gap-2">
-                <Phone className="h-5 w-5 text-blue-500" />
+              <a 
+                href="tel:+917778827757" 
+                className="flex items-center gap-2 hover:text-blue-600 transition-colors"
+              >
+                <Phone className="h-5 w-5 shrink-0 text-blue-500" />
                 <span>7778827757</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-5 w-5 text-blue-500" />
-                <span>nileshmori7757@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-blue-500" />
-                <span>Porbandar, Gujarat, India - 360575</span>
-              </div>
+              </a>
+              
+              <a 
+                href="mailto:nileshmori7757@gmail.com"
+                className="flex items-start gap-2 hover:text-blue-600 transition-colors"
+              >
+                <Mail className="h-5 w-5 shrink-0 text-blue-500 mt-1" />
+                <span className="break-all">nileshmori7757@gmail.com</span>
+              </a>
+              
+              <a 
+                href="https://www.google.com/maps/place/Adityana,Porbandar,+Gujarat+360545"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 hover:text-blue-600 transition-colors"
+              >
+                <MapPin className="h-5 w-5 shrink-0 text-blue-500 mt-1" />
+                <span>Adityana,Porbandar, Gujarat, India - 360545</span>
+              </a>
             </div>
           </div>
         </div>

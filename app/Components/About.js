@@ -10,22 +10,27 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import { Download, Send, Github, Linkedin,Twitter,ExternalLink } from 'lucide-react';
+import { Download, Send, Github, Linkedin, Twitter } from 'lucide-react';
 import Image from 'next/image';
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('about');
   
+  const socials = [
+    { icon: Github, href: 'https://github.com/nilesh7757' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/nilesh-mori-7757n' },
+    { icon: Twitter, href: 'https://x.com/Programmer7757' },
+  ];
 
   const experiences = [
     {
       role: 'Intern',
       company: 'Craft Silicon Foundation',
+      link:'https://www.craftsilicon.com/about/craft-silicon-foundation/',
       duration: 'Rural Internship 2024',
-      description: 'Helped Society to improve at Sadanput,Panchmahal '
+      description: 'Helped Society to improve at Sadanpur,Panchmahal '
     },
   ];
-
 
   return (
     <div className="min-h-screen w-full px-4 py-8 md:py-12 lg:py-16">
@@ -37,7 +42,7 @@ const About = () => {
       >
         {/* Header */}
         <motion.h2 
-          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center  gap-2 mb-8 md:mb-12"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12"
           whileHover={{ scale: 1.05 }}
         >
           <IoPerson className="w-6 h-6 md:w-8 md:h-8" />
@@ -53,7 +58,7 @@ const About = () => {
             initial={{ x: -50, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="relative  group aspect-square rounded-xl overflow-hidden">
+            <div className="relative group aspect-square rounded-xl overflow-hidden">
               <Image
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
                 src="./Nilesh.png"
@@ -71,15 +76,22 @@ const About = () => {
 
             {/* Mobile Social Links */}
             <div className="flex justify-center gap-4 mt-6 lg:hidden">
-              <Button variant="ghost" size="icon" className="rounded-full hover:scale-110 transition-transform">
-                <Github className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="rounded-full hover:scale-110 transition-transform">
-                <Linkedin className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="rounded-full hover:scale-110 transition-transform">
-                <ExternalLink className="h-5 w-5" />
-              </Button>
+              {socials.map((social, index) => {
+                const Icon = social.icon;
+                return (
+                  <Button
+                    key={index}
+                    variant="ghost"
+                    size="icon"
+                    className="rounded-full hover:scale-110 transition-transform"
+                    asChild
+                  >
+                    <a href={social.href} target="_blank" rel="noopener noreferrer">
+                      <Icon className="h-5 w-5" />
+                    </a>
+                  </Button>
+                );
+              })}
             </div>
           </motion.div>
 
@@ -131,7 +143,8 @@ const About = () => {
                         className="relative pl-4 border-l-2 border-blue-600"
                       >
                         <h6 className="text-lg md:text-xl font-semibold">{exp.role}</h6>
-                        <p className="text-blue-600">{exp.company}</p>
+                        <a target="_blank" 
+                          rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 transition-colors cursor-pointer" href={exp.link} >{exp.company}</a>
                         <p className="text-sm text-gray-500">{exp.duration}</p>
                         <p className="mt-2 text-sm md:text-base text-gray-600">{exp.description}</p>
                       </motion.div>
@@ -161,32 +174,22 @@ const About = () => {
 
                 {/* Desktop Social Links */}
                 <div className="hidden lg:flex justify-center gap-4">
-                  {/* <Button variant="ghost" size="icon" className="rounded-full hover:scale-110 transition-transform">
-                    <Github link className="h-5 w-5" />
-                  </Button>
-                  <Button variant="ghost" size="icon" className="rounded-full hover:scale-110 transition-transform">
-                    <Linkedin className="h-5 w-5" />
-                  </Button>
-                  <Button variant="ghost" size="icon" className="rounded-full hover:scale-110 transition-transform">
-                    <ExternalLink className="h-5 w-5" />
-                  </Button> */}
-                  {[
-                  { icon: <Github className="h-5 w-5" />, href: "https://github.com/nilesh7757" },
-                  { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/in/nilesh-mori-7757n" },
-                  { icon: <Twitter className="h-5 w-5" />, href: "https://x.com/Programmer7757" }
-                ].map((social, index) => (
-                  <Button
-                    key={index}
-                    variant="ghost" 
-                    size="icon" 
-                    className="rounded-full hover:scale-110 transition-transform"
-                    asChild
-                  >
-                    <a href={social.href} target="_blank" rel="noopener noreferrer">
-                      {social.icon}
-                    </a>
-                  </Button>
-                ))}
+                  {socials.map((social, index) => {
+                    const Icon = social.icon;
+                    return (
+                      <Button
+                        key={index}
+                        variant="ghost"
+                        size="icon"
+                        className="rounded-full hover:scale-110 transition-transform"
+                        asChild
+                      >
+                        <a href={social.href} target="_blank" rel="noopener noreferrer">
+                          <Icon className="h-5 w-5" />
+                        </a>
+                      </Button>
+                    );
+                  })}
                 </div>
               </div>
             </div>

@@ -1,36 +1,53 @@
 "use client";
 import React, { useRef } from "react";
-import { motion, px } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import Image from "next/image";
+import emailjs from "@emailjs/browser";
 import { Mail, Phone, User, MessageSquare, Send } from 'lucide-react';
+import toast, { Toaster } from 'react-hot-toast';
+
 const Contact = () => {
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
+    
+    // Show loading toast
+    const loadingToast = toast.loading('Sending message...');
+    
     emailjs
       .sendForm("service_2qycq85", "template_ebfrijf", form.current, {
         publicKey: "lgyXGdU7WDqjRFTGd",
-      }) // Replace with your actual values
+      })
       .then(
         (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          alert("Comment Sent Successfully!"); // User-friendly success message
-          e.target.reset(); // Reset form fields
+          // Dismiss loading toast and show success toast
+          toast.dismiss(loadingToast);
+          toast.success('Message sent successfully!', {
+            duration: 4000,
+            icon: '🎉',
+          });
+          e.target.reset();
         },
         (error) => {
+          // Dismiss loading toast and show error toast
+          toast.dismiss(loadingToast);
+          toast.error('Failed to send message. Please try again.', {
+            duration: 4000,
+          });
           console.error("FAILED...", error);
-          alert("Comment Sending Failed. Please try again."); // User-friendly error message
         }
       );
   };
 
   return (
     <div className="min-h-screen w-full px-4 py-8 md:py-12 lg:py-16">
+      {/* Add Toaster component */}
+      <Toaster position="top-center" reverseOrder={false} />
+      
       <motion.div 
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}
