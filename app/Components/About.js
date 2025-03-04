@@ -54,13 +54,14 @@ const About = () => {
           {/* Image Section */}
           <motion.div 
             className="w-full max-w-sm lg:w-1/3 lg:sticky lg:top-24"
-            whileInView={{ opacity: 1, x: 0 }}
-            initial={{ x: -50, opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3 }}
           >
             <div className="relative group aspect-square rounded-xl overflow-hidden transform-gpu">
               <Image
-                className="object-cover transition-transform duration-300 group-hover:scale-105 transform-gpu"
+                className="object-cover transition-transform duration-300 group-hover:scale-105 transform-gpu will-change-transform"
                 src="https://raw.githubusercontent.com/nilesh7757/Portfolio-Nilesh-Mori/main/public/Nilesh.png"
                 alt="Nilesh Mori"
                 fill
@@ -72,7 +73,6 @@ const About = () => {
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPjA+OjU1RUVHSkdKTEtMTjw2Uj5AS0pLTEr/2wBDAR"
                 fetchPriority="high"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
             {/* Mobile Social Links */}
@@ -84,7 +84,7 @@ const About = () => {
                     key={index}
                     variant="ghost"
                     size="icon"
-                    className="rounded-full hover:scale-110 transition-transform"
+                    className="rounded-full hover:scale-110 transition-transform transform-gpu"
                     asChild
                   >
                     <a href={social.href} target="_blank" rel="noopener noreferrer">
@@ -99,9 +99,10 @@ const About = () => {
           {/* Content Section */}
           <motion.div 
             className="w-full lg:w-2/3 content-visibility-auto"
-            whileInView={{ opacity: 1, x: 0 }}
-            initial={{ x: 50, opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3 }}
           >
             <div className="bg-white/50 border border-gray-100 backdrop-blur-sm rounded-xl p-4 md:p-6 lg:p-8 shadow-lg transform-gpu">
               <Tabs defaultValue="about" className="w-full" onValueChange={setActiveTab}>
@@ -112,9 +113,9 @@ const About = () => {
 
                 <TabsContent value="about">
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
                     className="space-y-4"
                   >
                     <div>
@@ -124,7 +125,7 @@ const About = () => {
                       </h5>
                     </div>
                     
-                    <p>I'm driven by a relentless curiosity to transform innovative ideas into impactful digital experiences. With a strong foundation in web development and a passion for problem-solving, I thrive on building scalable, efficient, and user-friendly applications.</p>
+                    <p className="leading-relaxed">I'm driven by a relentless curiosity to transform innovative ideas into impactful digital experiences. With a strong foundation in web development and a passion for problem-solving, I thrive on building scalable, efficient, and user-friendly applications.</p>
                   </motion.div>
                 </TabsContent>
 

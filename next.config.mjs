@@ -14,10 +14,10 @@ const nextConfig = {
           hostname: '**',
         },
       ],
-      deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
-      imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-      formats: ['image/webp', 'image/avif'],
-      minimumCacheTTL: 60,
+      deviceSizes: [640, 750, 828, 1080, 1200],
+      imageSizes: [16, 32, 48, 64, 96],
+      formats: ['image/webp'],
+      minimumCacheTTL: 31536000,
       dangerouslyAllowSVG: true,
       contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     },
@@ -25,7 +25,8 @@ const nextConfig = {
     basePath: '',
     assetPrefix: '',
     compiler: {
-      removeConsole: process.env.NODE_ENV === 'production',
+      removeConsole: true,
+      removeDebugger: true,
     },
     poweredByHeader: false,
     compress: true,
@@ -33,7 +34,47 @@ const nextConfig = {
     swcMinify: true,
     experimental: {
       optimizeCss: false,
-      optimizePackageImports: ['framer-motion', 'lucide-react'],
+      optimizePackageImports: [
+        'framer-motion',
+        'lucide-react',
+        'react-icons',
+        'swiper',
+        '@radix-ui/react-dialog',
+        '@radix-ui/react-tabs'
+      ],
+      scrollRestoration: true,
+      legacyBrowsers: false,
+    },
+    // Performance optimizations
+    webpack: (config, { dev, isServer }) => {
+      // Production optimizations only
+      if (!dev) {
+        config.optimization = {
+          ...config.optimization,
+          minimize: true,
+          splitChunks: {
+            chunks: 'all',
+            minSize: 20000,
+            maxSize: 244000,
+            minChunks: 1,
+            maxAsyncRequests: 30,
+            maxInitialRequests: 30,
+            cacheGroups: {
+              defaultVendors: {
+                test: /[\\/]node_modules[\\/]/,
+                priority: -10,
+                reuseExistingChunk: true,
+              },
+              default: {
+                minChunks: 2,
+                priority: -20,
+                reuseExistingChunk: true,
+              },
+            },
+          },
+        };
+      }
+      return config;
     },
 };    
 export default nextConfig;

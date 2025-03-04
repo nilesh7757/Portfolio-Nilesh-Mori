@@ -10,17 +10,18 @@ import Link from "next/link";
 
 const ProjectCard = ({ title, image, description, demoUrl, codeUrl }) => (
   <motion.div
-    whileHover={{ y: -5 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    initial={{ opacity: 0, y: 50 }}
-    transition={{ duration: 0.5 }}
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.3 }}
+    className="transform-gpu"
   >
     <Card className="overflow-hidden h-full flex flex-col">
       <div className="relative h-48 w-full group">
         <Image
           src={image || "/placeholder.svg"}
           alt={title}
-          className="object-cover transition-transform duration-300 group-hover:scale-110"
+          className="object-cover transition-transform duration-300 group-hover:scale-110 transform-gpu will-change-transform"
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
           quality={75}
@@ -28,22 +29,21 @@ const ProjectCard = ({ title, image, description, demoUrl, codeUrl }) => (
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPjA+OjU1RUVHSkdKTEtMTjw2Uj5AS0pLTEr/2wBDAR"
         />
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       <CardContent className="p-6 flex-grow">
         <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
+        <p className="text-gray-600 mb-4 leading-relaxed">{description}</p>
       </CardContent>
 
       <CardFooter className="p-6 pt-0 flex gap-4">
-        <Button asChild>
+        <Button asChild className="transform-gpu">
           <Link href={demoUrl} target="_blank" rel="noopener noreferrer">
             <ExternalLink className="mr-2 h-4 w-4" />
             Live Demo
           </Link>
         </Button>
-        <Button variant="outline" asChild>
+        <Button variant="outline" asChild className="transform-gpu">
           <Link href={codeUrl} target="_blank" rel="noopener noreferrer">
             <Github className="mr-2 h-4 w-4" />
             Code
@@ -93,11 +93,12 @@ const Project = () => {
       <motion.div
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.3 }}
       >
         <motion.h2
-          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12 transform-gpu"
           whileHover={{ scale: 1.05 }}
         >
           <Code className="w-6 h-6 md:w-8 md:h-8" />
@@ -107,13 +108,13 @@ const Project = () => {
           </span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 content-visibility-auto">
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
         </div>
         <div className="flex justify-center mt-8">
-          <Button variant="default" className="flex items-center gap-2" asChild>
+          <Button variant="default" className="flex items-center gap-2 transform-gpu" asChild>
             <Link href="/projects">
               View All Projects
               <ExternalLink className="h-4 w-4" />

@@ -7,17 +7,18 @@ import Image from 'next/image';
 
 const EducationCard = ({ school, degree, duration, location, logo, image, description }) => (
   <motion.div
-    whileInView={{ opacity: 1, y: 0 }}
-    initial={{ opacity: 0, y: 50 }}
-    transition={{ duration: 0.5 }}
-    className="w-full"
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.3 }}
+    className="w-full transform-gpu"
   >
     <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <div className="relative h-48 w-full">
         <Image
           src={image}
           alt={school}
-          className="object-cover"
+          className="object-cover transform-gpu will-change-transform"
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
           quality={75}
@@ -26,13 +27,13 @@ const EducationCard = ({ school, degree, duration, location, logo, image, descri
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPjA+OjU1RUVHSkdKTEtMTjw2Uj5AS0pLTEr/2wBDAR"
         />
         <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-          <div className="bg-white p-4 rounded-full">
+          <div className="bg-white p-4 rounded-full transform-gpu">
             <Image
               src={logo}
               alt={`${school} logo`}
               width={64}
               height={64}
-              className="h-16 w-16 object-contain"
+              className="h-16 w-16 object-contain transform-gpu"
               quality={75}
               loading="lazy"
             />
@@ -54,7 +55,7 @@ const EducationCard = ({ school, degree, duration, location, logo, image, descri
             <span>{location}</span>
           </div>
         </div>
-        <p className="text-gray-600">{description}</p>
+        <p className="text-gray-600 leading-relaxed">{description}</p>
       </CardContent>
     </Card>
   </motion.div>
@@ -89,18 +90,19 @@ const Education = () => {
       <motion.div 
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.3 }}
       >
         <motion.h2 
-          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12 transform-gpu"
           whileHover={{ scale: 1.05 }}
         >
           <School className="w-6 h-6 md:w-8 md:h-8" />
           Education <span className="bg-gradient-to-r from-purple-500 to-purple-200 bg-clip-text text-transparent">Journey</span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 content-visibility-auto">
           {educationData.map((edu, index) => (
             <EducationCard key={index} {...edu} />
           ))}
