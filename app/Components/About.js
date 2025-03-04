@@ -58,9 +58,9 @@ const About = () => {
             initial={{ x: -50, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="relative group aspect-square rounded-xl overflow-hidden">
+            <div className="relative group aspect-square rounded-xl overflow-hidden transform-gpu">
               <Image
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover transition-transform duration-300 group-hover:scale-105 transform-gpu"
                 src="./Nilesh.png"
                 alt="Nilesh Mori"
                 fill
@@ -70,12 +70,9 @@ const About = () => {
                 loading="eager"
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPjA+OjU1RUVHSkdKTEtMTjw2Uj5AS0pLTEr/2wBDAR"
+                fetchPriority="high"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white text-lg md:text-xl font-medium transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  Tech Enthusiast
-                </span>
-              </div>
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
             {/* Mobile Social Links */}
@@ -101,12 +98,12 @@ const About = () => {
 
           {/* Content Section */}
           <motion.div 
-            className="w-full lg:w-2/3"
+            className="w-full lg:w-2/3 content-visibility-auto"
             whileInView={{ opacity: 1, x: 0 }}
             initial={{ x: 50, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="bg-white/50 border border-gray-100 backdrop-blur-sm rounded-xl p-4 md:p-6 lg:p-8 shadow-lg">
+            <div className="bg-white/50 border border-gray-100 backdrop-blur-sm rounded-xl p-4 md:p-6 lg:p-8 shadow-lg transform-gpu">
               <Tabs defaultValue="about" className="w-full" onValueChange={setActiveTab}>
                 <TabsList className="grid w-full grid-cols-2 mb-6">
                   <TabsTrigger value="about">About</TabsTrigger>
