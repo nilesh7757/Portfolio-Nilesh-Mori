@@ -23,7 +23,7 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     experimental: {
-      optimizeCss: true,
+      optimizeCss: false,
       optimizePackageImports: ['framer-motion', 'lucide-react'],
     },
 };    
