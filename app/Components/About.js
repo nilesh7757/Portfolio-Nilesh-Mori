@@ -61,7 +61,7 @@ const About = () => {
             <div className="relative group aspect-square rounded-xl overflow-hidden transform-gpu">
               <Image
                 className="object-cover transition-transform duration-300 group-hover:scale-105 transform-gpu"
-                src="./Nilesh.png"
+                src="https://raw.githubusercontent.com/nilesh7757/Portfolio-Nilesh-Mori/main/public/Nilesh.png"
                 alt="Nilesh Mori"
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 75vw, (max-width: 1024px) 50vw, 33vw"

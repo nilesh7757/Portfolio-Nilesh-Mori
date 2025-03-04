@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-      domains: ['raw.githubusercontent.com'],
+      domains: [
+        'raw.githubusercontent.com',
+        'github.com',
+        'nilesh7757.github.io',
+        'vercel.app'
+      ],
+      unoptimized: true,
       remotePatterns: [
         {
           protocol: 'https',
@@ -15,6 +21,9 @@ const nextConfig = {
       dangerouslyAllowSVG: true,
       contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     },
+    output: 'export',
+    basePath: '',
+    assetPrefix: '',
     compiler: {
       removeConsole: process.env.NODE_ENV === 'production',
     },
