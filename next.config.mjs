@@ -7,15 +7,15 @@ const nextConfig = {
         'nilesh7757.github.io',
         'vercel.app'
       ],
-      unoptimized: true,
+      unoptimized: false,
       remotePatterns: [
         {
           protocol: 'https',
           hostname: '**',
         },
       ],
-      deviceSizes: [640, 750, 828, 1080, 1200],
-      imageSizes: [16, 32, 48, 64, 96],
+      deviceSizes: [360, 480, 640, 750, 828],
+      imageSizes: [16, 32, 48, 64],
       formats: ['image/webp'],
       minimumCacheTTL: 31536000,
       dangerouslyAllowSVG: true,
@@ -33,7 +33,7 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     experimental: {
-      optimizeCss: false,
+      optimizeCss: true,
       optimizePackageImports: [
         'framer-motion',
         'lucide-react',
@@ -44,6 +44,8 @@ const nextConfig = {
       ],
       scrollRestoration: true,
       legacyBrowsers: false,
+      optimizeServerReact: true,
+      optimizeImages: true,
     },
     // Performance optimizations
     webpack: (config, { dev, isServer }) => {
@@ -54,11 +56,11 @@ const nextConfig = {
           minimize: true,
           splitChunks: {
             chunks: 'all',
-            minSize: 20000,
-            maxSize: 244000,
+            minSize: 10000,
+            maxSize: 100000,
             minChunks: 1,
-            maxAsyncRequests: 30,
-            maxInitialRequests: 30,
+            maxAsyncRequests: 10,
+            maxInitialRequests: 10,
             cacheGroups: {
               defaultVendors: {
                 test: /[\\/]node_modules[\\/]/,
@@ -73,6 +75,23 @@ const nextConfig = {
             },
           },
         };
+
+        // Add TerserPlugin options for better minification
+        config.optimization.minimizer = [
+          new TerserPlugin({
+            terserOptions: {
+              compress: {
+                drop_console: true,
+                drop_debugger: true,
+                pure_funcs: ['console.log'],
+              },
+              mangle: true,
+              output: {
+                comments: false,
+              },
+            },
+          }),
+        ];
       }
       return config;
     },

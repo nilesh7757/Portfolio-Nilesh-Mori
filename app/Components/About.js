@@ -1,4 +1,5 @@
 'use client'
+import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
@@ -13,6 +14,12 @@ import {
 import { Download, Send, Github, Linkedin, Twitter } from 'lucide-react';
 import Image from 'next/image';
 
+// Lazy load the experience section
+const ExperienceSection = dynamic(() => import('./ExperienceSection'), {
+  loading: () => <p>Loading...</p>,
+  ssr: false
+});
+
 const About = () => {
   const [activeTab, setActiveTab] = useState('about');
   
@@ -22,27 +29,18 @@ const About = () => {
     { icon: Twitter, href: 'https://x.com/Programmer7757' },
   ];
 
-  const experiences = [
-    {
-      role: 'Intern',
-      company: 'Craft Silicon Foundation',
-      link:'https://www.craftsilicon.com/about/craft-silicon-foundation/',
-      duration: 'Rural Internship 2024',
-      description: 'Helped Society to improve at Sadanpur,Panchmahal '
-    },
-  ];
-
   return (
     <div className="min-h-screen w-full px-4 py-8 md:py-12 lg:py-16">
       <motion.div 
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.3 }}
       >
         {/* Header */}
         <motion.h2 
-          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12 transform-gpu"
           whileHover={{ scale: 1.05 }}
         >
           <IoPerson className="w-6 h-6 md:w-8 md:h-8" />
@@ -65,9 +63,9 @@ const About = () => {
                 src="https://raw.githubusercontent.com/nilesh7757/Portfolio-Nilesh-Mori/main/public/Nilesh.png"
                 alt="Nilesh Mori"
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 75vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 360px) 100vw, (max-width: 480px) 90vw, (max-width: 640px) 80vw, (max-width: 750px) 70vw, 33vw"
                 priority
-                quality={75}
+                quality={60}
                 loading="eager"
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPjA+OjU1RUVHSkdKTEtMTjw2Uj5AS0pLTEr/2wBDAR"
@@ -130,28 +128,7 @@ const About = () => {
                 </TabsContent>
 
                 <TabsContent value="experience">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="space-y-6"
-                  >
-                    {experiences.map((exp, index) => (
-                      <motion.div
-                        key={exp.role}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                        className="relative pl-4 border-l-2 border-blue-600"
-                      >
-                        <h6 className="text-lg md:text-xl font-semibold">{exp.role}</h6>
-                        <a target="_blank" 
-                          rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 transition-colors cursor-pointer" href={exp.link} >{exp.company}</a>
-                        <p className="text-sm text-gray-500">{exp.duration}</p>
-                        <p className="mt-2 text-sm md:text-base text-gray-600">{exp.description}</p>
-                      </motion.div>
-                    ))}
-                  </motion.div>
+                  {activeTab === 'experience' && <ExperienceSection />}
                 </TabsContent>
               </Tabs>
 
@@ -160,13 +137,13 @@ const About = () => {
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Button 
                     variant="outline" 
-                    className="group w-full sm:w-auto"
+                    className="group w-full sm:w-auto transform-gpu"
                     onClick={() => window.open('./CV.pdf', '_blank')}
                   >
                     <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                     Download CV
                   </Button>
-                  <Button className="group w-full sm:w-auto" asChild>
+                  <Button className="group w-full sm:w-auto transform-gpu" asChild>
                     <Link to="contact" spy={true} smooth={true} offset={-70} duration={500}>
                       <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       Let's Connect
@@ -183,7 +160,7 @@ const About = () => {
                         key={index}
                         variant="ghost"
                         size="icon"
-                        className="rounded-full hover:scale-110 transition-transform"
+                        className="rounded-full hover:scale-110 transition-transform transform-gpu"
                         asChild
                       >
                         <a href={social.href} target="_blank" rel="noopener noreferrer">
