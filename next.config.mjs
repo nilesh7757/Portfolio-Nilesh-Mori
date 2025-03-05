@@ -42,8 +42,6 @@ const nextConfig = {
         '@radix-ui/react-tabs'
       ],
       scrollRestoration: true,
-      optimizeServerComponents: true,
-      optimizePackageImports: true,
     },
     // Performance optimizations
     webpack: (config, { dev, isServer }) => {
@@ -76,7 +74,7 @@ const nextConfig = {
       }
       return config;
     },
-    headers: async () => {
+    async headers() {
       return [
         {
           source: '/:path*',
