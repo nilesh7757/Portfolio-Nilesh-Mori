@@ -22,14 +22,16 @@ const nextConfig = {
       contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     },
     output: 'export',
+    trailingSlash: true,
+    distDir: 'dist',
     basePath: '',
     assetPrefix: '',
     compiler: {
-      removeConsole: true,
+      removeConsole: process.env.NODE_ENV === 'production',
     },
     poweredByHeader: false,
     compress: true,
-    reactStrictMode: true,
+    reactStrictMode: false,
     swcMinify: true,
     experimental: {
       optimizeCss: true,
@@ -72,7 +74,17 @@ const nextConfig = {
           },
         };
       }
+
+      // Add source maps in development
+      if (dev) {
+        config.devtool = 'eval-source-map';
+      }
+
       return config;
+    },
+    // Environment variables
+    env: {
+      NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL || '',
     },
     async headers() {
       return [
