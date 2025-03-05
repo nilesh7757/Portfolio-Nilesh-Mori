@@ -26,7 +26,6 @@ const nextConfig = {
     assetPrefix: '',
     compiler: {
       removeConsole: true,
-      removeDebugger: true,
     },
     poweredByHeader: false,
     compress: true,
@@ -43,9 +42,6 @@ const nextConfig = {
         '@radix-ui/react-tabs'
       ],
       scrollRestoration: true,
-      legacyBrowsers: false,
-      optimizeServerReact: true,
-      optimizeImages: true,
     },
     // Performance optimizations
     webpack: (config, { dev, isServer }) => {
@@ -75,23 +71,6 @@ const nextConfig = {
             },
           },
         };
-
-        // Add TerserPlugin options for better minification
-        config.optimization.minimizer = [
-          new TerserPlugin({
-            terserOptions: {
-              compress: {
-                drop_console: true,
-                drop_debugger: true,
-                pure_funcs: ['console.log'],
-              },
-              mangle: true,
-              output: {
-                comments: false,
-              },
-            },
-          }),
-        ];
       }
       return config;
     },
