@@ -14,9 +14,9 @@ const nextConfig = {
           hostname: '**',
         },
       ],
-      deviceSizes: [360, 480, 640, 750, 828, 1080, 1200],
-      imageSizes: [16, 32, 48, 64, 96, 128, 256],
-      formats: ['image/webp'],
+      deviceSizes: [360, 480, 640, 750, 828],
+      imageSizes: [16, 32, 48, 64, 96],
+      formats: ['image/avif', 'image/webp'],
       minimumCacheTTL: 31536000,
       dangerouslyAllowSVG: true,
       contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -42,6 +42,8 @@ const nextConfig = {
         '@radix-ui/react-tabs'
       ],
       scrollRestoration: true,
+      optimizeServerComponents: true,
+      optimizePackageImports: true,
     },
     // Performance optimizations
     webpack: (config, { dev, isServer }) => {
@@ -53,10 +55,10 @@ const nextConfig = {
           splitChunks: {
             chunks: 'all',
             minSize: 10000,
-            maxSize: 244000,
+            maxSize: 100000,
             minChunks: 1,
-            maxAsyncRequests: 20,
-            maxInitialRequests: 20,
+            maxAsyncRequests: 10,
+            maxInitialRequests: 10,
             cacheGroups: {
               defaultVendors: {
                 test: /[\\/]node_modules[\\/]/,
@@ -73,6 +75,31 @@ const nextConfig = {
         };
       }
       return config;
+    },
+    headers: async () => {
+      return [
+        {
+          source: '/:path*',
+          headers: [
+            {
+              key: 'X-Content-Type-Options',
+              value: 'nosniff',
+            },
+            {
+              key: 'X-Frame-Options',
+              value: 'DENY',
+            },
+            {
+              key: 'X-XSS-Protection',
+              value: '1; mode=block',
+            },
+            {
+              key: 'Content-Security-Policy',
+              value: "default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';",
+            },
+          ],
+        },
+      ];
     },
 };    
 export default nextConfig;
