@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/tabs";
 import { Download, Send, Github, Linkedin, Twitter } from 'lucide-react';
 import Image from 'next/image';
+import { User } from 'lucide-react';
 
 // Lazy load the experience section
 const ExperienceSection = dynamic(() => import('./ExperienceSection'), {
@@ -31,10 +32,8 @@ const About = () => {
   ];
 
   useEffect(() => {
-    // Preload the image
-    const img = new Image();
-    img.src = '/Nilesh.png';
-    img.onload = () => setIsImageLoaded(true);
+    // Set image loaded state after component mount
+    setIsImageLoaded(true);
   }, []);
 
   return (
@@ -47,13 +46,13 @@ const About = () => {
         transition={{ duration: 0.3 }}
       >
         {/* Header */}
-        <motion.h1 
-          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12 transform-gpu"
+        <motion.h2 
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12"
           whileHover={{ scale: 1.05 }}
         >
-          <IoPerson className="w-6 h-6 md:w-8 md:h-8" aria-hidden="true" />
-          About <span className="bg-gradient-to-r from-green-500 to-green-200 bg-clip-text text-transparent">Me</span>
-        </motion.h1>
+          <User className="w-6 h-6 md:w-8 md:h-8" />
+          About <span className="bg-gradient-to-r from-blue-500 to-blue-200 bg-clip-text text-transparent">Me</span>
+        </motion.h2>
 
         {/* Main Content Container */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
@@ -76,7 +75,6 @@ const About = () => {
                 quality={75}
                 loading="eager"
                 onLoad={() => setIsImageLoaded(true)}
-                fetchPriority="high"
               />
             </div>
 

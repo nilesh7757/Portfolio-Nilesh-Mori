@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Link } from "react-scroll"
+import { Link as ScrollLink } from "react-scroll"
+import Link from "next/link"
 import { Menu, X, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -13,7 +14,7 @@ const NavItem = ({ to, children, active }) => (
     whileTap={{ scale: 0.95 }}
     className="relative"
   >
-    <Link
+    <ScrollLink
       to={to}
       spy={true}
       smooth={true}
@@ -35,7 +36,7 @@ const NavItem = ({ to, children, active }) => (
           exit={{ opacity: 0 }}
         />
       )}
-    </Link>
+    </ScrollLink>
   </motion.li>
 )
 
@@ -47,7 +48,7 @@ const MobileNavItem = ({ to, children, active, onClick, index }) => {
       exit={{ opacity: 0, x: 20 }}
       transition={{ duration: 0.3, delay: index * 0.1 }}
     >
-      <Link
+      <ScrollLink
         to={to}
         spy={true}
         smooth={true}
@@ -73,7 +74,7 @@ const MobileNavItem = ({ to, children, active, onClick, index }) => {
             active ? "text-blue-600" : "text-gray-400"
           }`} />
         </motion.div>
-      </Link>
+      </ScrollLink>
     </motion.div>
   )
 }
@@ -107,8 +108,8 @@ const MenuIcon = ({ isOpen }) => (
 )
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
+  const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
     { name: "Home", to: "home" },
@@ -122,18 +123,16 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) => item.to)
-      const sectionElements = sections.map((section) =>
-        document.getElementById(section)
-      )
-
-      const currentSection = sectionElements.findIndex((element) => {
-        if (!element) return false
-        const rect = element.getBoundingClientRect()
-        return rect.top <= 100 && rect.bottom >= 100
+      const currentSection = sections.find((section) => {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          return rect.top <= 100 && rect.bottom >= 100
+        }
+        return false
       })
-
-      if (currentSection !== -1) {
-        setActiveSection(sections[currentSection])
+      if (currentSection) {
+        setActiveSection(currentSection)
       }
     }
 
@@ -142,7 +141,7 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className="sticky  top-0 z-50 w-full">
+    <nav className="sticky top-0 z-50 w-full">
       <motion.div 
         className="absolute inset-0 bg-white/80 backdrop-blur-xl border-b border-gray-200"
         initial={{ opacity: 0 }}
@@ -151,11 +150,11 @@ const Navbar = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <Link to="home" spy={true} smooth={true} offset={-70} duration={500}>
+            <Link href="/" className="cursor-pointer">
               <motion.span
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="font-bold text-2xl cursor-pointer"
+                className="font-bold text-2xl"
               >
                 <span className="text-blue-600">N</span>
                 <span className="text-gray-800">M</span>
@@ -177,40 +176,43 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <div className="md:hidden">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="hover:bg-transparent">
-                  <MenuIcon isOpen={isOpen} />
-                </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="w-full max-w-xs p-0 bg-white/95 backdrop-blur-2xl border-l border-gray-200"
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="hover:bg-transparent md:hidden">
+                <Menu className={`h-6 w-6 ${isOpen ? 'hidden' : 'block'}`} />
+                <X className={`h-6 w-6 ${isOpen ? 'block' : 'hidden'}`} />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-full max-w-xs p-0 bg-white/95 backdrop-blur-2xl border-l border-gray-200">
+              <motion.div 
+                className="flex flex-col mt-5 py-8"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
               >
-                <motion.div 
-                  className="flex flex-col mt-5 py-8"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <AnimatePresence mode="wait">
-                    {navItems.map((item, index) => (
-                      <MobileNavItem
-                        key={item.name}
-                        to={item.to}
-                        active={activeSection === item.to}
-                        onClick={() => setIsOpen(false)}
-                        index={index}
-                      >
-                        {item.name}
-                      </MobileNavItem>
-                    ))}
-                  </AnimatePresence>
-                </motion.div>
-              </SheetContent>
-            </Sheet>
-          </div>
+                <AnimatePresence mode="wait">
+                  {navItems.map((item) => (
+                    <ScrollLink
+                      key={item.name}
+                      to={item.to}
+                      spy={true}
+                      smooth={true}
+                      offset={-70}
+                      duration={500}
+                      onClick={() => setIsOpen(false)}
+                      className={`px-6 py-3 text-lg transition-colors ${
+                        activeSection === item.to
+                          ? "text-blue-600 font-medium bg-blue-50"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                      }`}
+                    >
+                      {item.name}
+                    </ScrollLink>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </nav>

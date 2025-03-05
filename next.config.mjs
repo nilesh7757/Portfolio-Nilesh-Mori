@@ -23,7 +23,7 @@ const nextConfig = {
     },
     output: 'export',
     trailingSlash: true,
-    distDir: 'dist',
+    distDir: '.next',
     basePath: '',
     assetPrefix: '',
     compiler: {
@@ -31,7 +31,7 @@ const nextConfig = {
     },
     poweredByHeader: false,
     compress: true,
-    reactStrictMode: false,
+    reactStrictMode: true,
     swcMinify: true,
     experimental: {
       optimizeCss: true,
@@ -85,31 +85,6 @@ const nextConfig = {
     // Environment variables
     env: {
       NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL || '',
-    },
-    async headers() {
-      return [
-        {
-          source: '/:path*',
-          headers: [
-            {
-              key: 'X-Content-Type-Options',
-              value: 'nosniff',
-            },
-            {
-              key: 'X-Frame-Options',
-              value: 'DENY',
-            },
-            {
-              key: 'X-XSS-Protection',
-              value: '1; mode=block',
-            },
-            {
-              key: 'Content-Security-Policy',
-              value: "default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';",
-            },
-          ],
-        },
-      ];
-    },
+    }
 };    
 export default nextConfig;

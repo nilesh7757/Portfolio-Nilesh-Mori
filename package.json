@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "clean": "if exist .next rmdir /s /q .next",
+    "build": "npm run clean && next build",
+    "build:prod": "cross-env NODE_ENV=production npm run build",
+    "export": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -36,6 +39,7 @@
   },
   "devDependencies": {
     "critters": "^0.0.25",
+    "cross-env": "^7.0.3",
     "eslint": "^9.21.0",
     "eslint-config-next": "^15.2.1",
     "postcss": "^8",
