@@ -7,15 +7,15 @@ const nextConfig = {
         'nilesh7757.github.io',
         'vercel.app'
       ],
-      unoptimized: false,
+      unoptimized: true,
       remotePatterns: [
         {
           protocol: 'https',
           hostname: '**',
         },
       ],
-      deviceSizes: [360, 480, 640, 750, 828],
-      imageSizes: [16, 32, 48, 64],
+      deviceSizes: [360, 480, 640, 750, 828, 1080, 1200],
+      imageSizes: [16, 32, 48, 64, 96, 128, 256],
       formats: ['image/webp'],
       minimumCacheTTL: 31536000,
       dangerouslyAllowSVG: true,
@@ -53,10 +53,10 @@ const nextConfig = {
           splitChunks: {
             chunks: 'all',
             minSize: 10000,
-            maxSize: 100000,
+            maxSize: 244000,
             minChunks: 1,
-            maxAsyncRequests: 10,
-            maxInitialRequests: 10,
+            maxAsyncRequests: 20,
+            maxInitialRequests: 20,
             cacheGroups: {
               defaultVendors: {
                 test: /[\\/]node_modules[\\/]/,

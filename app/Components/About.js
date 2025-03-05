@@ -30,7 +30,7 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen w-full px-4 py-8 md:py-12 lg:py-16">
+    <section id="about" className="min-h-screen w-full px-4 py-8 md:py-12 lg:py-16">
       <motion.div 
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}
@@ -39,13 +39,13 @@ const About = () => {
         transition={{ duration: 0.3 }}
       >
         {/* Header */}
-        <motion.h2 
+        <motion.h1 
           className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12 transform-gpu"
           whileHover={{ scale: 1.05 }}
         >
           <IoPerson className="w-6 h-6 md:w-8 md:h-8" />
           About <span className="bg-gradient-to-r from-green-500 to-green-200 bg-clip-text text-transparent">Me</span>
-        </motion.h2>
+        </motion.h1>
 
         {/* Main Content Container */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
@@ -60,12 +60,12 @@ const About = () => {
             <div className="relative group aspect-square rounded-xl overflow-hidden transform-gpu">
               <Image
                 className="object-cover transition-transform duration-300 group-hover:scale-105 transform-gpu will-change-transform"
-                src="https://raw.githubusercontent.com/nilesh7757/Portfolio-Nilesh-Mori/main/public/Nilesh.png"
-                alt="Nilesh Mori"
+                src="/Nilesh.png"
+                alt="Nilesh Mori - Fullstack Web Developer"
                 fill
-                sizes="(max-width: 360px) 100vw, (max-width: 480px) 90vw, (max-width: 640px) 80vw, (max-width: 750px) 70vw, 33vw"
+                sizes="(max-width: 360px) 100vw, (max-width: 480px) 90vw, (max-width: 640px) 80vw, (max-width: 750px) 70vw, (max-width: 1080px) 50vw, 33vw"
                 priority
-                quality={60}
+                quality={85}
                 loading="eager"
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPjA+OjU1RUVHSkdKTEtMTjw2Uj5AS0pLTEr/2wBDAR"
@@ -85,7 +85,7 @@ const About = () => {
                     className="rounded-full hover:scale-110 transition-transform transform-gpu"
                     asChild
                   >
-                    <a href={social.href} target="_blank" rel="noopener noreferrer">
+                    <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit my ${social.icon.name} profile`}>
                       <Icon className="h-5 w-5" />
                     </a>
                   </Button>
@@ -117,10 +117,10 @@ const About = () => {
                     className="space-y-4"
                   >
                     <div>
-                      <h4 className="text-xl md:text-2xl font-semibold">Nilesh Mori</h4>
-                      <h5 className="text-lg md:text-xl font-medium text-blue-600">
+                      <h2 className="text-xl md:text-2xl font-semibold">Nilesh Mori</h2>
+                      <h3 className="text-lg md:text-xl font-medium text-blue-600">
                         Fullstack Web Developer | Tech Innovator
-                      </h5>
+                      </h3>
                     </div>
                     
                     <p className="leading-relaxed">I'm driven by a relentless curiosity to transform innovative ideas into impactful digital experiences. With a strong foundation in web development and a passion for problem-solving, I thrive on building scalable, efficient, and user-friendly applications.</p>
@@ -138,7 +138,8 @@ const About = () => {
                   <Button 
                     variant="outline" 
                     className="group w-full sm:w-auto transform-gpu"
-                    onClick={() => window.open('./CV.pdf', '_blank')}
+                    onClick={() => window.open('/CV.pdf', '_blank')}
+                    aria-label="Download CV"
                   >
                     <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                     Download CV
@@ -163,7 +164,7 @@ const About = () => {
                         className="rounded-full hover:scale-110 transition-transform transform-gpu"
                         asChild
                       >
-                        <a href={social.href} target="_blank" rel="noopener noreferrer">
+                        <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit my ${social.icon.name} profile`}>
                           <Icon className="h-5 w-5" />
                         </a>
                       </Button>
@@ -175,7 +176,7 @@ const About = () => {
           </motion.div>
         </div>
       </motion.div>
-    </div>
+    </section>
   );
 };
 
