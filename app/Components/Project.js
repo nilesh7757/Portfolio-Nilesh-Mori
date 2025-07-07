@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Code, ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import projects from "@/lib/projects";
 
 const ProjectCard = ({ title, image, description, demoUrl, codeUrl }) => (
   <motion.div
@@ -33,7 +34,7 @@ const ProjectCard = ({ title, image, description, demoUrl, codeUrl }) => (
 
       <CardContent className="p-6 flex-grow">
         <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4 leading-relaxed">{description}</p>
+        <p className="text-gray-600 mb-4 leading-relaxed">{description.length > 90 ? description.slice(0, 90) + '...' : description}</p>
       </CardContent>
 
       <CardFooter className="p-6 pt-0 flex gap-4">
@@ -55,38 +56,8 @@ const ProjectCard = ({ title, image, description, demoUrl, codeUrl }) => (
 );
 
 const Project = () => {
-  const projects = [
-    {
-      title: "PassOP",
-      description:
-        "A secure password generator and manager with advanced encryption.",
-      image: "https://raw.githubusercontent.com/nilesh7757/Portfolio-Nilesh-Mori/main/public/PassOP.png",
-      demoUrl: "https://nilesh7757.github.io/PassOP/",
-      codeUrl: "https://github.com/nilesh7757/passop",
-    },
-    {
-      title: "TodoList",
-      description:
-        "A feature-rich task management application with local storage.",
-      image: "https://raw.githubusercontent.com/nilesh7757/Portfolio-Nilesh-Mori/main/public/Todo.png",
-      demoUrl: "https://nilesh7757.github.io/TodoList/",
-      codeUrl: "https://github.com/nilesh7757/TodoList",
-    },
-    {
-      title: "Spotify Clone",
-      description: "A responsive music player interface inspired by Spotify.",
-      image: "https://raw.githubusercontent.com/nilesh7757/Portfolio-Nilesh-Mori/main/public/Spotify.png",
-      demoUrl: "https://nilesh7757.github.io/Spotify-Clone-HTML/",
-      codeUrl: "https://github.com/nilesh7757/Spotify-Clone-HTML",
-    },
-    {
-      title: "Notify",
-      description: "A modern note-taking application with rich text editing.",
-      image: "https://raw.githubusercontent.com/nilesh7757/Portfolio-Nilesh-Mori/main/public/Notify.png",
-      demoUrl: "https://nilesh7757.github.io/Notify/",
-      codeUrl: "https://github.com/nilesh7757/Notify",
-    },
-  ];
+  // Only show the first 4 projects on the front page
+  const featuredProjects = projects.slice(0, 4);
 
   return (
     <div className="min-h-screen w-full px-4 py-8 md:py-12 lg:py-16">
@@ -109,7 +80,7 @@ const Project = () => {
         </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 content-visibility-auto">
-          {projects.map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
         </div>

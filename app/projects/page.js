@@ -9,6 +9,7 @@ import { Code, Github, ExternalLink, Filter, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import projects from "@/lib/projects";
 
 const ProjectDetailDialog = ({ project }) => (
   <Dialog>
@@ -69,7 +70,7 @@ const ProjectCard = ({ project, onFilterByTech }) => (
       <CardContent className="p-4 sm:p-6 flex-grow">
         <CardHeader className="p-0 mb-4">
           <CardTitle className="text-lg sm:text-xl">{project.title}</CardTitle>
-          <CardDescription className="text-sm">{project.description}</CardDescription>
+          <CardDescription className="text-sm">{project.description.length > 90 ? project.description.slice(0, 90) + '...' : project.description}</CardDescription>
         </CardHeader>
         
         <div className="flex flex-wrap gap-2 mb-4">
@@ -116,45 +117,6 @@ const ProjectCard = ({ project, onFilterByTech }) => (
 
 const ProjectsPage = () => {
   const [filters, setFilters] = useState(new Set());
-
-  const projects = [
-    {
-      title: "PassOP",
-      description: "Secure password generator and manager",
-      fullDescription: "A comprehensive password management solution with advanced encryption techniques, providing users with secure password generation, storage, and retrieval.",
-      image: "./PassOP.png",
-      demoUrl: "https://nilesh7757.github.io/PassOP/",
-      codeUrl: "https://github.com/nilesh7757/passop",
-      technologies: ["React", "JavaScript", "Tailwind CSS", "Local Storage"]
-    },
-    {
-      title: "TodoList",
-      description: "Feature-rich task management app",
-      fullDescription: "An intuitive task management application with local storage, allowing users to create, edit, and track their daily tasks efficiently.",
-      image: "./Todo.png",
-      demoUrl: "https://nilesh7757.github.io/TodoList/",
-      codeUrl: "https://github.com/nilesh7757/TodoList",
-      technologies: ["HTML", "CSS", "JavaScript"]
-    },
-    {
-      title: "Spotify Clone",
-      description: "Responsive music player interface",
-      fullDescription: "A pixel-perfect recreation of Spotify's user interface, demonstrating front-end design skills and responsive web development.",
-      image: "./Spotify.png",
-      demoUrl: "https://nilesh7757.github.io/Spotify-Clone-HTML/",
-      codeUrl: "https://github.com/nilesh7757/Spotify-Clone-HTML",
-      technologies: ["HTML", "CSS", "JavaScript"]
-    },
-    {
-      title: "Notify",
-      description: "Modern note-taking application",
-      fullDescription: "A sleek note-taking platform with rich text editing capabilities, allowing users to create, organize, and manage their notes seamlessly.",
-      image: "./Notify.png",
-      demoUrl: "https://nilesh7757.github.io/Notify/",
-      codeUrl: "https://github.com/nilesh7757/Notify",
-      technologies: ["React", "Tailwind CSS", "Local Storage"]
-    }
-  ];
 
   // Get unique technologies from all projects
   const allTechnologies = [...new Set(projects.flatMap(project => project.technologies))];
