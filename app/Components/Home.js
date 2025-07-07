@@ -31,7 +31,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Card className="w-full max-w-7xl mx-auto bg-white/50 backdrop-blur-sm">
+    <Card className="w-full max-w-7xl mx-auto bg-background backdrop-blur-sm">
       <CardContent className="p-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <motion.div 
@@ -60,7 +60,7 @@ const Home = () => {
               </motion.div>
 
               <motion.p
-                className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0"
+                className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}

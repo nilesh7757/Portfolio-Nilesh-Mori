@@ -56,12 +56,12 @@ const Footer = () => {
   ];
 
   return (
-    <Card className="mt-16 bg-gray-50">
+    <Card className="mt-16 bg-background">
       <CardContent className="p-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold">Nilesh's Portfolio</h3>
-            <p className="text-gray-600">
+            <h3 className="text-2xl font-bold text-foreground">Nilesh's Portfolio</h3>
+            <p className="text-muted-foreground">
               Thank you for visiting. Keep rising, keep progressing.
             </p>
             <div className="flex gap-4">
@@ -72,7 +72,7 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold">Quick Links</h3>
+            <h3 className="text-2xl font-bold text-foreground">Quick Links</h3>
             <nav className="space-y-2">
               {navigation.map((item) => (
                 <FooterLink key={item.name} to={item.to}>
@@ -83,21 +83,21 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold">Contact Info</h3>
-            <div className="space-y-3 text-gray-600">
+            <h3 className="text-2xl font-bold text-foreground">Contact Info</h3>
+            <div className="space-y-3 text-muted-foreground">
               <a 
                 href="tel:+917778827757" 
-                className="flex items-center gap-2 hover:text-blue-600 transition-colors"
+                className="flex items-center gap-2 hover:text-primary transition-colors"
               >
-                <Phone className="h-5 w-5 shrink-0 text-blue-500" />
+                <Phone className="h-5 w-5 shrink-0 text-primary" />
                 <span>7778827757</span>
               </a>
               
               <a 
                 href="mailto:nileshmori7757@gmail.com"
-                className="flex items-start gap-2 hover:text-blue-600 transition-colors"
+                className="flex items-start gap-2 hover:text-primary transition-colors"
               >
-                <Mail className="h-5 w-5 shrink-0 text-blue-500 mt-1" />
+                <Mail className="h-5 w-5 shrink-0 text-primary mt-1" />
                 <span className="break-all">nileshmori7757@gmail.com</span>
               </a>
               
@@ -105,16 +105,16 @@ const Footer = () => {
                 href="https://www.google.com/maps/place/Adityana,Porbandar,+Gujarat+360545"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-2 hover:text-blue-600 transition-colors"
+                className="flex items-start gap-2 hover:text-primary transition-colors"
               >
-                <MapPin className="h-5 w-5 shrink-0 text-blue-500 mt-1" />
+                <MapPin className="h-5 w-5 shrink-0 text-primary mt-1" />
                 <span>Adityana,Porbandar, Gujarat, India - 360545</span>
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t text-center flex items-center justify-center gap-2 text-gray-600">
+        <div className="mt-12 pt-8 border-t border-border text-center flex items-center justify-center gap-2 text-muted-foreground">
           Made with <Heart className="h-4 w-4 text-red-500 animate-pulse" /> by Nilesh Mori
         </div>
       </CardContent>

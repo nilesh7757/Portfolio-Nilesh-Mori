@@ -7,6 +7,7 @@ import Link from "next/link"
 import { Menu, X, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { ThemeToggle } from "@/components/ThemeToggle"
 
 const NavItem = ({ to, children, active }) => (
   <motion.li
@@ -143,7 +144,7 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 w-full">
       <motion.div 
-        className="absolute inset-0 bg-white/80 backdrop-blur-xl border-b border-gray-200"
+        className="absolute inset-0 bg-background/80 backdrop-blur-xl border-b border-border"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />
@@ -157,7 +158,7 @@ const Navbar = () => {
                 className="font-bold text-2xl"
               >
                 <span className="text-blue-600">N</span>
-                <span className="text-gray-800">M</span>
+                <span className="text-foreground">M</span>
               </motion.span>
             </Link>
           </div>
@@ -174,45 +175,20 @@ const Navbar = () => {
                 </NavItem>
               ))}
             </ul>
+            <ThemeToggle />
           </div>
 
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="hover:bg-transparent md:hidden">
-                <Menu className={`h-6 w-6 ${isOpen ? 'hidden' : 'block'}`} />
-                <X className={`h-6 w-6 ${isOpen ? 'block' : 'hidden'}`} />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-xs p-0 bg-white/95 backdrop-blur-2xl border-l border-gray-200">
-              <motion.div 
-                className="flex flex-col mt-5 py-8"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <AnimatePresence mode="wait">
-                  {navItems.map((item) => (
-                    <ScrollLink
-                      key={item.name}
-                      to={item.to}
-                      spy={true}
-                      smooth={true}
-                      offset={-70}
-                      duration={500}
-                      onClick={() => setIsOpen(false)}
-                      className={`px-6 py-3 text-lg transition-colors ${
-                        activeSection === item.to
-                          ? "text-blue-600 font-medium bg-blue-50"
-                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                      }`}
-                    >
-                      {item.name}
-                    </ScrollLink>
-                  ))}
-                </AnimatePresence>
-              </motion.div>
-            </SheetContent>
-          </Sheet>
+          <div className="flex items-center md:hidden gap-2">
+            <ThemeToggle />
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="hover:bg-transparent">
+                  <Menu className={`h-6 w-6 ${isOpen ? 'hidden' : 'block'}`} />
+                  <X className={`h-6 w-6 ${isOpen ? 'block' : 'hidden'}`} />
+                </Button>
+              </SheetTrigger>
+            </Sheet>
+          </div>
         </div>
       </div>
     </nav>

@@ -47,11 +47,11 @@ const About = () => {
       >
         {/* Header */}
         <motion.h2 
-          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12 text-foreground"
           whileHover={{ scale: 1.05 }}
         >
           <User className="w-6 h-6 md:w-8 md:h-8" />
-          About <span className="bg-gradient-to-r from-blue-500 to-blue-200 bg-clip-text text-transparent">Me</span>
+          About <span className="bg-gradient-to-r from-blue-500 to-blue-200 dark:from-blue-300 dark:to-blue-700 bg-clip-text text-transparent">Me</span>
         </motion.h2>
 
         {/* Main Content Container */}
@@ -108,7 +108,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
           >
-            <div className="bg-white/50 border border-gray-100 backdrop-blur-sm rounded-xl p-4 md:p-6 lg:p-8 shadow-lg transform-gpu">
+            <div className="bg-card border border-border backdrop-blur-sm rounded-xl p-4 md:p-6 lg:p-8 shadow-lg transform-gpu">
               <Tabs defaultValue="about" className="w-full" onValueChange={setActiveTab}>
                 <TabsList className="grid w-full grid-cols-2 mb-6" aria-label="About tabs">
                   <TabsTrigger value="about">About</TabsTrigger>
@@ -124,12 +124,12 @@ const About = () => {
                   >
                     <div>
                       <h2 className="text-xl md:text-2xl font-semibold">Nilesh Mori</h2>
-                      <h3 className="text-lg md:text-xl font-medium text-blue-600">
+                      <h3 className="text-lg md:text-xl font-medium text-primary">
                         Fullstack Web Developer | Tech Innovator
                       </h3>
                     </div>
                     
-                    <p className="leading-relaxed">I'm driven by a relentless curiosity to transform innovative ideas into impactful digital experiences. With a strong foundation in web development and a passion for problem-solving, I thrive on building scalable, efficient, and user-friendly applications.</p>
+                    <p className="leading-relaxed text-muted-foreground">I'm driven by a relentless curiosity to transform innovative ideas into impactful digital experiences. With a strong foundation in web development and a passion for problem-solving, I thrive on building scalable, efficient, and user-friendly applications.</p>
                   </motion.div>
                 </TabsContent>
 

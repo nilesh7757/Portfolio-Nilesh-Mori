@@ -3,6 +3,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import { ThemeProvider } from "../components/ThemeProvider";
+
 export const metadata = {
   title: "Nilesh Mori | Full Stack Developer",
   description: "Welcome to Nilesh Mori's portfolio - Full Stack Developer specializing in web development, mobile apps, and tech innovation.",
@@ -19,7 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
