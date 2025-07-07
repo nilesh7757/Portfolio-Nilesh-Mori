@@ -144,14 +144,14 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 w-full">
       <motion.div 
-        className="absolute inset-0 bg-background/70 backdrop-blur-xl border-b border-border shadow-lg md:shadow-xl transition-all duration-300"
+        className="absolute inset-0 bg-white/60 dark:bg-neutral-900/70 backdrop-blur-2xl border-b border-blue-200/40 dark:border-blue-900/40 shadow-2xl transition-all duration-300 rounded-b-2xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <div className="flex items-center h-20 md:h-24 gap-4 md:gap-8 justify-between">
           <div className="flex-shrink-0">
-            <Link href="/" className="cursor-pointer">
+            <Link href="/" className="cursor-pointer select-none">
               <motion.span
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -168,7 +168,7 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <motion.li
                   key={item.name}
-                  whileHover={{ scale: 1.08 }}
+                  whileHover={{ scale: 1.12 }}
                   whileTap={{ scale: 0.97 }}
                   className="relative"
                 >
@@ -178,10 +178,10 @@ const Navbar = () => {
                     smooth={true}
                     offset={-70}
                     duration={500}
-                    className={`cursor-pointer transition-colors relative px-3 py-1 rounded-full font-medium
+                    className={`cursor-pointer transition-colors relative px-5 py-2 rounded-2xl font-semibold text-base tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400
                       ${activeSection === item.to
-                        ? 'bg-blue-200/40 dark:bg-blue-900/60 text-blue-700 dark:text-blue-200 shadow-sm'
-                        : 'text-muted-foreground hover:bg-muted hover:text-foreground hover:shadow'}
+                        ? 'bg-gradient-to-r from-blue-200/80 via-sky-200/60 to-cyan-200/60 dark:from-blue-900/70 dark:via-sky-900/50 dark:to-cyan-900/50 text-blue-700 dark:text-blue-200 shadow-lg'
+                        : 'text-muted-foreground hover:bg-muted/70 hover:text-foreground hover:shadow-md'}
                     `}
                   >
                     {item.name}
@@ -189,35 +189,37 @@ const Navbar = () => {
                   {activeSection === item.to && (
                     <motion.div
                       layoutId="activeSectionUnderline"
-                      className="absolute left-0 right-0 mx-auto -bottom-0.5 w-1/2 h-0.5 rounded-full bg-blue-500/80 dark:bg-blue-300/80"
+                      className="absolute left-0 right-0 mx-auto -bottom-1 w-3/4 h-1.5 rounded-full bg-gradient-to-r from-blue-500/90 via-sky-400/90 to-cyan-400/90 dark:from-blue-300/90 dark:via-sky-300/90 dark:to-cyan-300/90 shadow-xl"
                       initial={{ opacity: 0, scaleX: 0.5 }}
                       animate={{ opacity: 1, scaleX: 1 }}
                       exit={{ opacity: 0, scaleX: 0.5 }}
-                      transition={{ duration: 0.25 }}
+                      transition={{ duration: 0.3, type: 'spring', bounce: 0.3 }}
                     />
                   )}
                 </motion.li>
               ))}
             </ul>
-            <ThemeToggle />
+            <div className="ml-4">
+              <ThemeToggle />
+            </div>
           </div>
 
           <div className="flex items-center md:hidden gap-2">
             <ThemeToggle />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="hover:bg-transparent">
+                <Button variant="ghost" size="icon" className="hover:bg-transparent focus:ring-2 focus:ring-blue-400">
                   <Menu className={`h-6 w-6 ${isOpen ? 'hidden' : 'block'}`} />
                   <X className={`h-6 w-6 ${isOpen ? 'block' : 'hidden'}`} />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-xs p-0 bg-background/95 backdrop-blur-2xl border-l border-border shadow-2xl animate-slide-in">
+              <SheetContent side="right" className="w-full max-w-xs p-0 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-2xl border-l border-blue-200/40 dark:border-blue-900/40 shadow-2xl animate-slide-in rounded-l-3xl">
                 <motion.div 
                   className="flex flex-col mt-5 py-8"
-                  initial={{ opacity: 0, x: 40 }}
+                  initial={{ opacity: 0, x: 60 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 40 }}
-                  transition={{ duration: 0.35, type: 'spring', bounce: 0.2 }}
+                  exit={{ opacity: 0, x: 60 }}
+                  transition={{ duration: 0.45, type: 'spring', bounce: 0.25 }}
                 >
                   <AnimatePresence mode="wait">
                     {navItems.map((item, index) => (
@@ -229,10 +231,10 @@ const Navbar = () => {
                         offset={-70}
                         duration={500}
                         onClick={() => setIsOpen(false)}
-                        className={`px-6 py-3 text-lg rounded-full transition-colors mb-2 font-medium
+                        className={`px-10 py-5 text-lg rounded-2xl transition-colors mb-3 font-semibold tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400
                           ${activeSection === item.to
-                            ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 shadow-md'
-                            : 'text-muted-foreground hover:bg-muted hover:text-foreground hover:shadow'}
+                            ? 'bg-gradient-to-r from-blue-100 via-sky-100 to-cyan-100 dark:from-blue-900 dark:via-sky-900 dark:to-cyan-900 text-blue-700 dark:text-blue-300 shadow-xl'
+                            : 'text-muted-foreground hover:bg-muted/70 hover:text-foreground hover:shadow-md'}
                         `}
                       >
                         {item.name}

@@ -9,15 +9,15 @@ import Image from "next/image";
 import Link from "next/link";
 import projects from "@/lib/projects";
 
-const ProjectCard = ({ title, image, description, demoUrl, codeUrl }) => (
+const ProjectCard = ({ title, image, description, demoUrl, codeUrl, techStack }) => (
   <motion.div
     initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.3 }}
-    className="transform-gpu"
+    className="transform-gpu mb-8"
   >
-    <Card className="overflow-hidden h-full flex flex-col bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl">
+    <Card className="overflow-hidden h-full flex flex-col bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 shadow-xl transition-transform duration-300">
       <div className="relative h-48 w-full group">
         <Image
           src={image || "/placeholder.svg"}
@@ -35,16 +35,23 @@ const ProjectCard = ({ title, image, description, demoUrl, codeUrl }) => (
       <CardContent className="p-6 flex-grow">
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <p className="text-gray-600 mb-4 leading-relaxed">{description.length > 90 ? description.slice(0, 90) + '...' : description}</p>
+        <div className="flex flex-wrap gap-2 mb-2">
+          {(techStack || ["React", "Next.js", "Tailwind CSS"]).map((tech, i) => (
+            <span key={i} className="px-2 py-1 text-xs rounded bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200 font-semibold">
+              {tech}
+            </span>
+          ))}
+        </div>
       </CardContent>
 
       <CardFooter className="p-6 pt-0 flex gap-4">
-        <Button asChild className="transform-gpu">
+        <Button asChild className="transform-gpu transition-all duration-200 hover:scale-105 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-neutral-900 focus:ring-2 focus:ring-blue-400">
           <Link href={demoUrl} target="_blank" rel="noopener noreferrer">
             <ExternalLink className="mr-2 h-4 w-4" />
             Live Demo
           </Link>
         </Button>
-        <Button variant="outline" asChild className="transform-gpu">
+        <Button variant="outline" asChild className="transform-gpu transition-all duration-200 hover:scale-105 hover:border-blue-600 hover:text-blue-600 hover:shadow-md border-gray-300 text-gray-800 dark:hover:border-blue-400 dark:hover:text-blue-400 dark:border-neutral-700 dark:text-neutral-200 focus:ring-2 focus:ring-blue-400">
           <Link href={codeUrl} target="_blank" rel="noopener noreferrer">
             <Github className="mr-2 h-4 w-4" />
             Code
@@ -60,16 +67,16 @@ const Project = () => {
   const featuredProjects = projects.slice(0, 4);
 
   return (
-    <div className="min-h-screen w-full px-4 py-8 md:py-12 lg:py-16">
+    <div className="relative w-full px-4 py-6 md:py-8 lg:py-10 pb-4 overflow-hidden">
       <motion.div
-        className="max-w-7xl mx-auto"
+        className="relative z-0 max-w-7xl mx-auto"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.3 }}
       >
         <motion.h2
-          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12 transform-gpu"
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-center flex items-center justify-center gap-2 mb-8 md:mb-12 transform-gpu relative"
           whileHover={{ scale: 1.05 }}
         >
           <Code className="w-6 h-6 md:w-8 md:h-8" />
@@ -84,7 +91,7 @@ const Project = () => {
             <ProjectCard key={index} {...project} />
           ))}
         </div>
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center ">
           <Button variant="default" className="flex items-center gap-2 transform-gpu" asChild>
             <Link href="/projects">
               View All Projects

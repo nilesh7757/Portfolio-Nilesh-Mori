@@ -121,7 +121,7 @@ const About = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.2 }}
-                    className="space-y-4"
+                    className="space-y-4 m-2"
                   >
                     <div>
                       <h2 className="text-xl md:text-2xl font-semibold">Nilesh Mori</h2>
@@ -140,7 +140,7 @@ const About = () => {
               </Tabs>
 
               {/* Action Buttons */}
-              <div className="mt-8 space-y-4">
+              <div className="mt-8 mb-2 space-y-4">
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Button 
                     variant="outline" 

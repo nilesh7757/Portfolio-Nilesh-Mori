@@ -42,7 +42,7 @@ const Home = () => {
           >
             <div className="space-y-6 text-center lg:text-left">
               <motion.h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold"
+                className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
@@ -51,7 +51,7 @@ const Home = () => {
               </motion.h1>
 
               <motion.div
-                className="text-2xl md:text-3xl lg:text-4xl font-medium"
+                className="font-sans text-2xl md:text-3xl lg:text-4xl font-medium leading-snug"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
