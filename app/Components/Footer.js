@@ -9,7 +9,7 @@ import { Mail, Phone, MapPin, Github, Linkedin, Twitter, ExternalLink, ChevronRi
 const FooterLink = ({ to, children }) => (
   <motion.div
     whileHover={{ x: 4 }}
-    className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
+    className="flex items-center gap-2 text-gray-600 hover:text-primary"
   >
     <ChevronRight className="h-4 w-4" />
     <Link
@@ -61,8 +61,8 @@ const Footer = () => {
 
   return (
     <Card className="mt-16 bg-background">
-      <CardContent className="p-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+      <CardContent className="p-8 pb-16">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-foreground">Nilesh's Portfolio</h3>
             <p className="text-muted-foreground">
@@ -109,7 +109,7 @@ const Footer = () => {
                 href="https://www.google.com/maps/place/Adityana,Porbandar,+Gujarat+360545"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-2 hover:text-primary transition-colors"
+                className="flex items-start gap-2  hover:text-primary transition-colors"
               >
                 <MapPin className="h-5 w-5 shrink-0 text-primary mt-1" />
                 <span>Adityana,Porbandar, Gujarat, India - 360545</span>
