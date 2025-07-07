@@ -147,3 +147,25 @@ body {
     @apply bg-background text-foreground;
     }
 }
+
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 8px #38bdf8);
+}
+
+.animate-logo-glow {
+  animation: logo-glow 2s infinite alternate;
+}
+
+@keyframes logo-glow {
+  0% { filter: drop-shadow(0 0 8px #38bdf8); }
+  100% { filter: drop-shadow(0 0 16px #0ea5e9); }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.35s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(40px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

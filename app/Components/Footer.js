@@ -55,6 +55,10 @@ const Footer = () => {
     { icon: ExternalLink, href: 'https://nilesh7757.github.io/NileshMori/' }
   ];
 
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <Card className="mt-16 bg-background">
       <CardContent className="p-8">
@@ -114,9 +118,18 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border text-center flex items-center justify-center gap-2 text-muted-foreground">
-          Made with <Heart className="h-4 w-4 text-red-500 animate-pulse" /> by Nilesh Mori
-        </div>
+        <footer className="w-full py-6 bg-background border-t border-border text-center text-muted-foreground text-sm relative">
+          <button
+            onClick={handleBackToTop}
+            className="absolute left-1/2 -top-6 transform -translate-x-1/2 bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl px-4 py-2 rounded-full text-sm font-medium text-foreground hover:bg-white/50 dark:hover:bg-white/20 transition"
+            aria-label="Back to Top"
+          >
+            ↑ Back to Top
+          </button>
+          <div>
+            &copy; {new Date().getFullYear()} Nilesh Mori. All rights reserved.
+          </div>
+        </footer>
       </CardContent>
     </Card>
   );

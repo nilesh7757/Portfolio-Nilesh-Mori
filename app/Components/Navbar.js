@@ -144,35 +144,59 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 w-full">
       <motion.div 
-        className="absolute inset-0 bg-background/80 backdrop-blur-xl border-b border-border"
+        className="absolute inset-0 bg-background/70 backdrop-blur-xl border-b border-border shadow-lg md:shadow-xl transition-all duration-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        <div className="flex items-center h-20 md:h-24 gap-4 md:gap-8 justify-between">
           <div className="flex-shrink-0">
             <Link href="/" className="cursor-pointer">
               <motion.span
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="font-bold text-2xl"
+                className="font-bold text-2xl flex items-center gap-1"
               >
-                <span className="text-blue-600">N</span>
-                <span className="text-foreground">M</span>
+                <span className="bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-400 dark:from-blue-400 dark:via-sky-300 dark:to-cyan-300 text-transparent bg-clip-text drop-shadow-glow animate-logo-glow">N</span>
+                <span className="text-foreground drop-shadow-glow">M</span>
               </motion.span>
             </Link>
           </div>
 
-          <div className="hidden md:block">
-            <ul className="flex space-x-8">
+          <div className="hidden md:flex items-center gap-4 justify-end flex-1">
+            <ul className="flex space-x-4 lg:space-x-6 xl:space-x-8">
               {navItems.map((item) => (
-                <NavItem
+                <motion.li
                   key={item.name}
-                  to={item.to}
-                  active={activeSection === item.to}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="relative"
                 >
-                  {item.name}
-                </NavItem>
+                  <ScrollLink
+                    to={item.to}
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className={`cursor-pointer transition-colors relative px-3 py-1 rounded-full font-medium
+                      ${activeSection === item.to
+                        ? 'bg-blue-200/40 dark:bg-blue-900/60 text-blue-700 dark:text-blue-200 shadow-sm'
+                        : 'text-muted-foreground hover:bg-muted hover:text-foreground hover:shadow'}
+                    `}
+                  >
+                    {item.name}
+                  </ScrollLink>
+                  {activeSection === item.to && (
+                    <motion.div
+                      layoutId="activeSectionUnderline"
+                      className="absolute left-0 right-0 mx-auto -bottom-0.5 w-1/2 h-0.5 rounded-full bg-blue-500/80 dark:bg-blue-300/80"
+                      initial={{ opacity: 0, scaleX: 0.5 }}
+                      animate={{ opacity: 1, scaleX: 1 }}
+                      exit={{ opacity: 0, scaleX: 0.5 }}
+                      transition={{ duration: 0.25 }}
+                    />
+                  )}
+                </motion.li>
               ))}
             </ul>
             <ThemeToggle />
@@ -187,6 +211,36 @@ const Navbar = () => {
                   <X className={`h-6 w-6 ${isOpen ? 'block' : 'hidden'}`} />
                 </Button>
               </SheetTrigger>
+              <SheetContent side="right" className="w-full max-w-xs p-0 bg-background/95 backdrop-blur-2xl border-l border-border shadow-2xl animate-slide-in">
+                <motion.div 
+                  className="flex flex-col mt-5 py-8"
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 40 }}
+                  transition={{ duration: 0.35, type: 'spring', bounce: 0.2 }}
+                >
+                  <AnimatePresence mode="wait">
+                    {navItems.map((item, index) => (
+                      <ScrollLink
+                        key={item.name}
+                        to={item.to}
+                        spy={true}
+                        smooth={true}
+                        offset={-70}
+                        duration={500}
+                        onClick={() => setIsOpen(false)}
+                        className={`px-6 py-3 text-lg rounded-full transition-colors mb-2 font-medium
+                          ${activeSection === item.to
+                            ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 shadow-md'
+                            : 'text-muted-foreground hover:bg-muted hover:text-foreground hover:shadow'}
+                        `}
+                      >
+                        {item.name}
+                      </ScrollLink>
+                    ))}
+                  </AnimatePresence>
+                </motion.div>
+              </SheetContent>
             </Sheet>
           </div>
         </div>

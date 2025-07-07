@@ -14,6 +14,7 @@ import {
 import { Download, Send, Github, Linkedin, Twitter } from 'lucide-react';
 import Image from 'next/image';
 import { User } from 'lucide-react';
+import { Card } from "@/components/ui/card";
 
 // Lazy load the experience section
 const ExperienceSection = dynamic(() => import('./ExperienceSection'), {
@@ -108,7 +109,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
           >
-            <div className="bg-card border border-border backdrop-blur-sm rounded-xl p-4 md:p-6 lg:p-8 shadow-lg transform-gpu">
+            <Card className="w-full max-w-7xl mx-auto bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl">
               <Tabs defaultValue="about" className="w-full" onValueChange={setActiveTab}>
                 <TabsList className="grid w-full grid-cols-2 mb-6" aria-label="About tabs">
                   <TabsTrigger value="about">About</TabsTrigger>
@@ -179,7 +180,7 @@ const About = () => {
                   })}
                 </div>
               </div>
-            </div>
+            </Card>
           </motion.div>
         </div>
       </motion.div>

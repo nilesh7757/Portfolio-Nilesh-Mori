@@ -10,7 +10,7 @@ const SkillCard = ({ icon, title, level, colorClass }) => (
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
-    className="relative p-6 rounded-lg bg-background shadow-lg hover:shadow-xl transition-shadow border border-border"
+    className="relative p-6 rounded-lg bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl hover:shadow-2xl transition-shadow"
   >
     <div className="flex items-center gap-4 mb-4">
       {icon}

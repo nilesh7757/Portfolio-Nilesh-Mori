@@ -17,12 +17,12 @@ const ProjectCard = ({ title, image, description, demoUrl, codeUrl }) => (
     transition={{ duration: 0.3 }}
     className="transform-gpu"
   >
-    <Card className="overflow-hidden h-full flex flex-col">
+    <Card className="overflow-hidden h-full flex flex-col bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl">
       <div className="relative h-48 w-full group">
         <Image
           src={image || "/placeholder.svg"}
           alt={title}
-          className="object-cover transition-transform duration-300 group-hover:scale-110 transform-gpu will-change-transform"
+          className="object-cover transition-transform duration-300 group-hover:scale-105 transform-gpu will-change-transform rounded-t-lg"
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
           quality={75}
