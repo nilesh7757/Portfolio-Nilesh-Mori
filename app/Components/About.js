@@ -140,7 +140,7 @@ const About = () => {
               </Tabs>
 
               {/* Action Buttons */}
-              <div className="mt-8 mb-2 space-y-4">
+              <div className="mt-8 mb-2 mx-3 space-y-4">
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Button 
                     variant="outline" 
