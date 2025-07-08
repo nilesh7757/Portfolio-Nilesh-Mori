@@ -26,14 +26,9 @@ const FooterLink = ({ to, children }) => (
 );
 
 const SocialButton = ({ href, icon: Icon }) => (
-  <Button
-    variant="outline"
-    size="icon"
-    className="rounded-full hover:scale-110 transition-transform"
-    asChild
-  >
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      <Icon className="h-5 w-5" />
+  <Button variant="ghost" size="icon" asChild>
+    <a href={href} target="_blank" rel="noopener noreferrer" aria-label="Social link">
+      <Icon className="h-5 w-5" aria-hidden="true" />
     </a>
   </Button>
 );

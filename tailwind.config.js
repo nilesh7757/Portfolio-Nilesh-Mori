@@ -57,7 +57,28 @@ module.exports = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+        // Vibrant custom accent colors
+        indigo: {
+          DEFAULT: '#6366f1',
+          light: '#a5b4fc',
+          dark: '#4338ca',
+        },
+        teal: {
+          DEFAULT: '#14b8a6',
+          light: '#5eead4',
+          dark: '#0f766e',
+        },
+        pink: {
+          DEFAULT: '#ec4899',
+          light: '#f9a8d4',
+          dark: '#be185d',
+        },
+        orange: {
+          DEFAULT: '#f59e42',
+          light: '#fdba74',
+          dark: '#c2410c',
+        },
   		},
   		fontFamily: {
   			sans: ['var(--font-inter)', 'sans-serif'],

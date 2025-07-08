@@ -14,7 +14,7 @@ import projects from "@/lib/projects";
 const ProjectDetailDialog = ({ project }) => (
   <Dialog>
     <DialogTrigger asChild>
-      <Button variant="outline" size="sm" className="hover:bg-blue-50 hover:text-blue-700 transition-colors">
+      <Button variant="outline" size="sm">
         View Details
       </Button>
     </DialogTrigger>

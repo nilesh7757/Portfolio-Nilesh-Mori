@@ -11,13 +11,13 @@ import projects from "@/lib/projects";
 
 const ProjectCard = ({ title, image, description, demoUrl, codeUrl, techStack }) => (
   <motion.div
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.3 }}
-    className="transform-gpu mb-8"
+    transition={{ duration: 0.5, ease: 'easeOut' }}
+    className="transform-gpu mb-8 card-hover-animate group"
   >
-    <Card className="overflow-hidden h-full flex flex-col bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 shadow-xl transition-transform duration-300">
+    <Card className="overflow-hidden h-full flex flex-col bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 shadow-xl">
       <div className="relative h-48 w-full group">
         <Image
           src={image || "/placeholder.svg"}
@@ -30,28 +30,29 @@ const ProjectCard = ({ title, image, description, demoUrl, codeUrl, techStack })
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPjA+OjU1RUVHSkdKTEtMTjw2Uj5AS0pLTEr/2wBDAR"
         />
+        {/* Overlay with more info on hover */}
+        <div className="absolute inset-0 bg-white/90 dark:bg-neutral-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-4 text-center pointer-events-none">
+          <p className="text-sm text-gray-700 dark:text-gray-200 mb-2">{description}</p>
+        </div>
       </div>
-
       <CardContent className="p-6 flex-grow">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4 leading-relaxed">{description.length > 90 ? description.slice(0, 90) + '...' : description}</p>
+        <h3 className="text-xl font-bold mb-2 group-hover:text-indigo transition-colors duration-200">{title}</h3>
         <div className="flex flex-wrap gap-2 mb-2">
           {(techStack || ["React", "Next.js", "Tailwind CSS"]).map((tech, i) => (
-            <span key={i} className="px-2 py-1 text-xs rounded bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200 font-semibold">
+            <span key={i} className="px-2 py-1 text-xs rounded font-semibold bg-accent-indigo text-white group-hover:bg-accent-pink transition-colors duration-200">
               {tech}
             </span>
           ))}
         </div>
       </CardContent>
-
       <CardFooter className="p-6 pt-0 flex gap-4">
-        <Button asChild className="transform-gpu transition-all duration-200 hover:scale-105 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-neutral-900 focus:ring-2 focus:ring-blue-400">
+        <Button variant="default" asChild>
           <Link href={demoUrl} target="_blank" rel="noopener noreferrer">
             <ExternalLink className="mr-2 h-4 w-4" />
             Live Demo
           </Link>
         </Button>
-        <Button variant="outline" asChild className="transform-gpu transition-all duration-200 hover:scale-105 hover:border-blue-600 hover:text-blue-600 hover:shadow-md border-gray-300 text-gray-800 dark:hover:border-blue-400 dark:hover:text-blue-400 dark:border-neutral-700 dark:text-neutral-200 focus:ring-2 focus:ring-blue-400">
+        <Button variant="outline" asChild>
           <Link href={codeUrl} target="_blank" rel="noopener noreferrer">
             <Github className="mr-2 h-4 w-4" />
             Code
@@ -92,7 +93,7 @@ const Project = () => {
           ))}
         </div>
         <div className="flex justify-center ">
-          <Button variant="default" className="flex items-center gap-2 transform-gpu" asChild>
+          <Button variant="default" className="flex items-center gap-2" asChild>
             <Link href="/projects">
               View All Projects
               <ExternalLink className="h-4 w-4" />

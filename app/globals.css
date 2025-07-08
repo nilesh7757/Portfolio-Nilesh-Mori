@@ -20,12 +20,14 @@
 }
 
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Inter', 'Poppins', 'Montserrat', sans-serif;
     font-weight: 400;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
+    background: theme('colors.background');
+    color: theme('colors.foreground');
 }
   
 * {
@@ -215,4 +217,30 @@ body {
 /* Optional: Remove default button border for a cleaner look */
 .animated-gradient-btn {
   border: none !important;
+}
+
+/* Accent background utility classes */
+.bg-accent-indigo { background: linear-gradient(90deg, #6366f1, #a5b4fc); }
+.bg-accent-teal { background: linear-gradient(90deg, #14b8a6, #5eead4); }
+.bg-accent-pink { background: linear-gradient(90deg, #ec4899, #f9a8d4); }
+.bg-accent-orange { background: linear-gradient(90deg, #f59e42, #fdba74); }
+
+/* Animated card hover effect */
+.card-hover-animate {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.card-hover-animate:hover {
+  box-shadow: 0 8px 32px 0 rgba(99,102,241,0.15), 0 1.5px 4px 0 rgba(20,184,166,0.10);
+  transform: translateY(-4px) scale(1.03);
+}
+
+/* Animated button hover effect */
+.button-hover-animate {
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.button-hover-animate:hover {
+  background: linear-gradient(90deg, #6366f1, #14b8a6);
+  color: #fff;
+  box-shadow: 0 4px 16px 0 rgba(99,102,241,0.15);
+  transform: scale(1.05);
 }

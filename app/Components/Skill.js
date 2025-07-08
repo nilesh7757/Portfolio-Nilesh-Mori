@@ -64,7 +64,8 @@ const Skills = () => {
         >
           <h2 className="text-3xl md:text-4xl font-bold flex items-center justify-center gap-3 text-foreground">
             <Monitor className="h-8 w-8" />
-            Technical Skills
+            <span>Technical</span>
+            <span className="bg-gradient-to-r from-blue-500 to-blue-200 dark:from-blue-300 dark:to-blue-700 bg-clip-text text-transparent">Skills</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             A comprehensive overview of my technical expertise and proficiency levels

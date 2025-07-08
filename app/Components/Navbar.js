@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Link as ScrollLink } from "react-scroll"
 import Link from "next/link"
-import { Menu, X, ChevronRight } from "lucide-react"
+import { Menu, X, ChevronRight, Home, User, Monitor, GraduationCap, Folder, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/ThemeToggle"
@@ -113,12 +113,12 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
-    { name: "Home", to: "home" },
-    { name: "About", to: "about" },
-    { name: "Skills", to: "skills" },
-    { name: "Education", to: "education" },
-    { name: "Projects", to: "project" },
-    { name: "Contact", to: "contact" },
+    { name: "Home", to: "home", icon: <Home className="w-5 h-5 mr-2" /> },
+    { name: "About", to: "about", icon: <User className="w-5 h-5 mr-2" /> },
+    { name: "Skills", to: "skills", icon: <Monitor className="w-5 h-5 mr-2" /> },
+    { name: "Education", to: "education", icon: <GraduationCap className="w-5 h-5 mr-2" /> },
+    { name: "Projects", to: "project", icon: <Folder className="w-5 h-5 mr-2" /> },
+    { name: "Contact", to: "contact", icon: <Mail className="w-5 h-5 mr-2" /> },
   ]
 
   useEffect(() => {
@@ -144,7 +144,7 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 w-full">
       <motion.div 
-        className="absolute inset-0 bg-white/60 dark:bg-neutral-900/70 backdrop-blur-2xl border-b border-blue-200/40 dark:border-blue-900/40 shadow-2xl transition-all duration-300 rounded-b-2xl"
+        className="absolute inset-0 bg-white/40 dark:bg-neutral-900/60 backdrop-blur-xl border-b border-white/30 dark:border-white/10 shadow-2xl transition-all duration-300 rounded-b-2xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />
@@ -178,12 +178,13 @@ const Navbar = () => {
                     smooth={true}
                     offset={-70}
                     duration={500}
-                    className={`cursor-pointer transition-colors relative px-5 py-2 rounded-2xl font-semibold text-base tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400
+                    className={`cursor-pointer transition-colors relative px-5 py-2 rounded-2xl font-semibold text-base tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 flex items-center
                       ${activeSection === item.to
                         ? 'bg-gradient-to-r from-blue-200/80 via-sky-200/60 to-cyan-200/60 dark:from-blue-900/70 dark:via-sky-900/50 dark:to-cyan-900/50 text-blue-700 dark:text-blue-200 shadow-lg'
                         : 'text-muted-foreground hover:bg-muted/70 hover:text-foreground hover:shadow-md'}
                     `}
                   >
+                    {item.icon}
                     {item.name}
                   </ScrollLink>
                   {activeSection === item.to && (
@@ -208,37 +209,52 @@ const Navbar = () => {
             <ThemeToggle />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="hover:bg-transparent focus:ring-2 focus:ring-blue-400">
+                <Button variant="ghost" size="icon">
                   <Menu className={`h-6 w-6 ${isOpen ? 'hidden' : 'block'}`} />
                   <X className={`h-6 w-6 ${isOpen ? 'block' : 'hidden'}`} />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-xs p-0 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-2xl border-l border-blue-200/40 dark:border-blue-900/40 shadow-2xl animate-slide-in rounded-l-3xl">
+              <SheetContent 
+                side="right" 
+                className="w-full max-w-xs p-0 bg-white/60 dark:bg-neutral-900/80 backdrop-blur-2xl border-l border-white/30 dark:border-white/10 shadow-2xl animate-slide-in rounded-l-3xl"
+              >
                 <motion.div 
                   className="flex flex-col mt-5 py-8"
-                  initial={{ opacity: 0, x: 60 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 60 }}
-                  transition={{ duration: 0.45, type: 'spring', bounce: 0.25 }}
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    visible: { transition: { staggerChildren: 0.08 } },
+                    hidden: {},
+                  }}
                 >
                   <AnimatePresence mode="wait">
                     {navItems.map((item, index) => (
-                      <ScrollLink
+                      <motion.div
                         key={item.name}
-                        to={item.to}
-                        spy={true}
-                        smooth={true}
-                        offset={-70}
-                        duration={500}
-                        onClick={() => setIsOpen(false)}
-                        className={`px-10 py-5 text-lg rounded-2xl transition-colors mb-3 font-semibold tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400
-                          ${activeSection === item.to
-                            ? 'bg-gradient-to-r from-blue-100 via-sky-100 to-cyan-100 dark:from-blue-900 dark:via-sky-900 dark:to-cyan-900 text-blue-700 dark:text-blue-300 shadow-xl'
-                            : 'text-muted-foreground hover:bg-muted/70 hover:text-foreground hover:shadow-md'}
-                        `}
+                        initial={{ opacity: 0, x: 40 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 40 }}
+                        transition={{ duration: 0.35, delay: index * 0.08, type: 'spring', bounce: 0.2 }}
+                        whileHover={{ scale: 1.06, x: 8 }}
+                        whileTap={{ scale: 0.97, x: 2 }}
                       >
-                        {item.name}
-                      </ScrollLink>
+                        <ScrollLink
+                          to={item.to}
+                          spy={true}
+                          smooth={true}
+                          offset={-70}
+                          duration={500}
+                          onClick={() => setIsOpen(false)}
+                          className={`px-10 py-5 text-lg rounded-2xl transition-colors mb-3 font-semibold tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 flex items-center cursor-pointer
+                            ${activeSection === item.to
+                              ? 'bg-gradient-to-r from-blue-100 via-sky-100 to-cyan-100 dark:from-blue-900 dark:via-sky-900 dark:to-cyan-900 text-blue-700 dark:text-blue-300 shadow-xl'
+                              : 'text-muted-foreground hover:bg-muted/70 hover:text-foreground hover:shadow-md'}
+                          `}
+                        >
+                          {item.icon}
+                          {item.name}
+                        </ScrollLink>
+                      </motion.div>
                     ))}
                   </AnimatePresence>
                 </motion.div>
