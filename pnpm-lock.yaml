@@ -68,6 +68,9 @@ importers:
       react-next-tilt:
         specifier: ^0.4.3
         version: 0.4.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-parallax-tilt:
+        specifier: ^1.7.300
+        version: 1.7.310(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-scroll:
         specifier: ^1.9.0
         version: 1.9.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1678,6 +1681,12 @@ packages:
     peerDependencies:
       react: '>= 16.8 || ^18.2.0'
       react-dom: '>= 16.8 || ^18.2.0'
+
+  react-parallax-tilt@1.7.310:
+    resolution: {integrity: sha512-GUq5tqlnf1thUu73XsbwpnnuBrC0x8X60q+CmX6V3NW2UjlBfyP9btLvzChHPLb+sKcWXesCdTJ63okHx/IJcA==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   react-remove-scroll-bar@2.3.8:
     resolution: {integrity: sha512-9r+yi9+mgU33AKcj6IbT9oRCO78WriSj6t/cF8DWBZJ9aOGPOTEDvdUDz1FwKim7QXWwmHqtdHnRJfhAxEG46Q==}
@@ -3718,6 +3727,11 @@ snapshots:
   react-is@16.13.1: {}
 
   react-next-tilt@0.4.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
+  react-parallax-tilt@1.7.310(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)

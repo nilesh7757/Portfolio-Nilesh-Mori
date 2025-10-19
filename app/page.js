@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
     <AnimatedBakground />
-    <div className="h-20 z-0 sticky top-0"><Navbar/></div>
+    <div className="h-20 z-20 sticky top-0"><Navbar/></div>
     <main className="relative overflow-x-hidden h-full w-full">
       <div id="home" className="lg:h-[90vh] lg:flex lg:items-center h-fit"><Nilesh/></div>
       <div id="about" className=""><About/></div>
