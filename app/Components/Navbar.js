@@ -31,7 +31,7 @@ const NavItem = ({ to, children, active }) => (
       {active && (
         <motion.div
           layoutId="activeSection"
-          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600"
+          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -157,7 +157,7 @@ const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
                 className="font-bold text-2xl flex items-center gap-1"
               >
-                <span className="bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-400 dark:from-blue-400 dark:via-sky-300 dark:to-cyan-300 text-transparent bg-clip-text drop-shadow-glow animate-logo-glow">N</span>
+                <span className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-400 dark:from-blue-500 dark:via-blue-300 dark:to-blue-300 text-transparent bg-clip-text drop-shadow-glow animate-logo-glow ">N</span>
                 <span className="text-foreground drop-shadow-glow">M</span>
               </motion.span>
             </Link>
@@ -178,25 +178,28 @@ const Navbar = () => {
                     smooth={true}
                     offset={-70}
                     duration={500}
-                    className={`cursor-pointer transition-colors relative px-5 py-2 rounded-2xl font-semibold text-base tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 flex items-center
+                    className={`cursor-pointer transition-all duration-300 relative px-5 py-2 font-semibold text-base tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 flex items-center
                       ${activeSection === item.to
-                        ? 'bg-gradient-to-r from-blue-200/80 via-sky-200/60 to-cyan-200/60 dark:from-blue-900/70 dark:via-sky-900/50 dark:to-cyan-900/50 text-blue-700 dark:text-blue-200 shadow-lg'
-                        : 'text-muted-foreground hover:bg-muted/70 hover:text-foreground hover:shadow-md'}
+                        ? 'text-blue-600 dark:text-blue-400'
+                        : 'text-muted-foreground hover:text-foreground'}
                     `}
+                    style={activeSection === item.to ? {
+                      textShadow: '0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.4), 0 0 60px rgba(59, 130, 246, 0.3), 0 0 80px rgba(59, 130, 246, 0.2)',
+                    } : {}}
                   >
                     {item.icon}
                     {item.name}
                   </ScrollLink>
-                  {activeSection === item.to && (
+                  {/* {activeSection === item.to && (
                     <motion.div
                       layoutId="activeSectionUnderline"
-                      className="absolute left-0 right-0 mx-auto -bottom-1 w-3/4 h-1.5 rounded-full bg-gradient-to-r from-blue-500/90 via-sky-400/90 to-cyan-400/90 dark:from-blue-300/90 dark:via-sky-300/90 dark:to-cyan-300/90 shadow-xl"
+                      className="absolute left-0 right-0 mx-auto -bottom-1 w-3/4 h-1.5 rounded-full bg-gradient-to-r from-blue-500/90 via-blue-400/90 to-blue-600/90 dark:from-blue-400/90 dark:via-blue-300/90 dark:to-blue-500/90 shadow-xl"
                       initial={{ opacity: 0, scaleX: 0.5 }}
                       animate={{ opacity: 1, scaleX: 1 }}
                       exit={{ opacity: 0, scaleX: 0.5 }}
                       transition={{ duration: 0.3, type: 'spring', bounce: 0.3 }}
                     />
-                  )}
+                  )} */}
                 </motion.li>
               ))}
             </ul>
@@ -245,10 +248,10 @@ const Navbar = () => {
                           offset={-70}
                           duration={500}
                           onClick={() => setIsOpen(false)}
-                          className={`px-10 py-5 text-lg rounded-2xl transition-colors mb-3 font-semibold tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 flex items-center cursor-pointer
+                          className={`px-10 py-5 text-lg rounded-2xl transition-colors mb-3 tracking-tight focus:outline-none focus-visible:ring-2  flex items-center
                             ${activeSection === item.to
-                              ? 'bg-gradient-to-r from-blue-100 via-sky-100 to-cyan-100 dark:from-blue-900 dark:via-sky-900 dark:to-cyan-900 text-blue-700 dark:text-blue-300 shadow-xl'
-                              : 'text-muted-foreground hover:bg-muted/70 hover:text-foreground hover:shadow-md'}
+                              ? 'animate-logo-glow text-white dark:text-blue-300 cursor-pointer'
+                              : 'text-muted-foreground  hover:bg-muted/70 hover:text-foreground hover:shadow-md cursor-pointer'}
                           `}
                         >
                           {item.icon}

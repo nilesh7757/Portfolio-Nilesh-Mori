@@ -153,8 +153,8 @@ body {
 }
 
 @keyframes logo-glow {
-  0% { filter: drop-shadow(0 0 8px #38bdf8); }
-  100% { filter: drop-shadow(0 0 16px #0ea5e9); }
+  0% { filter: drop-shadow(0 0 8px #ffffff); }
+  100% { filter: drop-shadow(0 0 16px #ffffff); }
 }
 
 .animate-slide-in {

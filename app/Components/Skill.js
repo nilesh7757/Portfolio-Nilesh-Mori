@@ -10,7 +10,7 @@ const SkillCard = ({ icon, title, level, colorClass }) => (
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
-    className="relative p-6 rounded-lg bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl hover:shadow-2xl transition-shadow"
+    className="relative p-6  bg-white/30 dark:bg-white/10    dark:border-white/10"
   >
     <div className="flex items-center gap-4 mb-4">
       {icon}
@@ -54,7 +54,7 @@ const Skills = () => {
   };
 
   return (
-    <Card className="w-full max-w-7xl mx-auto bg-background">
+    <div className="w-full max-w-7xl mx-auto">
       <CardContent className="p-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -91,7 +91,7 @@ const Skills = () => {
           ))}
         </Tabs>
       </CardContent>
-    </Card>
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Typed from 'typed.js';
 
-const Home = () => {
+const Nilesh = () => {
   const typedRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -31,7 +31,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Card className="w-full max-w-7xl mx-auto bg-background backdrop-blur-sm">
+    <div className="w-full max-w-7xl mx-auto">
       <CardContent className="p-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <motion.div 
@@ -160,8 +160,8 @@ const Home = () => {
           </motion.div>
         </div>
       </CardContent>
-    </Card>
+    </div>
   );
 };
 
-export default Home;
+export default Nilesh;
