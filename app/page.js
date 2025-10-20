@@ -8,7 +8,7 @@ import Project from "./Components/Project";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import AnimatedBakground from "./Components/AnimateBakground";
-
+import { TimelineDemo } from "./Components/Timeline";
 export default function Home() {
   return (
     <>
@@ -19,6 +19,7 @@ export default function Home() {
       <div id="about" className=""><About/></div>
       <div id="skills" className=""><Skill/></div>
       <div id='education' className=""><Education/></div>
+      {/* <div id='timeline' className=""><TimelineDemo/></div> */}
       <div id="project" className=""><Project/></div>
       <div id="contact" className=""><Contact/></div>
     </main>

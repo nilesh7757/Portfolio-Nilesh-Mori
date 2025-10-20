@@ -13,7 +13,7 @@ const EducationCard = ({ school, degree, duration, location, logo, image, descri
     transition={{ duration: 0.3 }}
     className="w-full transform-gpu"
   >
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+    <Card className="overflow-hidden bg-transparent hover:shadow-lg transition-shadow duration-300">
       <div className="relative h-48 w-full">
         <Image
           src={image}
@@ -26,26 +26,26 @@ const EducationCard = ({ school, degree, duration, location, logo, image, descri
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPjA+OjU1RUVHSkdKTEtMTjw2Uj5AS0pLTEr/2wBDAR"
         />
-        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-          <div className="bg-white p-4 rounded-full transform-gpu">
+        <div className="absolute inset-0 bg-transparent flex items-center justify-center">
+          <div className="p-4 rounded-full bg-white">
             <Image
               src={logo}
               alt={`${school} logo`}
               width={64}
               height={64}
-              className="h-16 w-16 object-contain transform-gpu"
+              className="h-16 w-16 object-contain rounded-full transform-gpu"
               quality={75}
               loading="lazy"
             />
           </div>
         </div>
       </div>
-      <CardContent className="p-6 space-y-4">
+      <CardContent className="p-6 space-y-4 bg-transparent">
         <div>
           <h3 className="text-2xl font-bold text-blue-600">{degree}</h3>
           <p className="text-xl font-semibold">{school}</p>
         </div>
-        <div className="space-y-2 text-gray-600">
+        <div className="space-y-2 text-gray-400">
           <div className="flex items-center gap-2">
             <Calendar className="h-4 w-4" />
             <span>{duration}</span>
@@ -55,7 +55,7 @@ const EducationCard = ({ school, degree, duration, location, logo, image, descri
             <span>{location}</span>
           </div>
         </div>
-        <p className="text-gray-600 leading-relaxed">{description}</p>
+        <p className="text-gray-400 leading-relaxed">{description}</p>
       </CardContent>
     </Card>
   </motion.div>
@@ -102,7 +102,7 @@ const Education = () => {
           Education <span className="bg-gradient-to-r from-purple-500 to-purple-200 bg-clip-text text-transparent">Journey</span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-8 content-visibility-auto">
+        <div className="grid md:grid-cols-2 gap-8 bg-transparent">
           {educationData.map((edu, index) => (
             <EducationCard key={index} {...edu} />
           ))}
