@@ -14,7 +14,7 @@ export default function Error({ error, reset }) {
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="text-center space-y-6">
         <h1 className="text-3xl font-bold">Something went wrong!</h1>
-        <p className="text-gray-600">Don't worry, we're on it. Try refreshing the page.</p>
+        <p className="text-gray-600">Don&apos;t worry, we&apos;re on it. Try refreshing the page.</p>
         <div className="flex justify-center gap-4">
           <Button 
             onClick={() => window.location.reload()}

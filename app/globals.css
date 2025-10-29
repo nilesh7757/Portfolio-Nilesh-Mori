@@ -105,6 +105,16 @@ body {
         --chart-3: 197 37% 24%;
         --chart-4: 43 74% 66%;
         --chart-5: 27 87% 67%;
+
+        --indigo: 235 85% 60%;
+        --indigo-foreground: 235 85% 90%;
+        --teal: 170 70% 40%;
+        --teal-foreground: 170 70% 90%;
+        --pink: 330 80% 60%;
+        --pink-foreground: 330 80% 90%;
+        --orange: 30 90% 55%;
+        --orange-foreground: 30 90% 90%;
+
         --radius: 0.5rem;
     }
   .dark {
@@ -132,6 +142,15 @@ body {
         --chart-3: 30 80% 55%;
         --chart-4: 280 65% 60%;
         --chart-5: 340 75% 55%;
+
+        --indigo: 235 85% 70%;
+        --indigo-foreground: 235 85% 10%;
+        --teal: 170 70% 50%;
+        --teal-foreground: 170 70% 10%;
+        --pink: 330 80% 70%;
+        --pink-foreground: 330 80% 10%;
+        --orange: 30 90% 65%;
+        --orange-foreground: 30 90% 10%;
     }
 }
 
@@ -145,7 +164,7 @@ body {
 }
 
 .drop-shadow-glow {
-  filter: drop-shadow(0 0 8px #38bdf8);
+  filter: drop-shadow(0 0 8px hsl(var(--primary)));
 }
 
 .animate-logo-glow {
@@ -153,8 +172,8 @@ body {
 }
 
 @keyframes logo-glow {
-  0% { filter: drop-shadow(0 0 8px #ffffff); }
-  100% { filter: drop-shadow(0 0 16px #ffffff); }
+  0% { filter: drop-shadow(0 0 8px hsl(var(--primary-foreground))); }
+  100% { filter: drop-shadow(0 0 16px hsl(var(--primary-foreground))); }
 }
 
 .animate-slide-in {
@@ -182,7 +201,7 @@ body {
   position: absolute;
   inset: -2px;
   z-index: -1;
-  background: linear-gradient(90deg, #3b82f6, #06b6d4, #a78bfa, #3b82f6);
+  background: linear-gradient(90deg, hsl(var(--indigo)), hsl(var(--teal)), hsl(var(--pink)), hsl(var(--indigo)));
   background-size: 200% 200%;
   border-radius: inherit;
   opacity: 0.7;
@@ -220,17 +239,17 @@ body {
 }
 
 /* Accent background utility classes */
-.bg-accent-indigo { background: linear-gradient(90deg, #6366f1, #a5b4fc); }
-.bg-accent-teal { background: linear-gradient(90deg, #14b8a6, #5eead4); }
-.bg-accent-pink { background: linear-gradient(90deg, #ec4899, #f9a8d4); }
-.bg-accent-orange { background: linear-gradient(90deg, #f59e42, #fdba74); }
+.bg-accent-indigo { background: linear-gradient(90deg, hsl(var(--indigo)), hsl(var(--indigo-foreground))); }
+.bg-accent-teal { background: linear-gradient(90deg, hsl(var(--teal)), hsl(var(--teal-foreground))); }
+.bg-accent-pink { background: linear-gradient(90deg, hsl(var(--pink)), hsl(var(--pink-foreground))); }
+.bg-accent-orange { background: linear-gradient(90deg, hsl(var(--orange)), hsl(var(--orange-foreground))); }
 
 /* Animated card hover effect */
 .card-hover-animate {
   transition: box-shadow 0.3s, transform 0.3s;
 }
 .card-hover-animate:hover {
-  box-shadow: 0 8px 32px 0 rgba(99,102,241,0.15), 0 1.5px 4px 0 rgba(20,184,166,0.10);
+  box-shadow: 0 8px 32px 0 hsla(var(--indigo), 0.15), 0 1.5px 4px 0 hsla(var(--teal), 0.10);
   transform: translateY(-4px) scale(1.03);
 }
 
@@ -239,8 +258,62 @@ body {
   transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 .button-hover-animate:hover {
-  background: linear-gradient(90deg, #6366f1, #14b8a6);
-  color: #fff;
-  box-shadow: 0 4px 16px 0 rgba(99,102,241,0.15);
+  background: linear-gradient(90deg, hsl(var(--indigo)), hsl(var(--teal)));
+  color: hsl(var(--primary-foreground));
+  box-shadow: 0 4px 16px 0 hsla(var(--indigo), 0.15);
   transform: scale(1.05);
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* Ensures pseudo-elements are clipped by the parent */
+}
+
+.shine-effect::before {
+  content: '';
+  position: absolute;
+  top: -100%; /* Start higher */
+  left: -20%; /* Start further left */
+  width: 60%; /* Make the shine wider */
+  height: 300%; /* Make it taller to cover more area */
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%, /* More opaque */
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg);
+  transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 0;
+  z-index: 1; /* Ensure it's above card content but below any interactive elements */
+}
+
+.shine-effect:hover::before {
+  left: 120%; /* Sweep across the entire card */
+  opacity: 1;
+}
+
+.animated-gradient-background {
+  background: linear-gradient(
+    -45deg,
+    #ee7752,
+    #e73c7e,
+    #23a6d5,
+    #23d5ab
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

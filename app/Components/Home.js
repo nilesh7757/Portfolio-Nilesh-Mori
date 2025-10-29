@@ -47,7 +47,7 @@ const Nilesh = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                Hi, I'm <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Nilesh Mori</span>
+                Hi, I&apos;m <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Nilesh Mori</span>
               </motion.h1>
 
               <motion.div
@@ -97,7 +97,7 @@ const Nilesh = () => {
                     offset={-70} 
                     duration={500}
                   >
-                    Let's Connect
+                    Let&apos;s Connect
                     <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
@@ -150,7 +150,7 @@ const Nilesh = () => {
                 transition={{ duration: 0.3 }}
               />
               <Image
-                src="./web-1.jpg"
+                src="/web-1.jpg"
                 alt="Nilesh Mori"
                 fill
                 className="rounded-full object-cover p-2"

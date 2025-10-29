@@ -59,25 +59,22 @@ module.exports = {
   				'5': 'hsl(var(--chart-5))'
   			},
         // Vibrant custom accent colors
+        // Custom accent colors (will be defined via CSS variables)
         indigo: {
-          DEFAULT: '#6366f1',
-          light: '#a5b4fc',
-          dark: '#4338ca',
+          DEFAULT: 'hsl(var(--indigo))',
+          foreground: 'hsl(var(--indigo-foreground))',
         },
         teal: {
-          DEFAULT: '#14b8a6',
-          light: '#5eead4',
-          dark: '#0f766e',
+          DEFAULT: 'hsl(var(--teal))',
+          foreground: 'hsl(var(--teal-foreground))',
         },
         pink: {
-          DEFAULT: '#ec4899',
-          light: '#f9a8d4',
-          dark: '#be185d',
+          DEFAULT: 'hsl(var(--pink))',
+          foreground: 'hsl(var(--pink-foreground))',
         },
         orange: {
-          DEFAULT: '#f59e42',
-          light: '#fdba74',
-          dark: '#c2410c',
+          DEFAULT: 'hsl(var(--orange))',
+          foreground: 'hsl(var(--orange-foreground))',
         },
   		},
   		fontFamily: {
@@ -86,5 +83,5 @@ module.exports = {
   		},
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };

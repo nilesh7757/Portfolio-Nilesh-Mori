@@ -7,14 +7,15 @@ import Footer from "./Components/Footer";
 import { ThemeProvider } from "../components/ThemeProvider";
 
 export const metadata = {
-  title: "Nilesh Mori | Full Stack Developer",
-  description: "Welcome to Nilesh Mori's portfolio - Full Stack Developer specializing in web development, mobile apps, and tech innovation.",
-  keywords: "Nilesh Mori, Full Stack Developer, Web Development, Portfolio, React, Next.js",
+  title: "Nilesh Mori | Full Stack Developer | Web & Mobile Innovator",
+  description: "Explore the portfolio of Nilesh Mori, a passionate Full Stack Developer specializing in cutting-edge web development, robust mobile applications, and innovative tech solutions. Featuring projects in Next.js, React, Node.js, and more.",
+  keywords: "Nilesh Mori, Full Stack Developer, Web Development, Mobile Apps, Tech Innovator, Portfolio, React, Next.js, Node.js, JavaScript, MongoDB, Tailwind CSS, Software Engineer",
   openGraph: {
-    title: "Nilesh Mori | Full Stack Developer",
-    description: "Full Stack Developer specializing in web development, mobile apps, and tech innovation",
+    title: "Nilesh Mori | Full Stack Developer | Web & Mobile Innovator",
+    description: "Explore the portfolio of Nilesh Mori, a passionate Full Stack Developer specializing in cutting-edge web development, robust mobile applications, and innovative tech solutions.",
     type: "website",
     locale: "en_US",
+    url: "https://nilesh7757.github.io/",
   },
 };
 

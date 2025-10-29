@@ -40,9 +40,15 @@ export default function AnimatedBackground() {
 
       draw() {
         const darkMode = isDarkMode();
-        ctx.fillStyle = darkMode 
-          ? 'rgba(147, 197, 253, 0.8)' // blue-300 for dark mode
-          : 'rgba(59, 130, 246, 0.6)';  // blue-500 for light mode
+        const gradient = ctx.createLinearGradient(this.x - this.size, this.y - this.size, this.x + this.size, this.y + this.size);
+        if (darkMode) {
+          gradient.addColorStop(0, 'rgba(191, 219, 254, 0.8)');
+          gradient.addColorStop(1, 'rgba(107, 114, 128, 0.8)');
+        } else {
+          gradient.addColorStop(0, 'rgba(59, 130, 246, 0.6)');
+          gradient.addColorStop(1, 'rgba(147, 197, 253, 0.6)');
+        }
+        ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.closePath();
@@ -99,7 +105,7 @@ export default function AnimatedBackground() {
     // Connect particles
     const connect = () => {
       const darkMode = isDarkMode();
-      let opacityValue = darkMode ? 0.15 : 0.1;
+      let opacityValue = darkMode ? 0.2 : 0.15;
       
       for (let a = 0; a < particles.length; a++) {
         for (let b = a; b < particles.length; b++) {
@@ -107,11 +113,11 @@ export default function AnimatedBackground() {
           let dy = particles[a].y - particles[b].y;
           let distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 100) {
-            const opacity = opacityValue * (1 - distance / 100);
+          if (distance < 120) {
+            const opacity = opacityValue * (1 - distance / 120);
             ctx.strokeStyle = darkMode
-              ? `rgba(147, 197, 253, ${opacity})` // blue-300
-              : `rgba(59, 130, 246, ${opacity})`;  // blue-500
+              ? `rgba(107, 114, 128, ${opacity})`
+              : `rgba(147, 197, 253, ${opacity})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);
@@ -127,24 +133,14 @@ export default function AnimatedBackground() {
       const darkMode = isDarkMode();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Add subtle gradient background
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2,
-        canvas.height / 2,
-        0,
-        canvas.width / 2,
-        canvas.height / 2,
-        canvas.width / 2
-      );
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
       
       if (darkMode) {
-        gradient.addColorStop(0, 'rgba(30, 58, 138, 0.05)');   // blue-900
-        gradient.addColorStop(0.5, 'rgba(67, 56, 202, 0.03)'); // indigo-700
-        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        gradient.addColorStop(0, 'rgba(17, 24, 39, 0.1)');
+        gradient.addColorStop(1, 'rgba(31, 41, 55, 0.1)');
       } else {
-        gradient.addColorStop(0, 'rgba(191, 219, 254, 0.3)');  // blue-200
-        gradient.addColorStop(0.5, 'rgba(219, 234, 254, 0.2)'); // blue-100
-        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        gradient.addColorStop(0, 'rgba(243, 244, 246, 0.1)');
+        gradient.addColorStop(1, 'rgba(229, 231, 235, 0.1)');
       }
       
       ctx.fillStyle = gradient;

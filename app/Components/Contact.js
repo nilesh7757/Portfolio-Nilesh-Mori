@@ -72,7 +72,7 @@ const Contact = () => {
           >
             <Card className="h-full">
               <CardHeader>
-                <CardTitle>Let's Connect</CardTitle>
+                <CardTitle>Let&apos;s Connect</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">

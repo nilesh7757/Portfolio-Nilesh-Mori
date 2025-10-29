@@ -144,7 +144,7 @@ const About = () => {
                             Fullstack Web Developer | Tech Innovator
                           </h3>
                         </div>
-                        <p className="leading-relaxed text-muted-foreground">I'm driven by a relentless curiosity to transform innovative ideas into impactful digital experiences. With a strong foundation in web development and a passion for problem-solving, I thrive on building scalable, efficient, and user-friendly applications.</p>
+                        <p className="leading-relaxed text-muted-foreground">I&apos;m driven by a relentless curiosity to transform innovative ideas into impactful digital experiences. With a strong foundation in web development and a passion for problem-solving, I thrive on building scalable, efficient, and user-friendly applications.</p>
                       </motion.div>
                     </TabsContent>
                   )}
@@ -183,7 +183,7 @@ const About = () => {
                   >
                     <Link to="contact" spy={true} smooth={true} offset={-70} duration={500}>
                       <Send className="mr-2 h-4 w-4 transition-transform" aria-hidden="true" />
-                      Let's Connect
+                      Let&apos;s Connect
                     </Link>
                   </Button>
                 </div>

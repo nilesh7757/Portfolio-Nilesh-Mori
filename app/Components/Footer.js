@@ -59,7 +59,7 @@ const Footer = () => {
       <CardContent className="p-8 pb-16">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-foreground">Nilesh's Portfolio</h3>
+            <h3 className="text-2xl font-bold text-foreground">Nilesh&apos;s Portfolio</h3>
             <p className="text-muted-foreground">
               Thank you for visiting. Keep rising, keep progressing.
             </p>
