@@ -53,7 +53,7 @@ const About = () => {
           whileHover={{ scale: 1.05 }}
         >
           <User className="w-6 h-6 md:w-8 md:h-8" />
-          About <span className="bg-gradient-to-r from-blue-500 to-blue-200 dark:from-blue-300 dark:to-blue-700 bg-clip-text text-transparent">Me</span>
+          About <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Me</span>
         </motion.h2>
 
         {/* Main Content Container */}
@@ -99,12 +99,39 @@ const About = () => {
                     key={index}
                     variant="ghost"
                     size="icon"
-                    className="rounded-full"
+                    className="rounded-full z-10"
                     asChild
                   >
                     <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit my ${social.name} profile`}>
                       <Icon className="h-5 w-5" aria-hidden="true" />
                       <span className="sr-only">{social.name}</span>
+                    </a>
+                  </Button>
+                );
+              })}
+            </div>
+            {/* Desktop Social Links */}
+            <div className="hidden lg:flex justify-center gap-4 mt-6">
+              {socials.map((social, index) => {
+                const Icon = social.icon;
+                return (
+                  <Button
+                    key={index}
+                    variant="ghost"
+                    size="icon"
+                    className="rounded-full p-0"
+                    asChild
+                  >
+                    <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit my ${social.name} profile`}>
+                      <motion.div
+                        whileHover={{ scale: 1.25, rotate: 12 }}
+                        whileTap={{ scale: 0.95, rotate: -12 }}
+                        transition={{ type: 'spring', stiffness: 300 }}
+                        className="flex items-center justify-center h-10 w-10"
+                      >
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                        <span className="sr-only">{social.name}</span>
+                      </motion.div>
                     </a>
                   </Button>
                 );
@@ -120,16 +147,16 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
           >
-            <Card className="w-full max-w-7xl mx-auto bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl">
-              <Tabs defaultValue="about" className="w-full" onValueChange={setActiveTab}>
-                <TabsList className="grid w-full grid-cols-2 mb-6" aria-label="About tabs">
+            <Card className="w-full max-w-7xl mx-auto glassmorphism">
+              <Tabs defaultValue="about" className="w-full bg-transparent" onValueChange={setActiveTab}>
+                <TabsList className="grid w-full grid-cols-2 mb-6 glassmorphism" aria-label="About tabs">
                   <TabsTrigger value="about">About</TabsTrigger>
                   <TabsTrigger value="experience">Experience</TabsTrigger>
                 </TabsList>
 
                 <AnimatePresence mode="wait" initial={false}>
                   {activeTab === 'about' && (
-                    <TabsContent value="about" forceMount>
+                    <TabsContent value="about" forceMount className="bg-transparent">
                       <motion.div
                         key="about"
                         initial={{ opacity: 0, y: 20 }}
@@ -149,7 +176,7 @@ const About = () => {
                     </TabsContent>
                   )}
                   {activeTab === 'experience' && (
-                    <TabsContent value="experience" forceMount>
+                    <TabsContent value="experience" forceMount className="bg-transparent">
                       <motion.div
                         key="experience"
                         initial={{ opacity: 0, y: 20 }}
@@ -179,41 +206,12 @@ const About = () => {
                   <Button 
                     variant="default"
                     className="w-full sm:w-auto"
-                    asChild
                   >
-                    <Link to="contact" spy={true} smooth={true} offset={-70} duration={500}>
+                    <Link to="contact" spy={true} smooth={true} offset={-70} duration={500} className="flex items-center">
                       <Send className="mr-2 h-4 w-4 transition-transform" aria-hidden="true" />
                       Let&apos;s Connect
                     </Link>
                   </Button>
-                </div>
-
-                {/* Desktop Social Links */}
-                <div className="hidden lg:flex justify-center gap-4">
-                  {socials.map((social, index) => {
-                    const Icon = social.icon;
-                    return (
-                      <Button
-                        key={index}
-                        variant="ghost"
-                        size="icon"
-                        className="rounded-full p-0"
-                        asChild
-                      >
-                        <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit my ${social.name} profile`}>
-                          <motion.div
-                            whileHover={{ scale: 1.25, rotate: 12 }}
-                            whileTap={{ scale: 0.95, rotate: -12 }}
-                            transition={{ type: 'spring', stiffness: 300 }}
-                            className="flex items-center justify-center h-10 w-10"
-                          >
-                            <Icon className="h-5 w-5" aria-hidden="true" />
-                            <span className="sr-only">{social.name}</span>
-                          </motion.div>
-                        </a>
-                      </Button>
-                    );
-                  })}
                 </div>
               </div>
             </Card>

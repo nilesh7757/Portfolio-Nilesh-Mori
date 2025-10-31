@@ -22,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${poppins.variable} font-sans`}>
+      <body className={`${inter.variable} ${poppins.variable} font-sans static-background`}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

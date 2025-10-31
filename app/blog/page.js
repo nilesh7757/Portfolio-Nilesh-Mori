@@ -9,9 +9,13 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { posts } from '@/lib/posts';
 
+import BlogHeader from "../Components/BlogHeader";
+
 const BlogPage = () => {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <>
+      <BlogHeader />
+      <div className="container mx-auto px-4 py-12">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -52,6 +56,7 @@ const BlogPage = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

@@ -9,7 +9,7 @@ import { Mail, Phone, MapPin, Github, Linkedin, Twitter, ExternalLink, ChevronRi
 const FooterLink = ({ to, children }) => (
   <motion.div
     whileHover={{ x: 4 }}
-    className="flex items-center gap-2 text-gray-600 hover:text-primary"
+    className="flex items-center gap-2 text-muted-foreground hover:text-primary"
   >
     <ChevronRight className="h-4 w-4" />
     <Link
@@ -55,7 +55,7 @@ const Footer = () => {
   };
 
   return (
-    <Card className="mt-16 bg-background">
+    <Card className="mt-16 glassmorphism">
       <CardContent className="p-8 pb-16">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
           <div className="space-y-4">
@@ -113,10 +113,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <footer className="w-full py-6 bg-background border-t border-border text-center text-muted-foreground text-sm relative">
+        <footer className="w-full py-6 bg-transparent border-t border-border text-center text-muted-foreground text-sm relative">
           <button
             onClick={handleBackToTop}
-            className="absolute left-1/2 -top-6 transform -translate-x-1/2 bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl px-4 py-2 rounded-full text-sm font-medium text-foreground hover:bg-white/50 dark:hover:bg-white/20 transition"
+            className="absolute left-1/2 -top-6 transform -translate-x-1/2 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl px-4 py-2 rounded-full text-sm font-medium text-foreground hover:bg-white/50 dark:hover:bg-white/20 transition"
             aria-label="Back to Top"
           >
             ↑ Back to Top

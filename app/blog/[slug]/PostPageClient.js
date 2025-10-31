@@ -5,9 +5,13 @@ import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+import BlogHeader from "../../Components/BlogHeader";
+
 export default function PostPageClient({ post }) {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <>
+      <BlogHeader />
+      <div className="container mx-auto px-4 py-12">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -24,5 +28,6 @@ export default function PostPageClient({ post }) {
         </Card>
       </motion.div>
     </div>
+    </>
   );
 }

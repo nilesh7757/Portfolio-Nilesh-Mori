@@ -34,8 +34,8 @@ const ExperienceSection = () => (
         >
           {exp.company}
         </a>
-        <p className="text-sm text-gray-500">{exp.duration}</p>
-        <p className="mt-2 text-sm md:text-base text-gray-600 leading-relaxed">{exp.description}</p>
+        <p className="text-sm text-muted-foreground">{exp.duration}</p>
+        <p className="mt-2 text-sm md:text-base text-muted-foreground leading-relaxed">{exp.description}</p>
       </motion.div>
     ))}
   </motion.div>

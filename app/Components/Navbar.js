@@ -19,23 +19,10 @@ const NavItem = ({ to, children, active }) => {
       className="relative"
     >
       <span
-        className={`cursor-pointer transition-colors relative ${
-          active
-            ? "text-blue-600 font-medium dark:text-blue-400"
-            : "text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-        }`}
+                className={`cursor-pointer transition-colors relative ${active ? "text-blue-400 font-medium drop-shadow-[0_0_8px_rgba(96,165,250,0.8)]" : "text-foreground hover:text-primary"}`}
       >
         {children}
-        {active && (
-          <motion.div
-            layoutId="activeSection"
-            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          />
-        )}
-      </span>
+              </span>
     </motion.li>
   );
 
@@ -60,18 +47,18 @@ const MobileNavItem = ({ to, children, active, onClick, index }) => {
   const linkContent = (
     <motion.div 
       className={`flex items-center justify-between p-4 ${
-        active ? "bg-blue-50" : ""
+        active ? "bg-primary/10" : ""
       }`}
       whileHover={{ x: 4 }}
       whileTap={{ scale: 0.98 }}
     >
                 <span className={`text-lg font-medium ${
-                  active ? "text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300"
+                  active ? "text-primary" : "text-foreground"
                 }`}>
                   {children}
                 </span>      
       <ChevronRight className={`w-5 h-5 ${
-        active ? "text-blue-600" : "text-gray-400"
+        active ? "text-primary" : "text-muted-foreground"
       }`} />
     </motion.div>
   );
@@ -115,7 +102,7 @@ const MenuIcon = ({ isOpen }) => (
           exit={{ rotate: 90, opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-          <X className="w-6 h-6 text-gray-700" />
+          <X className="w-6 h-6 text-foreground" />
         </motion.div>
       ) : (
         <motion.div
@@ -125,7 +112,7 @@ const MenuIcon = ({ isOpen }) => (
           exit={{ rotate: 90, opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-          <Menu className="w-6 h-6 text-gray-700" />
+          <Menu className="w-6 h-6 text-foreground" />
         </motion.div>
       )}
     </AnimatePresence>
@@ -159,7 +146,7 @@ const Navbar = () => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          return rect.top <= 150 && rect.bottom >= 0;
         }
         return false;
       });
@@ -175,7 +162,7 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 w-full">
       <motion.div 
-        className="absolute inset-0 bg-white/40 dark:bg-neutral-900/60 backdrop-blur-xl border-b border-white/30 dark:border-white/10 shadow-2xl transition-all duration-300 rounded-b-2xl"
+        className="absolute inset-0 navbar-glassmorphism transition-all duration-300 rounded-b-2xl shadow-[0_0_15px_5px_rgba(59,130,246,0.5)] bg-gradient-to-r from-gray-900 via-gray-800 to-black"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />
@@ -188,8 +175,8 @@ const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
                 className="font-bold text-2xl flex items-center gap-1"
               >
-                <span className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-400 dark:from-blue-500 dark:via-blue-300 dark:to-blue-300 text-transparent bg-clip-text drop-shadow-glow animate-logo-glow ">N</span>
-                <span className="text-foreground drop-shadow-glow">M</span>
+                <span className="bg-gradient-to-r from-blue-500 via-blue-400 to-blue-400 dark:from-blue-500 dark:via-blue-300 dark:to-blue-300 text-transparent bg-clip-text drop-shadow-[0_0_5px_rgba(59,130,246,0.8)] animate-logo-glow ">N</span>
+                <span className="text-foreground drop-shadow-[0_0_5px_rgba(59,130,246,0.8)]">M</span>
               </motion.span>
             </Link>
           </div>
@@ -219,7 +206,12 @@ const Navbar = () => {
               </SheetTrigger>
               <SheetContent 
                 side="right" 
-                className="w-full max-w-xs p-0 bg-white/60 dark:bg-neutral-900/80 backdrop-blur-2xl border-l border-white/30 dark:border-white/10 shadow-2xl animate-slide-in rounded-l-3xl"
+                className="w-full max-w-xs p-0 animate-slide-in rounded-l-3xl"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                }}
               >
                 <motion.div 
                   className="flex flex-col mt-5 py-8"

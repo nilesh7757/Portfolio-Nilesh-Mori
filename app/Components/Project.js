@@ -30,7 +30,7 @@ const Project = () => {
         >
           <Code className="w-6 h-6 md:w-8 md:h-8" />
           Featured{" "}
-          <span className="bg-gradient-to-r from-blue-500 to-blue-200 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
             Projects
           </span>
         </motion.h2>

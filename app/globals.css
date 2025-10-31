@@ -19,6 +19,11 @@
   }
 }
 
+:root {
+    --background-image-light: url('https://images.pexels.com/photos/1766838/pexels-photo-1766838.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    --background-image-dark: url('https://images.pexels.com/photos/110854/pexels-photo-110854.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+}
+
 body {
     font-family: 'Inter', 'Poppins', 'Montserrat', sans-serif;
     font-weight: 400;
@@ -26,8 +31,86 @@ body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    background: theme('colors.background');
     color: theme('colors.foreground');
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    transition: background-image 0.5s ease-in-out;
+}
+
+.static-background {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.light .static-background {
+    background-image: var(--background-image-light);
+}
+
+.dark .static-background {
+    background-image: var(--background-image-dark);
+}
+
+.navbar-glassmorphism {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.placeholder-muted::placeholder {
+    color: hsl(var(--muted-foreground));
+}
+
+.sidebar-glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .sidebar-glassmorphism {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .sidebar-glassmorphism {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .glassmorphism {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.glassmorphism::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+    transform: rotate(45deg);
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    z-index: 1;
+}
+
+.glassmorphism:hover::before {
+    left: 50%;
+    top: 50%;
+    opacity: 1;
 }
   
 * {
@@ -92,7 +175,7 @@ body {
         --secondary: 240 4.8% 95.9%;
         --secondary-foreground: 240 5.9% 10%;
         --muted: 240 4.8% 95.9%;
-        --muted-foreground: 240 3.8% 46.1%;
+        --muted-foreground: 240 3.8% 20%;
         --accent: 240 4.8% 95.9%;
         --accent-foreground: 240 5.9% 10%;
         --destructive: 0 84.2% 60.2%;
