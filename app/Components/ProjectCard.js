@@ -31,12 +31,12 @@ const ProjectDetailDialog = ({ project }) => (
           />
         </div>
         <div className="space-y-4">
-          <p className="text-gray-600 text-sm sm:text-base">{project.fullDescription}</p>
+          <p className="text-muted-foreground text-sm sm:text-base">{project.fullDescription}</p>
           <div className="space-y-2">
             <h4 className="font-semibold">Technologies:</h4>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech, index) => (
-                <span key={index} className="px-2 py-1 text-xs rounded-full font-semibold bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200">{tech}</span>
+                <span key={index} className="px-2 py-1 text-xs rounded-full font-semibold bg-muted text-muted-foreground">{tech}</span>
               ))}
             </div>
           </div>
@@ -55,7 +55,7 @@ const ProjectCard = ({ project, onFilterByTech }) => (
     transition={{ duration: 0.3 }}
     className="overflow-hidden"
   >
-    <Card className="overflow-hidden h-full flex flex-col">
+    <Card className="overflow-hidden h-full flex flex-col glassmorphism">
       <div className="relative aspect-video w-full group">
         <Image
           src={project.image}
@@ -76,7 +76,7 @@ const ProjectCard = ({ project, onFilterByTech }) => (
           {project.technologies.map((tech, index) => (
             <span 
               key={index} 
-              className="px-2 py-1 text-xs rounded-full font-semibold bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+              className="px-2 py-1 text-xs rounded-full font-semibold bg-muted text-muted-foreground"
               onClick={() => onFilterByTech && onFilterByTech(tech)}
             >
               {tech}

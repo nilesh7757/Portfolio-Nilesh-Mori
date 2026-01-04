@@ -15,9 +15,9 @@ const Nilesh = () => {
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
       strings: [
-        '<span class="text-blue-500">Fullstack</span> Developer',
-        '<span class="text-green-500">Mobile App</span> Developer',
-        '<span class="text-purple-500">Tech</span> Innovator'
+        '<span class="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">Fullstack</span> Developer',
+        '<span class="bg-gradient-to-r from-green-500 to-teal-500 bg-clip-text text-transparent">Mobile App</span> Developer',
+        '<span class="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Tech</span> Innovator'
       ],
       typeSpeed: 50,
       backSpeed: 50,
@@ -32,7 +32,7 @@ const Nilesh = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto">
-      <CardContent className="p-8">
+      <CardContent className="p-8 glassmorphism">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <motion.div 
             className="lg:w-1/2"
@@ -137,7 +137,7 @@ const Nilesh = () => {
             transition={{ duration: 0.5 }}
           >
             <div 
-              className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] mx-auto"
+              className="relative w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] mx-auto"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >

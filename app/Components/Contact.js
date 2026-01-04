@@ -59,7 +59,7 @@ const Contact = () => {
           whileHover={{ scale: 1.05 }}
         >
           <Mail className="w-6 h-6 md:w-8 md:h-8" />
-          Contact <span className="bg-gradient-to-r from-blue-500 to-blue-200 bg-clip-text text-transparent">Me</span>
+          Contact <span className="bg-gradient-to-r from-green-500 to-teal-500 bg-clip-text text-transparent">Me</span>
         </motion.h2>
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
@@ -70,17 +70,17 @@ const Contact = () => {
             initial={{ x: -50, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="h-full">
+            <Card className="h-full glassmorphism">
               <CardHeader>
                 <CardTitle>Let&apos;s Connect</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-blue-500" />
+                  <Mail className="w-5 h-5 text-primary" />
                   <span>nileshmori7757@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-blue-500" />
+                  <Phone className="w-5 h-5 text-primary" />
                   <span>7778827757</span>
                 </div>
               </CardContent>
@@ -94,34 +94,34 @@ const Contact = () => {
             initial={{ x: 50, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Card>
+            <Card className="glassmorphism">
               <CardContent className="pt-6">
                 <form ref={form} onSubmit={sendEmail} className="space-y-6">
                   <div className="space-y-4">
                     <div className="relative">
-                      <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                      <User className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
                       <Input
                         type="text"
                         name="user_name"
                         placeholder="Your Name"
-                        className="pl-10"
+                        className="pl-10 placeholder-muted"
                         required
                       />
                     </div>
                     
                     <div className="relative">
-                      <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                      <Mail className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
                       <Input
                         type="email"
                         name="user_email"
                         placeholder="Your Email"
-                        className="pl-10"
+                        className="pl-10 placeholder-muted"
                         required
                       />
                     </div>
 
                     <div className="relative">
-                      <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                      <Phone className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
                       <Input
                         type="tel"
                         name="mobile_number"
@@ -129,17 +129,17 @@ const Contact = () => {
                         pattern="[0-9]{10}"
                         minLength={10}
                         maxLength={10}
-                        className="pl-10"
+                        className="pl-10 placeholder-muted"
                         required
                       />
                     </div>
 
                     <div className="relative">
-                      <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                      <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
                       <Textarea
                         name="message"
                         placeholder="Your Message"
-                        className="pl-10 min-h-[120px]"
+                        className="pl-10 min-h-[120px] placeholder-muted"
                         required
                       />
                     </div>
