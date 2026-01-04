@@ -11,7 +11,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import { Download, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Download, Send, Github, Linkedin, Twitter, FileText } from 'lucide-react';
 import Image from 'next/image';
 import { User } from 'lucide-react';
 import { Card } from "@/components/ui/card";
@@ -198,10 +198,10 @@ const About = () => {
                     variant="outline"
                     className="w-full sm:w-auto"
                     onClick={() => window.open('/CV.pdf', '_blank')}
-                    aria-label="Download CV"
+                    aria-label="View Resume"
                   >
-                    <Download className="mr-2 h-4 w-4" aria-hidden="true" />
-                    Download CV
+                    <FileText className="mr-2 h-4 w-4" aria-hidden="true" />
+                    View Resume
                   </Button>
                   <Button 
                     variant="default"

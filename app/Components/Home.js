@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { Download, Github, Linkedin, Twitter, ExternalLink } from 'lucide-react';
+import { Download, Github, Linkedin, Twitter, ExternalLink, FileText } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Typed from 'typed.js';
@@ -80,8 +80,8 @@ const Nilesh = () => {
                   className="group"
                   onClick={() => window.open('./CV.pdf', '_blank')}
                 >
-                  <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-                  Download CV
+                  <FileText className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                  View Resume
                 </Button>
 
                 <Button 
