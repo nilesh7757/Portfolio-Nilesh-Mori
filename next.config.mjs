@@ -34,7 +34,9 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     experimental: {
-      optimizeCss: true,
+      workerThreads: false,
+      cpus: 1,
+      optimizeCss: false,
       optimizePackageImports: [
         'framer-motion',
         'lucide-react',

@@ -1,27 +1,34 @@
 'use client'
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
+import Link from 'next/link';
+import { Link as ScrollLink } from 'react-scroll';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter, ExternalLink, ChevronRight, Heart } from 'lucide-react';
 
-const FooterLink = ({ to, children }) => (
+const FooterLink = ({ to, children, isExternal }) => (
   <motion.div
     whileHover={{ x: 4 }}
     className="flex items-center gap-2 text-muted-foreground hover:text-primary"
   >
     <ChevronRight className="h-4 w-4" />
-    <Link
-      to={to}
-      spy={true}
-      smooth={true}
-      offset={-70}
-      duration={500}
-      className="cursor-pointer"
-    >
-      {children}
-    </Link>
+    {isExternal ? (
+      <Link href={to} className="cursor-pointer">
+        {children}
+      </Link>
+    ) : (
+      <ScrollLink
+        to={to}
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={500}
+        className="cursor-pointer"
+      >
+        {children}
+      </ScrollLink>
+    )}
   </motion.div>
 );
 
@@ -40,8 +47,10 @@ const Footer = () => {
     { name: 'Home', to: 'home' },
     { name: 'About', to: 'about' },
     { name: 'Skills', to: 'skills' },
+    { name: 'CP', to: 'cp' },
     { name: 'Education', to: 'education' },
     { name: 'Projects', to: 'project' },
+    { name: 'Blog', to: '/blog', isExternal: true },
     { name: 'Contact', to: 'contact' }
   ];
 
