@@ -31,7 +31,7 @@ const Nilesh = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-7xl mx-auto">
+    <div className="w-full max-w-7xl mx-auto py-12 md:py-20">
       <CardContent className="p-8 glassmorphism">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <motion.div 

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,11 +10,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import projects from "@/lib/projects";
+import { useSearchParams } from 'next/navigation';
+import Navbar from '../Components/Navbar';
 
 import ProjectCard from "../Components/ProjectCard";
 
 const ProjectsPage = () => {
   const [filters, setFilters] = useState(new Set());
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const techParam = searchParams.get('tech');
+    if (techParam) {
+      setFilters(new Set([techParam]));
+    }
+  }, [searchParams]);
 
   // Get unique technologies from all projects
   const allTechnologies = [...new Set(projects.flatMap(project => project.technologies))];
@@ -37,6 +47,8 @@ const ProjectsPage = () => {
   };
 
   return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
     <div className="container mx-auto px-4 py-6 sm:py-12">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
@@ -93,6 +105,7 @@ const ProjectsPage = () => {
           />
         ))}
       </div>
+    </div>
     </div>
   );
 };

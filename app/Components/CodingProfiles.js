@@ -26,14 +26,39 @@ const CodingProfiles = () => {
   useEffect(() => {
     const fetchLeetCode = async () => {
       try {
-        const response = await fetch('https://leetcode-stats-api.herokuapp.com/nilesh7757');
-        const data = await response.json();
-        if (data.status === 'success') {
+        const [statsResponse, contestResponse] = await Promise.all([
+          fetch('https://leetcode-stats-api.herokuapp.com/nileshmori7757'),
+          fetch('https://alfa-leetcode-api.onrender.com/nileshmori7757/contest')
+        ]);
+        
+        const statsData = await statsResponse.json();
+        const contestData = await contestResponse.json();
+
+        let tier = "Contestant";
+        let tierColor = "#808080"; // Gray
+
+        if (contestData && contestData.contestRating) {
+            const rating = contestData.contestRating;
+            if (rating >= 2200) {
+                tier = "Guardian";
+                tierColor = "#FFA116"; // Orange/Yellow
+            } else if (rating >= 1850) {
+                tier = "Knight";
+                tierColor = "#A335EE"; // Purple
+            } else {
+                tier = "Contestant"; // Or "Member"
+                tierColor = "#808080";
+            }
+        }
+
+        if (statsData.status === 'success') {
           setStats(prev => ({
             ...prev,
             leetcode: {
-              solved: data.totalSolved,
-              rank: data.ranking,
+              solved: statsData.totalSolved,
+              rating: contestData?.contestRating ? Math.round(contestData.contestRating) : null,
+              tier: tier,
+              tierColor: tierColor,
               loading: false
             }
           }));
@@ -47,14 +72,32 @@ const CodingProfiles = () => {
 
     const fetchCodeforces = async () => {
       try {
-        const response = await fetch('https://codeforces.com/api/user.info?handles=nilesh7757');
+        const response = await fetch('https://codeforces.com/api/user.info?handles=nileshm7757');
         const data = await response.json();
         if (data.status === 'OK' && data.result.length > 0) {
+          const user = data.result[0];
+          let rankColor = "#808080"; // Default Gray
+          
+          switch (user.rank?.toLowerCase()) {
+              case 'newbie': rankColor = "#808080"; break; // Gray
+              case 'pupil': rankColor = "#008000"; break; // Green
+              case 'specialist': rankColor = "#03a89e"; break; // Cyan
+              case 'expert': rankColor = "#0000ff"; break; // Blue
+              case 'candidate master': rankColor = "#a0a"; break; // Violet
+              case 'master': rankColor = "#ff8c00"; break; // Orange
+              case 'international master': rankColor = "#ff8c00"; break; // Orange
+              case 'grandmaster': rankColor = "#ff0000"; break; // Red
+              case 'international grandmaster': rankColor = "#ff0000"; break; // Red
+              case 'legendary grandmaster': rankColor = "#ff0000"; break; // Red
+              default: rankColor = "#808080";
+          }
+
           setStats(prev => ({
             ...prev,
             codeforces: {
-              rating: data.result[0].rating,
-              rank: data.result[0].rank,
+              rating: user.rating,
+              rank: user.rank ? user.rank.charAt(0).toUpperCase() + user.rank.slice(1) : "Unrated",
+              tierColor: rankColor,
               loading: false
             }
           }));
@@ -67,11 +110,8 @@ const CodingProfiles = () => {
     };
 
     const fetchCodeChef = async () => {
-       // CodeChef doesn't have a stable public API, using a placeholder or a scraper if available.
-       // For now, we'll try a known community API or fallback gracefully.
        try {
-        // Trying a common community API for CodeChef
-        const response = await fetch('https://codechef-api.vercel.app/handle/nilesh7757');
+        const response = await fetch('https://codechef-api.vercel.app/handle/nileshmori7757');
         const data = await response.json();
         if (data && data.currentRating) {
            setStats(prev => ({
@@ -90,7 +130,6 @@ const CodingProfiles = () => {
        }
     };
 
-    // Fetch AtCoder Stats (Kenkoooo API)
     const fetchAtCoder = async () => {
       try {
         const response = await fetch('https://kenkoooo.com/atcoder/atcoder-api/v3/user/info?user=nilesh7757');
@@ -120,39 +159,45 @@ const CodingProfiles = () => {
   const profiles = [
     {
       platform: 'LeetCode',
-      username: 'nilesh7757',
-      url: 'https://leetcode.com/nilesh7757',
+      username: 'nileshmori7757',
+      url: 'https://leetcode.com/nileshmori7757',
       icon: SiLeetcode,
       color: '#FFA116',
       bgColor: 'bg-yellow-500/10',
       borderColor: 'group-hover:border-yellow-500/50',
       description: 'Data Structures & Algorithms',
       stats: stats.leetcode.loading ? 'Loading...' :
-             stats.leetcode.solved ? `${stats.leetcode.solved} Solved` : 'Active Participant'
+             stats.leetcode.rating ? `${stats.leetcode.rating} Rating` : 'Active Participant',
+      tier: stats.leetcode.tier,
+      tierColor: stats.leetcode.tierColor,
+      extra: null
     },
     {
       platform: 'Codeforces',
-      username: 'nilesh7757',
-      url: 'https://codeforces.com/profile/nilesh7757',
+      username: 'nileshm7757',
+      url: 'https://codeforces.com/profile/nileshm7757',
       icon: SiCodeforces,
       color: '#1F8ACB',
       bgColor: 'bg-blue-500/10',
       borderColor: 'group-hover:border-blue-500/50',
       description: 'Competitive Programming',
       stats: stats.codeforces.loading ? 'Loading...' :
-             stats.codeforces.rating ? `${stats.codeforces.rating} Rating` : 'Active Participant'
+             stats.codeforces.rating ? `${stats.codeforces.rating} Rating` : 'Active Participant',
+      tier: stats.codeforces.rank,
+      tierColor: stats.codeforces.tierColor
     },
     {
       platform: 'CodeChef',
-      username: 'nilesh7757',
-      url: 'https://www.codechef.com/users/nilesh7757',
+      username: 'nileshmori7757',
+      url: 'https://www.codechef.com/users/nileshmori7757',
       icon: SiCodechef,
       color: '#5B4638',
       bgColor: 'bg-orange-900/10',
       borderColor: 'group-hover:border-orange-900/50',
       description: 'Algorithmic Contests',
       stats: stats.codechef.loading ? 'Loading...' :
-             stats.codechef.rating ? `${stats.codechef.rating} Rating` : 'Active Participant'
+             stats.codechef.rating ? `${stats.codechef.rating} Rating` : 'Active Participant',
+      tier: stats.codechef.stars ? stats.codechef.stars : null
     },
     {
       platform: 'AtCoder',
@@ -169,7 +214,7 @@ const CodingProfiles = () => {
   ];
 
   return (
-    <div className="w-full max-w-7xl mx-auto py-12 sm:py-20 px-4">
+    <div className="w-full max-w-7xl mx-auto py-12 md:py-20 px-4">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -217,9 +262,21 @@ const CodingProfiles = () => {
                   <h3 className="text-xl font-bold mb-1">{profile.platform}</h3>
                   <p className="text-sm text-muted-foreground mb-1 font-mono">@{profile.username}</p>
                   
-                  <div className="my-3 font-semibold text-primary flex items-center gap-2 bg-background/50 px-3 py-1 rounded-full text-sm">
-                     <Activity className="w-3 h-3" />
-                     {profile.stats}
+                  <div className="my-3 flex flex-col items-center gap-1">
+                     <div className="font-semibold text-primary flex items-center gap-2 bg-background/50 px-3 py-1 rounded-full text-sm">
+                        <Activity className="w-3 h-3" />
+                        {profile.stats}
+                     </div>
+                     {profile.tier && (
+                        <div className="font-bold text-sm" style={{ color: profile.tierColor }}>
+                           {profile.tier}
+                        </div>
+                     )}
+                     {profile.extra && (
+                         <div className="text-xs text-muted-foreground">
+                             {profile.extra}
+                         </div>
+                     )}
                   </div>
                   
                   <div className="mt-auto w-full pt-4">

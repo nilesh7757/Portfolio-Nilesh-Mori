@@ -34,6 +34,8 @@ const SocialButton = ({ href, icon: Icon }) => (
 );
 
 const Footer = () => {
+  const [isVisible, setIsVisible] = React.useState(false);
+  
   const navigation = [
     { name: 'Home', to: 'home' },
     { name: 'About', to: 'about' },
@@ -50,12 +52,25 @@ const Footer = () => {
     { icon: ExternalLink, href: 'https://nilesh7757.github.io/NileshMori/' }
   ];
 
+  React.useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
   const handleBackToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <Card className="mt-16 glassmorphism">
+    <Card className="mt-16 glassmorphism relative">
       <CardContent className="p-8 pb-16">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
           <div className="space-y-4">
@@ -113,19 +128,28 @@ const Footer = () => {
           </div>
         </div>
 
-        <footer className="w-full py-6 bg-transparent border-t border-border text-center text-muted-foreground text-sm relative">
-          <button
-            onClick={handleBackToTop}
-            className="absolute left-1/2 -top-6 transform -translate-x-1/2 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl px-4 py-2 rounded-full text-sm font-medium text-foreground hover:bg-white/50 dark:hover:bg-white/20 transition"
-            aria-label="Back to Top"
-          >
-            ↑ Back to Top
-          </button>
-          <div>
+        <footer className="w-full py-6 bg-transparent border-t border-border text-center text-muted-foreground text-sm">
+          <div className="mb-4">
             &copy; {new Date().getFullYear()} Nilesh Mori. All rights reserved.
           </div>
         </footer>
       </CardContent>
+      
+      <motion.div
+         initial={{ opacity: 0, y: 50 }}
+         animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50 }}
+         transition={{ duration: 0.3 }}
+         className="fixed bottom-8 inset-x-0 flex justify-center z-50"
+         style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
+      >
+        <button
+          onClick={handleBackToTop}
+          className="backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl px-4 py-2 rounded-full text-sm font-medium text-foreground hover:bg-white/50 dark:hover:bg-white/20 transition flex items-center gap-2"
+          aria-label="Back to Top"
+        >
+          ↑ Back to Top
+        </button>
+      </motion.div>
     </Card>
   );
 };

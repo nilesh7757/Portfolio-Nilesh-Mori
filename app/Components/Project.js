@@ -16,7 +16,7 @@ const Project = () => {
   const featuredProjects = projects.slice(0, 4);
 
   return (
-    <div className="relative w-full px-4 py-6 md:py-8 lg:py-10 pb-4 overflow-hidden">
+    <div className="relative w-full px-4 py-12 md:py-20 overflow-hidden">
       <motion.div
         className="relative z-0 max-w-7xl mx-auto"
         initial={{ opacity: 0 }}

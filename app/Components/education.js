@@ -86,7 +86,7 @@ const Education = () => {
   ];
 
   return (
-    <div className="min-h-screen w-full px-4 py-8 md:py-12 lg:py-16">
+    <div className="w-full px-4 py-12 md:py-20">
       <motion.div 
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}

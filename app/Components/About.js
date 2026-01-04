@@ -39,7 +39,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="min-h-screen w-full px-4 py-8 md:py-12 lg:py-16" aria-label="About Me Section">
+    <section id="about" className="w-full px-4 py-12 md:py-20" aria-label="About Me Section">
       <motion.div 
         className="max-w-7xl mx-auto"
         initial={{ opacity: 0 }}
