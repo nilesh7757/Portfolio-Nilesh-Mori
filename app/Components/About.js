@@ -79,7 +79,7 @@ const About = () => {
             >
               <Image
                 className="object-cover transition-transform duration-300 group-hover:scale-105 transform-gpu will-change-transform"
-                src="/Nilesh.jpg"
+                src="/Nilesh.jpeg"
                 alt="Nilesh Mori - Fullstack Web Developer"
                 fill
                 sizes="(max-width: 360px) 100vw, (max-width: 480px) 90vw, (max-width: 640px) 80vw, (max-width: 750px) 70vw, 33vw"

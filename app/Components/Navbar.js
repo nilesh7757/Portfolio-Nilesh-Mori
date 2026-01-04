@@ -4,12 +4,15 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Link as ScrollLink } from "react-scroll"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X, ChevronRight, Home, User, Monitor, GraduationCap, Folder, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/ThemeToggle"
 
 const NavItem = ({ to, children, active }) => {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
   const isInternalLink = to.startsWith('/');
 
   const linkContent = (
@@ -39,22 +42,34 @@ const NavItem = ({ to, children, active }) => {
     </motion.li>
   );
 
-  return isInternalLink ? (
-    <Link href={to} passHref>{linkContent}</Link>
-  ) : (
-    <ScrollLink
-      to={to}
-      spy={true}
-      smooth={true}
-      offset={-70}
-      duration={500}
-    >
+  if (isInternalLink) {
+    return <Link href={to} passHref>{linkContent}</Link>;
+  }
+
+  if (isHome) {
+    return (
+      <ScrollLink
+        to={to}
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={500}
+      >
+        {linkContent}
+      </ScrollLink>
+    );
+  }
+
+  return (
+    <Link href={`/#${to}`} passHref>
       {linkContent}
-    </ScrollLink>
+    </Link>
   );
 };
 
 const MobileNavItem = ({ to, children, active, onClick, index }) => {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
   const isInternalLink = to.startsWith('/');
 
   const linkContent = (
@@ -87,7 +102,7 @@ const MobileNavItem = ({ to, children, active, onClick, index }) => {
         <Link href={to} passHref onClick={onClick}>
           {linkContent}
         </Link>
-      ) : (
+      ) : isHome ? (
         <ScrollLink
           to={to}
           spy={true}
@@ -99,6 +114,10 @@ const MobileNavItem = ({ to, children, active, onClick, index }) => {
         >
           {linkContent}
         </ScrollLink>
+      ) : (
+        <Link href={`/#${to}`} passHref onClick={onClick}>
+          {linkContent}
+        </Link>
       )}
     </motion.div>
   );
@@ -135,6 +154,7 @@ const MenuIcon = ({ isOpen }) => (
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home")
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
 
   const navItems = [
     { name: "Home", to: "home", icon: <Home className="w-5 h-5 mr-2" /> },
@@ -142,35 +162,33 @@ const Navbar = () => {
     { name: "Skills", to: "skills", icon: <Monitor className="w-5 h-5 mr-2" /> },
     { name: "Education", to: "education", icon: <GraduationCap className="w-5 h-5 mr-2" /> },
     { name: "Projects", to: "project", icon: <Folder className="w-5 h-5 mr-2" /> },
-    { name: "Blog", to: "/blog", icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> },
+    { name: "Blog", to: "/blog", icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> },
     { name: "Contact", to: "contact", icon: <Mail className="w-5 h-5 mr-2" /> },
   ]
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentPath = window.location.pathname;
-      if (currentPath.startsWith('/blog')) {
-        setActiveSection('/blog');
-        return;
-      }
-
-      const sections = navItems.filter(item => !item.to.startsWith('/')).map((item) => item.to);
-      const currentSection = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [navItems]);
+    if (pathname.startsWith('/blog')) {
+      setActiveSection('/blog');
+    } else {
+        const handleScroll = () => {
+             const sections = navItems.filter(item => !item.to.startsWith('/')).map((item) => item.to);
+             const currentSection = sections.find((section) => {
+               const element = document.getElementById(section);
+               if (element) {
+                 const rect = element.getBoundingClientRect();
+                 return rect.top <= 100 && rect.bottom >= 100;
+               }
+               return false;
+             });
+             if (currentSection) {
+               setActiveSection(currentSection);
+             }
+        };
+        handleScroll();
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, [pathname, navItems]);
 
   return (
     <nav className="sticky top-0 z-50 w-full">
