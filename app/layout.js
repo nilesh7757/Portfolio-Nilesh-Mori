@@ -19,6 +19,10 @@ export const metadata = {
     locale: "en_US",
     url: "https://nilesh7757.github.io/",
   },
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -47,7 +47,7 @@ const Footer = () => {
 
   const socials = [
     { icon: Github, href: 'https://github.com/nilesh7757' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/nilesh-mori-7757n' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/nileshmori7757' },
     { icon: Twitter, href: 'https://x.com/Programmer7757' },
     { icon: ExternalLink, href: 'https://nilesh7757.github.io/NileshMori/' }
   ];

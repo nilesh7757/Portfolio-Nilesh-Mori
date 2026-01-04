@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { CardContent } from "@/components/ui/card";
 import { Monitor, Code2, Database, Wrench, LayoutTemplate } from 'lucide-react';
 import TechMarquee from './TechMarquee';
@@ -8,33 +8,59 @@ import { Badge } from "@/components/ui/badge";
 
 import Link from 'next/link';
 
-const SkillCategory = ({ title, icon: Icon, skills, delay }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay }}
-    className="bg-card/50 backdrop-blur-sm border rounded-xl p-6 hover:shadow-lg transition-all hover:border-primary/50"
-  >
-    <div className="flex items-center gap-3 mb-6">
-      <div className="p-2 rounded-lg bg-primary/10 text-primary">
-        <Icon className="h-6 w-6" />
+const SkillCategory = ({ title, icon: Icon, skills, delay }) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      onMouseMove={handleMouseMove}
+      className="group relative bg-card/50 backdrop-blur-sm border rounded-xl p-6 hover:shadow-lg transition-all hover:border-primary/50 overflow-hidden"
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              350px circle at ${mouseX}px ${mouseY}px,
+              rgba(59, 130, 246, 0.1),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+      <div className="relative z-10">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="p-2 rounded-lg bg-primary/10 text-primary">
+            <Icon className="h-6 w-6" />
+          </div>
+          <h3 className="text-xl font-bold">{title}</h3>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <Link href={`/projects?tech=${encodeURIComponent(skill)}`} key={skill}>
+              <Badge 
+                variant="secondary"
+                className="text-sm py-1 px-3 hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
+              >
+                {skill}
+              </Badge>
+            </Link>
+          ))}
+        </div>
       </div>
-      <h3 className="text-xl font-bold">{title}</h3>
-    </div>
-    <div className="flex flex-wrap gap-2">
-      {skills.map((skill) => (
-        <Link href={`/projects?tech=${encodeURIComponent(skill)}`} key={skill}>
-          <Badge 
-            variant="secondary"
-            className="text-sm py-1 px-3 hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
-          >
-            {skill}
-          </Badge>
-        </Link>
-      ))}
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 const Skills = () => {
   const categories = [

@@ -111,7 +111,7 @@ const Nilesh = () => {
               >
                 {[
                   { icon: <Github className="h-5 w-5" />, href: "https://github.com/nilesh7757" },
-                  { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/in/nilesh-mori-7757n" },
+                  { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/in/nileshmori7757" },
                   { icon: <Twitter className="h-5 w-5" />, href: "https://x.com/Programmer7757" }
                 ].map((social, index) => (
                   <Button

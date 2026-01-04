@@ -29,7 +29,7 @@ const About = () => {
   
   const socials = [
     { icon: Github, href: 'https://github.com/nilesh7757', name: 'GitHub' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/nilesh-mori-7757n', name: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/nileshmori7757', name: 'LinkedIn' },
     { icon: Twitter, href: 'https://x.com/Programmer7757', name: 'Twitter' },
   ];
 

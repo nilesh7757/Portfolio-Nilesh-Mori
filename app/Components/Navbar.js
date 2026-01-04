@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Link as ScrollLink } from "react-scroll"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, ChevronRight, Home, User, Monitor, GraduationCap, Folder, Mail, Trophy } from "lucide-react"
+import { Menu, X, ChevronRight, Home, User, Monitor, GraduationCap, Folder, Mail, Trophy, Github, Linkedin, Twitter } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/ThemeToggle"
 
 const NavItem = ({ to, children, active }) => {
@@ -67,27 +67,39 @@ const NavItem = ({ to, children, active }) => {
   );
 };
 
-const MobileNavItem = ({ to, children, active, onClick, index }) => {
+const MobileNavItem = ({ to, children, active, onClick, index, icon }) => {
   const pathname = usePathname();
   const isHome = pathname === '/';
   const isInternalLink = to.startsWith('/');
 
-  const linkContent = (
+  const content = (
     <motion.div 
-      className={`flex items-center justify-between p-4 ${
-        active ? "bg-blue-50" : ""
+      className={`flex items-center gap-4 p-3 rounded-xl transition-all duration-300 ${
+        active 
+          ? "bg-blue-50/80 dark:bg-blue-900/20 border border-blue-200/50 dark:border-blue-700/30" 
+          : "hover:bg-gray-50 dark:hover:bg-white/5"
       }`}
-      whileHover={{ x: 4 }}
+      whileHover={{ scale: 1.02, x: 4 }}
       whileTap={{ scale: 0.98 }}
     >
-                <span className={`text-lg font-medium ${
-                  active ? "text-blue-600 dark:text-blue-400" : "text-gray-700 dark:text-gray-300"
-                }`}>
-                  {children}
-                </span>      
-      <ChevronRight className={`w-5 h-5 ${
-        active ? "text-blue-600" : "text-gray-400"
-      }`} />
+      <div className={`p-2 rounded-lg ${
+        active ? "bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400" : "bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+      }`}>
+        {icon}
+      </div>
+      <span className={`text-base font-medium flex-1 ${
+        active ? "text-blue-700 dark:text-blue-300" : "text-gray-700 dark:text-gray-300"
+      }`}>
+        {children}
+      </span>      
+      {active && (
+        <motion.div
+          layoutId="activeDot"
+          className="w-2 h-2 rounded-full bg-blue-500"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+        />
+      )}
     </motion.div>
   );
 
@@ -96,11 +108,12 @@ const MobileNavItem = ({ to, children, active, onClick, index }) => {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 20 }}
-      transition={{ duration: 0.3, delay: index * 0.1 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
+      className="mb-2"
     >
       {isInternalLink ? (
-        <Link href={to} passHref onClick={onClick}>
-          {linkContent}
+        <Link href={to} passHref onClick={onClick} className="block">
+          {content}
         </Link>
       ) : isHome ? (
         <ScrollLink
@@ -112,44 +125,16 @@ const MobileNavItem = ({ to, children, active, onClick, index }) => {
           onClick={onClick}
           className="block relative cursor-pointer"
         >
-          {linkContent}
+          {content}
         </ScrollLink>
       ) : (
-        <Link href={`/#${to}`} passHref onClick={onClick}>
-          {linkContent}
+        <Link href={`/#${to}`} passHref onClick={onClick} className="block">
+          {content}
         </Link>
       )}
     </motion.div>
   );
 };
-
-const MenuIcon = ({ isOpen }) => (
-  <div className="relative w-6 h-6">
-    <AnimatePresence mode="wait">
-      {isOpen ? (
-        <motion.div
-          key="close"
-          initial={{ rotate: -90, opacity: 0 }}
-          animate={{ rotate: 0, opacity: 1 }}
-          exit={{ rotate: 90, opacity: 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <X className="w-6 h-6 text-gray-700" />
-        </motion.div>
-      ) : (
-        <motion.div
-          key="menu"
-          initial={{ rotate: -90, opacity: 0 }}
-          animate={{ rotate: 0, opacity: 1 }}
-          exit={{ rotate: 90, opacity: 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          <Menu className="w-6 h-6 text-gray-700" />
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </div>
-)
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home")
@@ -157,15 +142,21 @@ const Navbar = () => {
   const pathname = usePathname()
 
   const navItems = [
-    { name: "Home", to: "home", icon: <Home className="w-5 h-5 mr-2" /> },
-    { name: "About", to: "about", icon: <User className="w-5 h-5 mr-2" /> },
-    { name: "Skills", to: "skills", icon: <Monitor className="w-5 h-5 mr-2" /> },
-    { name: "CP", to: "cp", icon: <Trophy className="w-5 h-5 mr-2" /> },
-    { name: "Education", to: "education", icon: <GraduationCap className="w-5 h-5 mr-2" /> },
-    { name: "Projects", to: "project", icon: <Folder className="w-5 h-5 mr-2" /> },
-    { name: "Blog", to: "/blog", icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> },
-    { name: "Contact", to: "contact", icon: <Mail className="w-5 h-5 mr-2" /> },
+    { name: "Home", to: "home", icon: <Home className="w-5 h-5" /> },
+    { name: "About", to: "about", icon: <User className="w-5 h-5" /> },
+    { name: "Skills", to: "skills", icon: <Monitor className="w-5 h-5" /> },
+    { name: "CP", to: "cp", icon: <Trophy className="w-5 h-5" /> },
+    { name: "Education", to: "education", icon: <GraduationCap className="w-5 h-5" /> },
+    { name: "Projects", to: "project", icon: <Folder className="w-5 h-5" /> },
+    { name: "Blog", to: "/blog", icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> },
+    { name: "Contact", to: "contact", icon: <Mail className="w-5 h-5" /> },
   ]
+
+  const socials = [
+    { icon: <Github className="w-5 h-5" />, href: "https://github.com/nilesh7757" },
+    { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/in/nileshmori7757" },
+    { icon: <Twitter className="w-5 h-5" />, href: "https://x.com/Programmer7757" }
+  ];
 
   useEffect(() => {
     if (pathname.startsWith('/blog')) {
@@ -231,39 +222,74 @@ const Navbar = () => {
             <ThemeToggle />
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className="hover:bg-transparent">
                   <Menu className={`h-6 w-6 ${isOpen ? 'hidden' : 'block'}`} />
                   <X className={`h-6 w-6 ${isOpen ? 'block' : 'hidden'}`} />
                 </Button>
               </SheetTrigger>
               <SheetContent 
                 side="right" 
-                className="w-full max-w-xs p-0 bg-white/60 dark:bg-neutral-900/80 backdrop-blur-2xl border-l border-white/30 dark:border-white/10 shadow-2xl animate-slide-in rounded-l-3xl"
+                className="w-[300px] sm:w-[350px] p-0 bg-white/80 dark:bg-neutral-900/90 backdrop-blur-3xl border-l border-white/20 shadow-2xl"
               >
-                <motion.div 
-                  className="flex flex-col mt-5 py-8"
-                  initial="hidden"
-                  animate="visible"
-                  variants={{
-                    visible: { transition: { staggerChildren: 0.08 } },
-                    hidden: {},
-                  }}
-                >
-                  <AnimatePresence mode="wait">
-                    {navItems.map((item, index) => (
-                      <MobileNavItem
-                        key={item.name}
-                        to={item.to}
-                        active={activeSection === item.to}
-                        onClick={() => setIsOpen(false)}
-                        index={index}
-                      >
-                        {item.icon}
-                        {item.name}
-                      </MobileNavItem>
-                    ))}
-                  </AnimatePresence>
-                </motion.div>
+                <div className="flex flex-col h-full">
+                  {/* Sidebar Header */}
+                  <div className="p-6 pb-2 border-b border-gray-100 dark:border-gray-800">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="font-bold text-2xl flex items-center gap-1">
+                        <span className="bg-gradient-to-r from-blue-500 to-blue-400 text-transparent bg-clip-text">N</span>
+                        <span className="text-foreground">M</span>
+                      </span>
+                      {/* Close button is handled by Sheet primitive, but we can add extra if needed */}
+                    </div>
+                    <p className="text-sm text-muted-foreground">Navigate through my portfolio</p>
+                  </div>
+
+                  {/* Navigation Items */}
+                  <motion.div 
+                    className="flex-1 overflow-y-auto py-6 px-4"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      visible: { transition: { staggerChildren: 0.05 } },
+                      hidden: {},
+                    }}
+                  >
+                    <AnimatePresence mode="wait">
+                      {navItems.map((item, index) => (
+                        <MobileNavItem
+                          key={item.name}
+                          to={item.to}
+                          active={activeSection === item.to}
+                          onClick={() => setIsOpen(false)}
+                          index={index}
+                          icon={item.icon}
+                        >
+                          {item.name}
+                        </MobileNavItem>
+                      ))}
+                    </AnimatePresence>
+                  </motion.div>
+
+                  {/* Sidebar Footer */}
+                  <div className="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-black/20">
+                    <p className="text-xs text-center text-muted-foreground mb-4">Connect with me</p>
+                    <div className="flex justify-center gap-4">
+                      {socials.map((social, idx) => (
+                        <motion.a
+                          key={idx}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-full bg-white dark:bg-neutral-800 shadow-sm hover:shadow-md text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-all"
+                          whileHover={{ scale: 1.1, y: -2 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          {social.icon}
+                        </motion.a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </SheetContent>
             </Sheet>
           </div>
