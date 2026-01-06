@@ -1,30 +1,15 @@
 'use client'
-import dynamic from 'next/dynamic';
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { IoPerson } from 'react-icons/io5';
 import { Button } from "@/components/ui/button";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
-import { Download, Send, Github, Linkedin, Twitter, FileText } from 'lucide-react';
+import { Send, Github, Linkedin, Twitter, FileText } from 'lucide-react';
 import Image from 'next/image';
 import { User } from 'lucide-react';
 import { Card } from "@/components/ui/card";
 import Tilt from 'react-parallax-tilt';
 
-// Lazy load the experience section
-const ExperienceSection = dynamic(() => import('./ExperienceSection'), {
-  loading: () => <p>Loading experience section...</p>,
-  ssr: false
-});
-
 const About = () => {
-  const [activeTab, setActiveTab] = useState('about');
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   
   const socials = [
@@ -147,53 +132,30 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
           >
-            <Card className="w-full max-w-7xl mx-auto glassmorphism">
-              <Tabs defaultValue="about" className="w-full bg-transparent" onValueChange={setActiveTab}>
-                <TabsList className="grid w-full grid-cols-2 mb-6 glassmorphism" aria-label="About tabs">
-                  <TabsTrigger value="about">About</TabsTrigger>
-                  <TabsTrigger value="experience">Experience</TabsTrigger>
-                </TabsList>
-
-                <AnimatePresence mode="wait" initial={false}>
-                  {activeTab === 'about' && (
-                    <TabsContent value="about" forceMount className="bg-transparent">
-                      <motion.div
-                        key="about"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="space-y-4 m-2"
-                      >
-                        <div>
-                          <h2 className="text-xl md:text-2xl font-semibold">Nilesh Mori</h2>
-                          <h3 className="text-lg md:text-xl font-medium text-primary">
-                            Fullstack Web Developer | Tech Innovator
-                          </h3>
-                        </div>
-                        <p className="leading-relaxed text-muted-foreground">I&apos;m driven by a relentless curiosity to transform innovative ideas into impactful digital experiences. With a strong foundation in web development and a passion for problem-solving, I thrive on building scalable, efficient, and user-friendly applications.</p>
-                      </motion.div>
-                    </TabsContent>
-                  )}
-                  {activeTab === 'experience' && (
-                    <TabsContent value="experience" forceMount className="bg-transparent">
-                      <motion.div
-                        key="experience"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <ExperienceSection />
-                      </motion.div>
-                    </TabsContent>
-                  )}
-                </AnimatePresence>
-              </Tabs>
+            <Card className="w-full max-w-7xl mx-auto glassmorphism p-6 md:p-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-6"
+              >
+                <div>
+                  <h2 className="text-xl md:text-2xl font-semibold">Nilesh Mori</h2>
+                  <h3 className="text-lg md:text-xl font-medium text-primary">
+                    Fullstack Web Developer | Tech Innovator
+                  </h3>
+                </div>
+                <p className="leading-relaxed text-muted-foreground text-lg">
+                  I&apos;m driven by a relentless curiosity to transform innovative ideas into impactful digital experiences. With a strong foundation in web development and a passion for problem-solving, I thrive on building scalable, efficient, and user-friendly applications.
+                </p>
+                <p className="leading-relaxed text-muted-foreground text-lg">
+                  My journey involves constantly learning new technologies and applying them to solve real-world problems. Whether it's crafting beautiful front-end interfaces or architecting robust back-end systems, I enjoy every aspect of the development lifecycle.
+                </p>
+              </motion.div>
 
               {/* Action Buttons */}
-              <div className="mt-8 mb-2 mx-3 space-y-4">
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <div className="mt-8 space-y-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <Button 
                     variant="outline"
                     className="w-full sm:w-auto"

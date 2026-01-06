@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Link as ScrollLink } from "react-scroll"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, ChevronRight, Home, User, Monitor, GraduationCap, Folder, Mail, Trophy, Github, Linkedin, Twitter } from "lucide-react"
+import { Menu, X, ChevronRight, Home, User, Monitor, GraduationCap, Folder, Mail, Trophy, Github, Linkedin, Twitter, Briefcase } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/ThemeToggle"
@@ -144,12 +144,10 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", to: "home", icon: <Home className="w-5 h-5" /> },
     { name: "About", to: "about", icon: <User className="w-5 h-5" /> },
-    { name: "Skills", to: "skills", icon: <Monitor className="w-5 h-5" /> },
-    { name: "CP", to: "cp", icon: <Trophy className="w-5 h-5" /> },
-    { name: "Education", to: "education", icon: <GraduationCap className="w-5 h-5" /> },
+    { name: "Experience", to: "experience", icon: <Briefcase className="w-5 h-5" /> },
     { name: "Projects", to: "project", icon: <Folder className="w-5 h-5" /> },
-    { name: "Contact", to: "contact", icon: <Mail className="w-5 h-5" /> },
     { name: "Blog", to: "/blog", icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> },
+    { name: "Contact", to: "contact", icon: <Mail className="w-5 h-5" /> },
   ]
 
   const socials = [
@@ -183,7 +181,7 @@ const Navbar = () => {
   }, [pathname, navItems]);
 
   return (
-    <nav className="sticky top-0 z-50 w-full">
+    <nav className="sticky top-0 z-50 w-full md:hidden">
       <motion.div 
         className="absolute inset-0 bg-white/40 dark:bg-neutral-900/60 backdrop-blur-xl border-b border-white/30 dark:border-white/10 shadow-2xl transition-all duration-300 rounded-b-2xl"
         initial={{ opacity: 0 }}
@@ -205,7 +203,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex items-center gap-4 justify-end flex-1">
-            <ul className="flex space-x-4 lg:space-x-6 xl:space-x-8">
+            <ul className="hidden space-x-4 lg:space-x-6 xl:space-x-8">
               {navItems.map((item) => (
                 <NavItem key={item.name} to={item.to} active={activeSection === item.to}>
                   {item.icon}

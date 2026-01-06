@@ -7,6 +7,9 @@ import Footer from "./Components/Footer";
 import { ThemeProvider } from "../components/ThemeProvider";
 import GlobalLoader from "./Components/GlobalLoader";
 import AnimatedBackground from "./Components/AnimateBakground";
+import Dock from "./Components/Dock";
+import FloatingLogo from "./Components/FloatingLogo";
+import FloatingThemeToggle from "./Components/FloatingThemeToggle";
 
 export const metadata = {
   title: "Nilesh Mori | Full Stack Developer | Web & Mobile Innovator",
@@ -32,7 +35,10 @@ export default function RootLayout({ children }) {
         <ThemeProvider>
           <GlobalLoader>
             <AnimatedBackground />
+            <FloatingLogo />
+            <FloatingThemeToggle />
             {children}
+            <Dock />
           </GlobalLoader>
         </ThemeProvider>
       </body>

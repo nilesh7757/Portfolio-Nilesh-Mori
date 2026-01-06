@@ -1,41 +1,40 @@
-import { motion } from 'framer-motion';
+'use client';
 
-const experiences = [
-  {
-    role: 'Intern',
-    company: 'Craft Silicon Foundation',
-    link:'https://www.craftsilicon.com/about/craft-silicon-foundation/',
-    duration: 'Rural Internship 2024',
-    description: 'Helped Society to improve at Sadanpur,Panchmahal '
-  },
-];
+import { motion } from 'framer-motion';
+import experiences from '@/lib/experience';
 
 const ExperienceSection = () => (
   <motion.div
     initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.2 }}
+    whileInView={{ opacity: 1 }}
+    transition={{ duration: 0.5 }}
+    viewport={{ once: true }}
     className="space-y-6"
   >
     {experiences.map((exp, index) => (
       <motion.div
         key={exp.role}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.2, delay: index * 0.1 }}
-        className="relative pl-4 border-l-2 border-blue-600 transform-gpu"
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.3, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        className="relative pl-6 border-l-2 border-blue-600 dark:border-blue-500 transform-gpu group"
       >
-        <h6 className="text-lg md:text-xl font-semibold">{exp.role}</h6>
+        <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-blue-600 dark:bg-blue-500 ring-4 ring-background transition-transform group-hover:scale-125" />
+        
+        <h6 className="text-xl md:text-2xl font-bold text-foreground">{exp.role}</h6>
         <a 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="text-blue-600 hover:text-blue-800 transition-colors cursor-pointer" 
+          className="text-lg text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors cursor-pointer font-medium" 
           href={exp.link}
         >
           {exp.company}
         </a>
-        <p className="text-sm text-muted-foreground">{exp.duration}</p>
-        <p className="mt-2 text-sm md:text-base text-muted-foreground leading-relaxed">{exp.description}</p>
+        <p className="text-sm font-mono text-muted-foreground mt-1 mb-3">{exp.duration}</p>
+        <p className="text-base text-muted-foreground leading-relaxed max-w-3xl">
+          {exp.description}
+        </p>
       </motion.div>
     ))}
   </motion.div>
