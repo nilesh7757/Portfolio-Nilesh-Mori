@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Link as ScrollLink } from "react-scroll"
 import Link from "next/link"
@@ -141,14 +141,14 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 
-  const navItems = [
+  const navItems = useMemo(() => [
     { name: "Home", to: "home", icon: <Home className="w-5 h-5" /> },
     { name: "About", to: "about", icon: <User className="w-5 h-5" /> },
     { name: "Experience", to: "experience", icon: <Briefcase className="w-5 h-5" /> },
     { name: "Projects", to: "project", icon: <Folder className="w-5 h-5" /> },
     { name: "Blog", to: "/blog", icon: <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> },
     { name: "Contact", to: "contact", icon: <Mail className="w-5 h-5" /> },
-  ]
+  ], [])
 
   const socials = [
     { icon: <Github className="w-5 h-5" />, href: "https://github.com/nilesh7757" },

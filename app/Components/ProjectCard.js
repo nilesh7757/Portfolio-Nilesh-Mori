@@ -84,29 +84,80 @@ const ProjectCard = ({ project, onFilterByTech }) => {
               </CardContent>
             </div>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl mx-4">
-            <DialogHeader>
-              <DialogTitle className="text-xl sm:text-2xl">{project.title}</DialogTitle>
-            </DialogHeader>
-            <div className="flex flex-col md:grid md:grid-cols-2 gap-6">
-              <div className="relative w-full aspect-video">
-                <Image 
-                  src={project.image} 
-                  alt={project.title} 
-                  fill
-                  className="rounded-lg object-cover"
-                />
-              </div>
-              <div className="space-y-4">
-                <p className="text-muted-foreground text-sm sm:text-base">{project.fullDescription}</p>
+          <DialogContent className="max-w-xl w-[95vw] p-0 overflow-hidden glassmorphism border-0 rounded-2xl flex flex-col h-auto max-h-[90vh]">
+            {/* Fixed Header: Image */}
+            <div className="relative w-full aspect-[16/10] shrink-0">
+              <Image 
+                src={project.image} 
+                alt={project.title} 
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+            </div>
+            
+            {/* Scrollable Middle: Content */}
+            <div className="px-6 pb-4 -mt-12 relative z-10 flex-1 overflow-y-auto custom-scrollbar">
+              <DialogHeader className="mb-6">
+                <DialogTitle className="text-2xl md:text-3xl font-bold text-foreground">
+                  {project.title}
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="space-y-6">
                 <div className="space-y-2">
-                  <h4 className="font-semibold">Technologies:</h4>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-primary">
+                    About Project
+                  </h4>
+                  <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+                    {project.fullDescription}
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-primary">
+                    Tech Stack
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, index) => (
-                      <span key={index} className="px-2 py-1 text-xs rounded-full font-semibold bg-muted text-muted-foreground">{tech}</span>
+                      <Badge 
+                        key={index} 
+                        variant="secondary"
+                        className="px-2.5 py-0.5 text-xs bg-secondary/50 backdrop-blur-sm border border-border/50"
+                      >
+                        {tech}
+                      </Badge>
                     ))}
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Fixed Footer: Buttons */}
+            <div className="px-6 py-4 bg-background/50 backdrop-blur-md border-t border-border/50 shrink-0">
+              <div className="flex gap-3">
+                <Button 
+                  asChild 
+                  size="sm"
+                  className="flex-1 bg-primary text-primary-foreground shadow-md"
+                >
+                  <Link href={project.demoUrl} target="_blank">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Demo
+                  </Link>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  asChild 
+                  size="sm"
+                  className="flex-1 border-primary/20"
+                >
+                  <Link href={project.codeUrl} target="_blank">
+                    <Github className="mr-2 h-4 w-4" />
+                    Github
+                  </Link>
+                </Button>
               </div>
             </div>
           </DialogContent>

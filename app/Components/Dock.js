@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -138,25 +138,29 @@ export default function Dock() {
   let mouseX = useMotionValue(Infinity);
   const [activeSection, setActiveSection] = useState("home");
 
-  const items = [
+  const items = useMemo(() => [
     { icon: Home, label: 'Home', href: '/' },
     { icon: User, label: 'About', href: '/#about' },
-    { icon: Briefcase, label: 'Experience', href: '/#experience' },
+    { icon: Briefcase, label: 'Journey', href: '/#experience' },
     { icon: Monitor, label: 'Skills', href: '/#skills' },
     { icon: Trophy, label: 'Stats', href: '/#cp' },
-    { icon: GraduationCap, label: 'Education', href: '/#education' },
-    { icon: FolderGit2, label: 'Projects', href: '/#project' },
+    { icon: FolderGit2, label: 'Projects', href: '/projects' },
     { icon: BookOpen, label: 'Blog', href: '/blog' },
     { icon: FileText, label: 'Resume', href: '/CV.pdf', external: true },
     { icon: Github, label: 'GitHub', href: 'https://github.com/nilesh7757', external: true },
     { icon: Mail, label: 'Contact', href: '/#contact' },
-  ];
+  ], []);
 
   const pathname = usePathname();
 
   useEffect(() => {
     if (pathname.startsWith('/blog')) {
       setActiveSection('blog');
+      return;
+    }
+
+    if (pathname.startsWith('/projects')) {
+      setActiveSection('projects');
       return;
     }
 

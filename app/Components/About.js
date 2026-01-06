@@ -149,7 +149,7 @@ const About = () => {
                   I&apos;m driven by a relentless curiosity to transform innovative ideas into impactful digital experiences. With a strong foundation in web development and a passion for problem-solving, I thrive on building scalable, efficient, and user-friendly applications.
                 </p>
                 <p className="leading-relaxed text-muted-foreground text-lg">
-                  My journey involves constantly learning new technologies and applying them to solve real-world problems. Whether it's crafting beautiful front-end interfaces or architecting robust back-end systems, I enjoy every aspect of the development lifecycle.
+                  My journey involves constantly learning new technologies and applying them to solve real-world problems. Whether it&apos;s crafting beautiful front-end interfaces or architecting robust back-end systems, I enjoy every aspect of the development lifecycle.
                 </p>
               </motion.div>
 

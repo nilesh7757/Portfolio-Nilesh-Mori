@@ -2,11 +2,29 @@
 import React from 'react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { CardContent } from "@/components/ui/card";
-import { Monitor, Code2, Database, Wrench, LayoutTemplate } from 'lucide-react';
-import TechMarquee from './TechMarquee';
+import { Monitor } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
-
 import Link from 'next/link';
+import { skillCategories } from '@/lib/skills';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+const getLevelColor = (level) => {
+  switch (level?.toLowerCase()) {
+    case 'advanced':
+      return 'border-green-500/50 text-green-600 dark:text-green-400 bg-green-500/10';
+    case 'intermediate':
+      return 'border-blue-500/50 text-blue-600 dark:text-blue-400 bg-blue-500/10';
+    case 'basic':
+      return 'border-yellow-500/50 text-yellow-600 dark:text-yellow-400 bg-yellow-500/10';
+    default:
+      return 'border-border';
+  }
+};
 
 const SkillCategory = ({ title, icon: Icon, skills, delay }) => {
   const mouseX = useMotionValue(0);
@@ -24,7 +42,7 @@ const SkillCategory = ({ title, icon: Icon, skills, delay }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
       onMouseMove={handleMouseMove}
-      className="group relative bg-card/50 backdrop-blur-sm border rounded-xl p-6 hover:shadow-lg transition-all hover:border-primary/50 overflow-hidden"
+      className="group relative bg-card/50 backdrop-blur-sm border rounded-xl p-6 hover:shadow-lg transition-all hover:border-primary/50 overflow-hidden h-full flex flex-col"
     >
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
@@ -38,7 +56,7 @@ const SkillCategory = ({ title, icon: Icon, skills, delay }) => {
           `,
         }}
       />
-      <div className="relative z-10">
+      <div className="relative z-10 flex-1">
         <div className="flex items-center gap-3 mb-6">
           <div className="p-2 rounded-lg bg-primary/10 text-primary">
             <Icon className="h-6 w-6" />
@@ -46,16 +64,25 @@ const SkillCategory = ({ title, icon: Icon, skills, delay }) => {
           <h3 className="text-xl font-bold">{title}</h3>
         </div>
         <div className="flex flex-wrap gap-2">
-          {skills.map((skill) => (
-            <Link href={`/projects?tech=${encodeURIComponent(skill)}`} key={skill}>
-              <Badge 
-                variant="secondary"
-                className="text-sm py-1 px-3 hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
-              >
-                {skill}
-              </Badge>
-            </Link>
-          ))}
+          <TooltipProvider>
+            {skills.map((skill) => (
+              <Tooltip key={skill.name}>
+                <TooltipTrigger asChild>
+                  <Link href={`/projects?tech=${encodeURIComponent(skill.name)}`}>
+                    <Badge 
+                      variant="outline"
+                      className={`text-sm py-1.5 px-3.5 transition-all duration-300 cursor-pointer hover:scale-105 ${getLevelColor(skill.level)}`}
+                    >
+                      {skill.name}
+                    </Badge>
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="font-semibold">{skill.level} Proficiency</p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
+          </TooltipProvider>
         </div>
       </div>
     </motion.div>
@@ -63,33 +90,6 @@ const SkillCategory = ({ title, icon: Icon, skills, delay }) => {
 };
 
 const Skills = () => {
-  const categories = [
-    {
-      title: "Frontend Development",
-      icon: LayoutTemplate,
-      skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Redux", "HTML5/CSS3", "Framer Motion"],
-      delay: 0.1
-    },
-    {
-      title: "Backend & Database",
-      icon: Database,
-      skills: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "Prisma ORM", "REST APIs", "GraphQL"],
-      delay: 0.2
-    },
-    {
-      title: "Programming Languages",
-      icon: Code2,
-      skills: ["JavaScript (ES6+)", "Python", "C++", "Java", "SQL"],
-      delay: 0.3
-    },
-    {
-      title: "DevOps & Tools",
-      icon: Wrench,
-      skills: ["Git & GitHub", "Docker", "AWS (Basic)", "Vercel", "Postman", "Linux", "VS Code"],
-      delay: 0.4
-    }
-  ];
-
   return (
     <div id="skills" className="w-full max-w-7xl mx-auto py-12 md:py-20">
       <CardContent className="p-4 sm:p-8">
@@ -105,18 +105,13 @@ const Skills = () => {
             <span className="bg-gradient-to-r from-green-500 to-teal-500 bg-clip-text text-transparent">Skills</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise.
+            Hover over skills to see proficiency levels. Click to filter projects.
           </p>
         </motion.div>
 
-        {/* Marquee for Visual Impact */}
-        <div className="mb-16">
-          <TechMarquee />
-        </div>
-
         {/* Categorized Grid for Scannability (Interview Friendly) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {categories.map((category, index) => (
+          {skillCategories.map((category, index) => (
             <SkillCategory 
               key={index} 
               {...category} 

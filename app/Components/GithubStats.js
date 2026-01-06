@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Github, Star, GitFork, Users, BookMarked } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { getGithubStats } from '@/lib/github';
+import Image from 'next/image';
 
 const StatCard = ({ icon: Icon, label, value, color }) => (
   <motion.div
@@ -107,7 +108,7 @@ const GithubStats = () => {
                         <motion.div 
                           className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
                           initial={{ width: 0 }}
-                          whileInView={{ width: `${(lang.count / stats.public_repos) * 100}%` }}
+                          whileInView={{ width: `${(lang.count / Math.max(1, stats.public_repos)) * 100}%` }}
                           transition={{ duration: 1, delay: 0.5 + (index * 0.1) }}
                         />
                       </div>
@@ -132,10 +133,13 @@ const GithubStats = () => {
                   Contribution Graph
                 </h3>
                 <div className="w-full overflow-x-auto pb-4 custom-scrollbar">
-                  <img 
+                  <Image 
                     src="https://ghchart.rshah.org/3b82f6/nilesh7757" 
                     alt="Nilesh's Github Chart" 
-                    className="min-w-[600px] w-full"
+                    width={800}
+                    height={120}
+                    unoptimized={true}
+                    className="min-w-[600px] w-full h-auto"
                   />
                 </div>
               </CardContent>
